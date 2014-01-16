@@ -6,8 +6,8 @@ Git-ohjeeseen perehtyminen.
 Repositorion luominen.
 Repotreenejä.
 
-16.1., 3 t 30 min
+16.1., 4 t 15 min
 Repotreenejä.
 NetBeans-projektin luominen.
 Aihemäärittelyn kirjoittaminen ja muuta dokumentointia.
-
+SSH-avaimen salasanan vaihtaminen.
