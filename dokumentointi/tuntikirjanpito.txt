@@ -11,3 +11,10 @@ Repotreenejä.
 NetBeans-projektin luominen.
 Aihemäärittelyn kirjoittaminen ja muuta dokumentointia.
 SSH-avaimen salasanan vaihtaminen.
+
+19.1. x tuntia
+Palaute: Aihetta pitäisi vielä laajentaa. Keksi aihemäärittelyyn
+jokin laajennus.
+
+16:45-17:00
+18:15-20:15
