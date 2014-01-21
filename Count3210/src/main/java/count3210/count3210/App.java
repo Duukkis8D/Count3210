@@ -11,9 +11,9 @@ public class App {
         Laskuri sekunnit = new Laskuri(59);
         Laskuri minuutit = new Laskuri(59);
         Laskuri tunnit = new Laskuri(23);
-        
-        int sek = 3;
-        int min = 5;
+
+        int sek = 2;
+        int min = 1;
         int tun = 1;
 
 //        System.out.print("sekunnit: ");
@@ -22,7 +22,6 @@ public class App {
 //        int min = Integer.parseInt(lukija.nextLine());  // kysy minuuttien alkuarvo käyttäjältä
 //        System.out.print("tunnit: ");
 //        int tun = Integer.parseInt(lukija.nextLine());  // kysy tuntien alkuarvo käyttäjältä
-
         // Jokaiselle oliolle tulee omat oliomuuttuja-arvonsa,
         // joita alla olevassa while-loopissa muutetaan metodin avulla.
         sekunnit.asetaArvo(sek);
@@ -36,7 +35,10 @@ public class App {
 
     public static void aikaKulkee(Laskuri tunnit, Laskuri minuutit, Laskuri sekunnit) {
 //        int i = 0;
-        while (tunnit.arvo() > -1 && minuutit.arvo() > -1 && sekunnit.arvo() > -1) {
+        
+        // Pitäisikö alla oleva if-lauserakenne kirjoittaa yksinkertaisemmin ja
+        // käänteisesti muotoon if tunnit --> if minuutit --> if sekunnit?
+        while (tunnit.arvo() > 0 && minuutit.arvo() > 0 && sekunnit.arvo() > 0) {
             System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
 
             sekunnit.seuraava();
@@ -46,7 +48,13 @@ public class App {
                 minuutit.seuraava();
                 sekunnit.seuraava();
 
-                if (minuutit.arvo() == 0) {
+                // Alla oleva ei toimi oikein tilanteessa 01:00:59 --> 00:59:59.
+                if (minuutit.arvo() == 0 && tunnit.arvo() > 0) {
+                    System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+                    sekunnit.seuraava();
+
+                    // Mitä tähän pitäisi laittaa?
+                } else if (minuutit.arvo() == 0 && tunnit.arvo() == 0) {
                     System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
                     tunnit.seuraava();
                     minuutit.seuraava();
