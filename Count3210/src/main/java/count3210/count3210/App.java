@@ -34,40 +34,90 @@ public class App {
     }
 
     public static void aikaKulkee(Laskuri tunnit, Laskuri minuutit, Laskuri sekunnit) {
-//        int i = 0;
-        
-        // Pitäisikö alla oleva if-lauserakenne kirjoittaa yksinkertaisemmin ja
-        // käänteisesti muotoon if tunnit --> if minuutit --> if sekunnit?
-        while (tunnit.arvo() > 0 && minuutit.arvo() > 0 && sekunnit.arvo() > 0) {
-            System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
 
-            sekunnit.seuraava();
+        // Alla oleva logiikka ei vielä täysin toimi.
+        int i = 0;
 
-            if (sekunnit.arvo() == 0) {
-                System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
-                minuutit.seuraava();
-                sekunnit.seuraava();
+        while (i < 200) {
 
-                // Alla oleva ei toimi oikein tilanteessa 01:00:59 --> 00:59:59.
-                if (minuutit.arvo() == 0 && tunnit.arvo() > 0) {
-                    System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+            if (tunnit.arvo() > 0) {
+                // 05:XX:XX
+                if (minuutit.arvo() > 0) {
+                    // 05:25:XX
+                    if (sekunnit.arvo() > 0) {
+                        // 05:25:38
+                        sekunnit.seuraava();
+                        System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+                    }
+                    // 05:25:00
+                    minuutit.seuraava();
                     sekunnit.seuraava();
-
-                    // Mitä tähän pitäisi laittaa?
-                } else if (minuutit.arvo() == 0 && tunnit.arvo() == 0) {
                     System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+                    // 05:00:00
+                } else if (minuutit.arvo() == 0 && sekunnit.arvo() == 0) {
                     tunnit.seuraava();
                     minuutit.seuraava();
-
-                    // Tämä suoritetaan vasta sitten, kun sekunnit, minuutit ja tunnit ovat nolla,
-                    // eli vuorokausi vaihtuu.
-                    if (tunnit.arvo() == 0) {
-                        System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
-//                        sekunnit.seuraava();
-                    }
+                    sekunnit.seuraava();
+                    System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+                    // 05:00:38
+                } else if (minuutit.arvo() == 0 && sekunnit.arvo() > 0) {
+                    sekunnit.seuraava();
+                    System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
                 }
+                // 00:00:38
+            } else if (tunnit.arvo() == 0 && minuutit.arvo() == 0
+                    && sekunnit.arvo() > 0) {
+                sekunnit.seuraava();
+                System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+                // 00:25:00
+            } else if (tunnit.arvo() == 0 && minuutit.arvo() > 0
+                    && sekunnit.arvo() == 0) {
+                minuutit.seuraava();
+                sekunnit.seuraava();
+                System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
             }
-//            i++;
+            
+            // Lopeta laskuri, kun kaikki arvot ovat nolla.
+            if (tunnit.arvo() == 0 && minuutit.arvo() == 0 && sekunnit.arvo() == 0) {
+                break;
+            }
+
+            i++;
         }
+
+        // Pitäisikö alla oleva if-lauserakenne kirjoittaa yksinkertaisemmin ja
+        // käänteisesti muotoon if tunnit --> if minuutit --> if sekunnit?
+        //        int i = 0;
+        /* while (tunnit.arvo() > 0 && minuutit.arvo() > 0 && sekunnit.arvo() > 0) {
+         System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+
+         sekunnit.seuraava();
+
+         if (sekunnit.arvo() == 0) {
+         System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+         minuutit.seuraava();
+         sekunnit.seuraava();
+
+         // Alla oleva ei toimi oikein tilanteessa 01:00:59 --> 00:59:59.
+         if (minuutit.arvo() == 0 && tunnit.arvo() > 0) {
+         System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+         sekunnit.seuraava();
+
+         // Mitä tähän pitäisi laittaa?
+         } else if (minuutit.arvo() == 0 && tunnit.arvo() == 0) {
+         System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+         tunnit.seuraava();
+         minuutit.seuraava();
+
+         // Tämä suoritetaan vasta sitten, kun sekunnit, minuutit ja tunnit ovat nolla,
+         // eli vuorokausi vaihtuu.
+         if (tunnit.arvo() == 0) {
+         System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+         //                        sekunnit.seuraava();
+         }
+         }
+         }
+         //            i++; 
+         } */
     }
 }
