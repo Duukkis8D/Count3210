@@ -1,5 +1,11 @@
 Aihe: Countdown-laskuri
-Ohjelmaa on tarkoitus käyttää erilaisten tapahtumien aloitusajankohdan seuraamiseen.
-Käyttäjä luo uuden laskurin ja määrittelee laskurin nimen ja tapahtuman päivämäärän
-sekä kellonajan. Sitten laskuri käynnistetään. Laskuri näyttää kuluvan ajan ainakin
-vuosina, kuukausina, päivinä, tunteina, minuutteina ja sekunteina (kaikki jonossa).
+
+Ohjelmaa on tarkoitus käyttää erilaisten tapahtumien aloitus- tai lopetusajankohdan
+seuraamiseen. Käyttäjä luo uuden laskurin ja määrittelee laskurin nimen ja
+tapahtuman päivämäärän sekä kellonajan. Sitten laskuri käynnistetään. Laskuri
+näyttää kuluvan ajan ainakin vuosina, kuukausina, päivinä, tunteina, minuutteina ja
+sekunteina (kaikki jonossa).
+
+Kun laskuri näyttää nollaa, se hälyttää tapahtuman alkamisesta. Ohjelma pitää
+muistissa luotuja laskureita. Kun ohjelman käynnistää, tallennetut laskurit näkyvät
+ja niiden aika kulkee.
