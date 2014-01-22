@@ -21,3 +21,6 @@ Ohjelmalogiikan koodausta.
 21.1. 4 t
 Ohjelmalogiikan koodausta.
 
+22.1. x tuntia
+Ohjelmalogiikan koodausta.
+
