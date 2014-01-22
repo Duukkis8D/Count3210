@@ -13,14 +13,13 @@ Aihemäärittelyn kirjoittaminen ja muuta dokumentointia.
 SSH-avaimen salasanan vaihtaminen.
 
 19.1. 2 t 15 min
-Palaute: Aihetta pitäisi vielä laajentaa. Keksi aihemäärittelyyn
-jokin laajennus.
-
 Ohjelmalogiikan koodausta.
 
 21.1. 4 t
 Ohjelmalogiikan koodausta.
+Aihemäärittelyn laajennus.
 
-22.1. x tuntia
+22.1. 2 t 15 min
 Ohjelmalogiikan koodausta.
+Ohjelmalogiikan testausta.
 

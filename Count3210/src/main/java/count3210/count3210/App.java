@@ -37,51 +37,51 @@ public class App {
         
         while (true) {
 
-            if (tunnit.arvo() > 0) {
+            if (tunnit.getArvo() > 0) {
                 // 05:XX:XX
-                if (minuutit.arvo() > 0) {
+                if (minuutit.getArvo() > 0) {
                     // 05:25:XX
-                    if (sekunnit.arvo() > 0) {
+                    if (sekunnit.getArvo() > 0) {
                         // 05:25:38
                         sekunnit.seuraava();
                         System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
                         // 05:25:00
-                    } else if (sekunnit.arvo() == 0) {
+                    } else if (sekunnit.getArvo() == 0) {
                         minuutit.seuraava();
                         sekunnit.seuraava();
                         System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
                     }
                     // 05:00:00
-                } else if (minuutit.arvo() == 0 && sekunnit.arvo() == 0) {
+                } else if (minuutit.getArvo() == 0 && sekunnit.getArvo() == 0) {
                     tunnit.seuraava();
                     minuutit.seuraava();
                     sekunnit.seuraava();
                     System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
                     // 05:00:38
-                } else if (minuutit.arvo() == 0 && sekunnit.arvo() > 0) {
+                } else if (minuutit.getArvo() == 0 && sekunnit.getArvo() > 0) {
                     sekunnit.seuraava();
                     System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
                 }
                 // 00:00:38
-            } else if (tunnit.arvo() == 0 && minuutit.arvo() == 0
-                    && sekunnit.arvo() > 0) {
+            } else if (tunnit.getArvo() == 0 && minuutit.getArvo() == 0
+                    && sekunnit.getArvo() > 0) {
                 sekunnit.seuraava();
                 System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
                 // 00:25:38
-            } else if (tunnit.arvo() == 0 && minuutit.arvo() > 0
-                    && sekunnit.arvo() > 0) {
+            } else if (tunnit.getArvo() == 0 && minuutit.getArvo() > 0
+                    && sekunnit.getArvo() > 0) {
                 sekunnit.seuraava();
                 System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
                 // 00:25:00
-            } else if (tunnit.arvo() == 0 && minuutit.arvo() > 0
-                    && sekunnit.arvo() == 0) {
+            } else if (tunnit.getArvo() == 0 && minuutit.getArvo() > 0
+                    && sekunnit.getArvo() == 0) {
                 minuutit.seuraava();
                 sekunnit.seuraava();
                 System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
             }
 
             // Lopeta laskuri, kun kaikki arvot ovat nolla.
-            if (tunnit.arvo() == 0 && minuutit.arvo() == 0 && sekunnit.arvo() == 0) {
+            if (tunnit.getArvo() == 0 && minuutit.getArvo() == 0 && sekunnit.getArvo() == 0) {
                 break;
             }
         }

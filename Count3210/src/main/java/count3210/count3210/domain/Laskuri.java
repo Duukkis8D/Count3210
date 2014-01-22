@@ -18,10 +18,9 @@ public class Laskuri {
         // järjestelmän kellon arvo taas luettaisiin ja aika
         // kulkisi sekunti kerrallaan.
 
-        // Seuraavassa voisi vähentää this.arvo-muuttujan
-        // arvoa yhdellä, kunnes sen arvo on 0. Arvon ollessa
-        // nolla sen arvoksi asetetaan ylaraja apumuuttujan
-        // avulla.
+        // Seuraavassa vähennetään this.arvo-muuttujan arvoa
+        // yhdellä, kunnes sen arvo on 0. Arvon ollessa nolla
+        // sen arvoksi asetetaan ylaraja apumuuttujan avulla.
         if (arvo >= 1 && arvo <= ylaraja) {
             // Jos arvo on 1 - ylaraja.
             arvo--;
@@ -30,13 +29,6 @@ public class Laskuri {
             int uusiArvo = ylaraja;
             arvo = uusiArvo;
         }
-
-//        if (arvo < 0) {
-//            int uusiArvo = ylaraja + 1;
-//            arvo = uusiArvo;
-//        } else if (arvo <= ylaraja + 1 || arvo >= 0) {
-//            arvo--;
-//        } 
     }
 
     @Override
@@ -49,7 +41,7 @@ public class Laskuri {
         }
     }
 
-    public int arvo() {
+    public int getArvo() {
         // Tämä metodi ainoastaan palauttaa oliomuuttujan arvon,
         // jotta sitä voi käyttää main-luokassa.
         return this.arvo;
@@ -62,6 +54,13 @@ public class Laskuri {
         // ajan laskuun järjestelmän kellonaikaa ja päivämäärää.
 
         // Aluksi tehdään asia yksinkertaisemmin.
-        arvo = asetus;
+        
+        if (asetus >= 0) {
+            arvo = asetus;
+        }
+    }
+    
+    public int getYlaraja() {
+        return ylaraja;
     }
 }
