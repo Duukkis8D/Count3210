@@ -3,6 +3,7 @@ package count3210.count3210;
 import count3210.count3210.domain.Laskuri;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class App {
@@ -32,6 +33,17 @@ public class App {
 //
 //        System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
 //        aikaKulkee(tunnit, minuutit, sekunnit);
+
+        Calendar aikaNyt = Calendar.getInstance();
+        
+        System.out.println("vuodet: " + aikaNyt.get(Calendar.YEAR) + "\n"
+                        + "kuukaudet: " + aikaNyt.get(Calendar.MONTH) + "\n"
+                        + "vuorokaudet: " + aikaNyt.get(Calendar.DAY_OF_MONTH) + "\n"
+                        + "tunnit: " + aikaNyt.get(Calendar.HOUR_OF_DAY) + "\n"
+                        + "minuutit: " + aikaNyt.get(Calendar.MINUTE) + "\n"
+                        + "sekunnit: " + aikaNyt.get(Calendar.SECOND) + "\n");
+        
+        Calendar tapahtumanAika = Calendar.getInstance();
         
         // Kysy päiväyksen sekuntien, minuuttien, tuntien,
         // vuorokausien, kuukausien ja vuosien arvo käyttäjältä.
@@ -47,10 +59,31 @@ public class App {
         int kk = Integer.parseInt(lukija.nextLine());
         System.out.println("vuodet: ");
         int vv = Integer.parseInt(lukija.nextLine());
-
-        Calendar aikaNyt = Calendar.getInstance();
-        Calendar tapahtumanAika = Calendar.getInstance();
-        tapahtumanAika.set
+        
+//        tapahtumanAika.set(Calendar.SECOND, sek);
+//        tapahtumanAika.set(Calendar.MINUTE, min);
+//        tapahtumanAika.set(Calendar.HOUR, tun);
+//        tapahtumanAika.set(Calendar.DATE, vrk);
+//        tapahtumanAika.set(Calendar.MONTH, kk);
+//        tapahtumanAika.set(Calendar.YEAR, vv);
+        tapahtumanAika.set(vv, kk, vrk, tun, min, sek);
+        
+        // Jäljellä oleva aika näytetään käyttäjälle muodossa
+        // vuodet : kuukaudet : kuukauden vuorokaudet : vuorokauden tunnit : minuutit : sekunnit
+        System.out.println("vuodet: " + tapahtumanAika.get(Calendar.YEAR) + "\n"
+                        + "kuukaudet: " + tapahtumanAika.get(Calendar.MONTH) + "\n"
+                        + "vuorokaudet: " + tapahtumanAika.get(Calendar.DAY_OF_MONTH) + "\n"
+                        + "tunnit: " + tapahtumanAika.get(Calendar.HOUR_OF_DAY) + "\n"
+                        + "minuutit: " + tapahtumanAika.get(Calendar.MINUTE) + "\n"
+                        + "sekunnit: " + tapahtumanAika.get(Calendar.SECOND));
+        int i = 0;
+        while (i < 5) {
+            // Miinusta aikaa 5 minuuttia aikaNyt-oliosta kokeilun vuoksi.
+            
+            // Lopullisessa ohjelmassa tapahtumaAika-olion aikaa ja
+            // aikaNyt-olion aikaa tulee verrata toisiinsa.
+            i++;
+        }
         
 //        aikaKulkeeCalendar();
     }
