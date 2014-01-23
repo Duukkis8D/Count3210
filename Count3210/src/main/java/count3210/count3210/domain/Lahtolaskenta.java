@@ -65,6 +65,7 @@ public class Lahtolaskenta {
 
     public static void aikaKulkeeCalendar() {
 
+        // Calendar-luokan kokeilua.
         Calendar aika = Calendar.getInstance();
         System.out.println(aika.get(Calendar.DATE));
 
