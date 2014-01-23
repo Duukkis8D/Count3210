@@ -1,3 +1,5 @@
+// Tämä luokka lienee turha.
+
 package count3210.count3210.domain;
 
 public class Laskuri {
