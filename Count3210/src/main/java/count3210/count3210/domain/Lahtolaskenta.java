@@ -5,8 +5,12 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class Lahtolaskenta {
-
+    
     public void kaynnista() {
+        
+        Calendar aikaNyt = Calendar.getInstance();
+        // Tulostetaan kokeeksi tämänhetkinen päiväys.
+        Lahtolaskenta.tulostaAika(aikaNyt);
         
         // Kysytään käyttäjältä päiväys.
         Kyselija kyselija = new Kyselija();
@@ -14,12 +18,11 @@ public class Lahtolaskenta {
         
         tulostaAika(tapahtumanAika);
         
-        aikaKulkeeSekuntiKerrallaan(tapahtumanAika);
+        aikaKulkeeAikojaVertailemalla(aikaNyt, tapahtumanAika);
     }
     
     public static void tulostaAika(Calendar aika) {
-        // Jäljellä oleva aika näytetään käyttäjälle muodossa
-        // vuodet : kuukaudet : kuukauden vuorokaudet : vuorokauden tunnit : minuutit : sekunnit
+        
         System.out.println(aika.get(Calendar.YEAR) + " vuotta "
                 + aika.get(Calendar.MONTH) + " kuukautta "
                 + aika.get(Calendar.DAY_OF_MONTH) + " vuorokautta "
@@ -28,10 +31,18 @@ public class Lahtolaskenta {
                 + aika.get(Calendar.SECOND) + " sekuntia\n");
     }
     
+    public void aikaKulkeeAikojaVertailemalla(Calendar aikaNyt, Calendar tapahtumanAika) {
+        // Lopullisessa ohjelmassa tapahtumaAika-olion aikaa ja
+        // aikaNyt-olion aikaa tulee verrata toisiinsa.
+        
+        // Seuraava palauttaa vain -1, 0 tai 1 tapauksesta riippuen.
+        System.out.println(aikaNyt.compareTo(tapahtumanAika));
+    }
+    
     public void aikaKulkeeSekuntiKerrallaan(Calendar tapahtumanAika) {
         
-        while (tapahtumanAika.get(Calendar.MINUTE) > 0 &&
-                tapahtumanAika.get(Calendar.SECOND) > 0) {
+        int i = 0;
+        while (i < 21) {
             tapahtumanAika.add(Calendar.SECOND, -1);
             
             try {
@@ -42,19 +53,17 @@ public class Lahtolaskenta {
             }
             
             tulostaAika(tapahtumanAika);
+            i++;
         }
     }
 
-    public void aikaKulkeeCalendar(Calendar tapahtumanAika) {
+    public void aikaKulkeeCalendarKokeilu(Calendar tapahtumanAika) {
 
         int i = 0;
         while (i < 5) {
             // Miinusta aikaa 5 minuuttia aikaNyt-oliosta kokeilun vuoksi.
 
             tapahtumanAika.add(Calendar.MINUTE, -1);
-            
-            // Lopullisessa ohjelmassa tapahtumaAika-olion aikaa ja
-            // aikaNyt-olion aikaa tulee verrata toisiinsa.
             i++;
         }
         

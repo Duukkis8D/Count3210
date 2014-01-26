@@ -8,7 +8,6 @@ import java.util.Calendar;
 
 public class Kyselija {
     private Tiedostonlukija lukija;
-    private Calendar aikaNyt = Calendar.getInstance();
     private Calendar tapahtumanAika = Calendar.getInstance();
     
     public Kyselija() {
@@ -16,24 +15,26 @@ public class Kyselija {
     }
     
     public Calendar kysy() {
-        
-        // Tulostetaan kokeeksi tämänhetkinen päiväys.
-        Lahtolaskenta.tulostaAika(aikaNyt);
-        
         // Kysy päiväyksen sekuntien, minuuttien, tuntien,
         // vuorokausien, kuukausien ja vuosien arvo käyttäjältä.
         System.out.print("vuodet: ");
-        int vv = lukija.lue();
+//        int vv = lukija.lue();
+        int vv = 2015;
         System.out.print("kuukaudet: ");
-        int kk = lukija.lue();
+//        int kk = lukija.lue();
+        int kk = 3;
         System.out.print("vuorokaudet: ");
-        int vrk = lukija.lue();
+//        int vrk = lukija.lue();
+        int vrk = 28;
         System.out.print("tunnit: ");
-        int tun = lukija.lue();
+//        int tun = lukija.lue();
+        int tun = 14;
         System.out.print("minuutit: ");
-        int min = lukija.lue();
+//        int min = lukija.lue();
+        int min = 1;
         System.out.print("sekunnit: ");
-        int sek = lukija.lue();
+//        int sek = lukija.lue();
+        int sek = 6;
         System.out.println();
 
         Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
