@@ -7,74 +7,61 @@ import java.util.Scanner;
 public class Lahtolaskenta {
 
     public void kaynnista() {
-
-//        Laskuri sekunnit = new Laskuri(59);
-//        Laskuri minuutit = new Laskuri(59);
-//        Laskuri tunnit = new Laskuri(23);
         
-//        int sek = 0;
-//        int min = 0;
-//        int tun = 3;
-        
-        // Tätä pitäisi muuttaa niin, että kysytään käyttäjältä päiväys.
-//        System.out.print("sekunnit: ");
-//        int sek = Integer.parseInt(lukija.nextLine());  // kysy sekuntien alkuarvo käyttäjältä
-//        System.out.print("minuutit: ");
-//        int min = Integer.parseInt(lukija.nextLine());  // kysy minuuttien alkuarvo käyttäjältä
-//        System.out.print("tunnit: ");
-//        int tun = Integer.parseInt(lukija.nextLine());  // kysy tuntien alkuarvo käyttäjältä
-//        
-//        sekunnit.asetaArvo(sek);
-//        minuutit.asetaArvo(min);
-//        tunnit.asetaArvo(tun);
-//
-//        System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
-        
-//        aikaKulkee(tunnit, minuutit, sekunnit);
-        
-        Calendar aikaNyt = Calendar.getInstance();
-
-        System.out.println("vuodet: " + aikaNyt.get(Calendar.YEAR) + "\n"
-                + "kuukaudet: " + aikaNyt.get(Calendar.MONTH) + "\n"
-                + "vuorokaudet: " + aikaNyt.get(Calendar.DAY_OF_MONTH) + "\n"
-                + "tunnit: " + aikaNyt.get(Calendar.HOUR_OF_DAY) + "\n"
-                + "minuutit: " + aikaNyt.get(Calendar.MINUTE) + "\n"
-                + "sekunnit: " + aikaNyt.get(Calendar.SECOND) + "\n");
-
+        // Kysytään käyttäjältä päiväys.
         Kyselija kyselija = new Kyselija();
-
+        Calendar tapahtumanAika = kyselija.kysy();
+        
+        tulostaAika(tapahtumanAika);
+        
+        aikaKulkeeSekuntiKerrallaan(tapahtumanAika);
+    }
+    
+    public static void tulostaAika(Calendar aika) {
         // Jäljellä oleva aika näytetään käyttäjälle muodossa
         // vuodet : kuukaudet : kuukauden vuorokaudet : vuorokauden tunnit : minuutit : sekunnit
-        System.out.println("vuodet: " + tapahtumanAika.get(Calendar.YEAR) + "\n"
-                + "kuukaudet: " + tapahtumanAika.get(Calendar.MONTH) + "\n"
-                + "vuorokaudet: " + tapahtumanAika.get(Calendar.DAY_OF_MONTH) + "\n"
-                + "tunnit: " + tapahtumanAika.get(Calendar.HOUR_OF_DAY) + "\n"
-                + "minuutit: " + tapahtumanAika.get(Calendar.MINUTE) + "\n"
-                + "sekunnit: " + tapahtumanAika.get(Calendar.SECOND));
+        System.out.println(aika.get(Calendar.YEAR) + " vuotta "
+                + aika.get(Calendar.MONTH) + " kuukautta "
+                + aika.get(Calendar.DAY_OF_MONTH) + " vuorokautta "
+                + aika.get(Calendar.HOUR_OF_DAY) + " tuntia "
+                + aika.get(Calendar.MINUTE) + " minuuttia "
+                + aika.get(Calendar.SECOND) + " sekuntia\n");
+    }
+    
+    public void aikaKulkeeSekuntiKerrallaan(Calendar tapahtumanAika) {
+        
+        while (tapahtumanAika.get(Calendar.MINUTE) > 0 &&
+                tapahtumanAika.get(Calendar.SECOND) > 0) {
+            tapahtumanAika.add(Calendar.SECOND, -1);
+            
+            try {
+                Thread.sleep(1000);
+                // Mikä on InterruptedException, jonka Thread.sleep voi heittää?
+            } catch (InterruptedException e) {
+                System.out.println("Ei onnistunut!");
+            }
+            
+            tulostaAika(tapahtumanAika);
+        }
+    }
+
+    public void aikaKulkeeCalendar(Calendar tapahtumanAika) {
+
         int i = 0;
         while (i < 5) {
             // Miinusta aikaa 5 minuuttia aikaNyt-oliosta kokeilun vuoksi.
 
+            tapahtumanAika.add(Calendar.MINUTE, -1);
+            
             // Lopullisessa ohjelmassa tapahtumaAika-olion aikaa ja
             // aikaNyt-olion aikaa tulee verrata toisiinsa.
             i++;
         }
-
-//        aikaKulkeeCalendar();
+        
+        tulostaAika(tapahtumanAika);
     }
 
-    public static void aikaKulkeeCalendar() {
-
-        // Calendar-luokan kokeilua.
-        Calendar aika = Calendar.getInstance();
-        System.out.println(aika.get(Calendar.DATE));
-
-        aika.add(Calendar.DATE, 5);
-        System.out.println(aika.get(Calendar.DATE));
-
-    }
-
-    public static void aikaKulkee(Laskuri tunnit, Laskuri minuutit, Laskuri sekunnit) {
+    public void aikaKulkeeManuaalisesti(Laskuri tunnit, Laskuri minuutit, Laskuri sekunnit) {
 
         while (true) {
 

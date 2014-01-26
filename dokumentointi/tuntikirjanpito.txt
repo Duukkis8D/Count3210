@@ -26,3 +26,9 @@ Ohjelmalogiikan testausta.
 23.1. 4 t 15 min
 Ohjelmalogiikan koodausta.
 Alkeellisen tekstikäyttöliittymän koodausta.
+
+26.1. x tuntia
+Ohjelmalogiikan koodausta.
+
+
+Muista PIT-raportti seuraavaan deadlineen!
