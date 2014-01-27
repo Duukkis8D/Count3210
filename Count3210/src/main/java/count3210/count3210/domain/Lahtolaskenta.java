@@ -22,12 +22,25 @@ public class Lahtolaskenta {
 
     public static void tulostaAika(Calendar aika) {
 
+        // Tämä tulostaa väärin ainakin tapaukset, joissa kahden päiväyksen
+        // erotuksessa on 0 kuukautta. Pitäisikö erotuksen tulostukseen
+        // olla oma metodinsa, jossa kuukauteen ei summattaisi ykköstä?
+        
         // Kuukausi pitänee tallentaa välillisesti muuttujaan,
         // jotta sen saa tulostettua oikein.
         int kk = aika.get(Calendar.MONTH) + 1;
 
         System.out.println("\n" + aika.get(Calendar.YEAR) + " vuotta "
                 + kk + " kuukautta "
+                + aika.get(Calendar.DAY_OF_MONTH) + " vuorokautta "
+                + aika.get(Calendar.HOUR_OF_DAY) + " tuntia "
+                + aika.get(Calendar.MINUTE) + " minuuttia "
+                + aika.get(Calendar.SECOND) + " sekuntia\n");
+    }
+    
+    public static void tulostaLahtolaskenta(Calendar aika) {
+        System.out.println("\n" + aika.get(Calendar.YEAR) + " vuotta "
+                + aika.get(Calendar.MONTH) + " kuukautta "
                 + aika.get(Calendar.DAY_OF_MONTH) + " vuorokautta "
                 + aika.get(Calendar.HOUR_OF_DAY) + " tuntia "
                 + aika.get(Calendar.MINUTE) + " minuuttia "
@@ -45,22 +58,24 @@ public class Lahtolaskenta {
             // Tallenna tapahtuma-aika tiedostoon.
             tapahtumanAika = tallennettavaTapahtumaAika;
 
+            // Ongelma on ehkä, että vuorokaudet loppuvat ykköseen, eivät nollaan.
             aikojenErotus(aikaNyt, aikaKulkee);
-            tulostaAika(aikaKulkee);
+            System.out.println("Erotus:");
+            tulostaLahtolaskenta(aikaKulkee);
+            System.out.println("Lähtölaskenta:");
+            // Tähän while-loop, calendar add -1 second ja tulostusta joka sekunti.
         }
     }
 
-    public Calendar aikojenErotus(Calendar aikaNyt, Calendar aikaKulkee) {
+    public void aikojenErotus(Calendar aikaNyt, Calendar aikaKulkee) {
         // Tulisiko aikojen erotus aloittaa vuosista vai sekunneista?
         // Varmaan sekunneista.
         aikaKulkee.add(Calendar.SECOND, -aikaNyt.get(Calendar.SECOND));
         aikaKulkee.add(Calendar.MINUTE, -aikaNyt.get(Calendar.MINUTE));
         aikaKulkee.add(Calendar.HOUR_OF_DAY, -aikaNyt.get(Calendar.HOUR_OF_DAY));
         aikaKulkee.add(Calendar.DAY_OF_MONTH, -aikaNyt.get(Calendar.DAY_OF_MONTH));
-        aikaKulkee.add(Calendar.MONTH, -(aikaNyt.get(Calendar.MONTH) + 1));
+        aikaKulkee.add(Calendar.MONTH, -aikaNyt.get(Calendar.MONTH));
         aikaKulkee.add(Calendar.YEAR, -aikaNyt.get(Calendar.YEAR));
-
-        return aikaKulkee;
     }
 
     public void aikaKulkeeSekuntiKerrallaan(Calendar tapahtumanAika) {
