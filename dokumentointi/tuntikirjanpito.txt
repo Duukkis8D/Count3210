@@ -31,5 +31,7 @@ Alkeellisen tekstikäyttöliittymän koodausta.
 Ohjelmalogiikan koodausta.
 Tekstikäyttöliittymän koodausta.
 
+27.1. x tuntia
+
 
 Muista PIT-raportti seuraavaan deadlineen!

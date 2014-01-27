@@ -19,19 +19,19 @@ public class Kyselija {
         // vuorokausien, kuukausien ja vuosien arvo käyttäjältä.
         System.out.print("vuodet: ");
 //        int vv = lukija.lue();
-        int vv = 2015;
+        int vv = 2014;
         System.out.print("kuukaudet: ");
 //        int kk = lukija.lue();
-        int kk = 3;
+        int kk = 0;
         System.out.print("vuorokaudet: ");
 //        int vrk = lukija.lue();
         int vrk = 28;
         System.out.print("tunnit: ");
 //        int tun = lukija.lue();
-        int tun = 14;
+        int tun = 21;
         System.out.print("minuutit: ");
 //        int min = lukija.lue();
-        int min = 1;
+        int min = 25;
         System.out.print("sekunnit: ");
 //        int sek = lukija.lue();
         int sek = 6;

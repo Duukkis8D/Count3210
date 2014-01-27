@@ -2,56 +2,80 @@ package count3210.count3210.domain;
 
 import count3210.count3210.ui.Kyselija;
 import java.util.Calendar;
-import java.util.Scanner;
 
 public class Lahtolaskenta {
-    
+
     public void kaynnista() {
-        
+
         Calendar aikaNyt = Calendar.getInstance();
         // Tulostetaan kokeeksi tämänhetkinen päiväys.
         Lahtolaskenta.tulostaAika(aikaNyt);
-        
+
         // Kysytään käyttäjältä päiväys.
         Kyselija kyselija = new Kyselija();
         Calendar tapahtumanAika = kyselija.kysy();
-        
+
         tulostaAika(tapahtumanAika);
-        
-        aikaKulkeeAikojaVertailemalla(aikaNyt, tapahtumanAika);
+
+        aikaKulkeeAikojenErotuksesta(aikaNyt, tapahtumanAika);
     }
-    
+
     public static void tulostaAika(Calendar aika) {
-        
-        System.out.println(aika.get(Calendar.YEAR) + " vuotta "
-                + aika.get(Calendar.MONTH) + " kuukautta "
+
+        // Kuukausi pitänee tallentaa välillisesti muuttujaan,
+        // jotta sen saa tulostettua oikein.
+        int kk = aika.get(Calendar.MONTH) + 1;
+
+        System.out.println("\n" + aika.get(Calendar.YEAR) + " vuotta "
+                + kk + " kuukautta "
                 + aika.get(Calendar.DAY_OF_MONTH) + " vuorokautta "
                 + aika.get(Calendar.HOUR_OF_DAY) + " tuntia "
                 + aika.get(Calendar.MINUTE) + " minuuttia "
                 + aika.get(Calendar.SECOND) + " sekuntia\n");
     }
-    
-    public void aikaKulkeeAikojaVertailemalla(Calendar aikaNyt, Calendar tapahtumanAika) {
-        // Lopullisessa ohjelmassa tapahtumaAika-olion aikaa ja
-        // aikaNyt-olion aikaa tulee verrata toisiinsa.
-        
-        // Seuraava palauttaa vain -1, 0 tai 1 tapauksesta riippuen.
-        System.out.println(aikaNyt.compareTo(tapahtumanAika));
+
+    public void aikaKulkeeAikojenErotuksesta(Calendar aikaNyt, Calendar tapahtumanAika) {
+        // tapahtumaAika-olion aikaa ja aikaNyt-olion aikaa tulee verrata toisiinsa.
+
+        // Jos tapahtuman aika on myöhemmin kuin nykyinen aika,
+        // tehdään niiden erotus.
+        if (aikaNyt.compareTo(tapahtumanAika) < 0) {
+            Calendar aikaKulkee = tapahtumanAika;
+            Calendar tallennettavaTapahtumaAika = Calendar.getInstance();
+            // Tallenna tapahtuma-aika tiedostoon.
+            tapahtumanAika = tallennettavaTapahtumaAika;
+
+            aikojenErotus(aikaNyt, aikaKulkee);
+            tulostaAika(aikaKulkee);
+        }
     }
-    
+
+    public Calendar aikojenErotus(Calendar aikaNyt, Calendar aikaKulkee) {
+        // Tulisiko aikojen erotus aloittaa vuosista vai sekunneista?
+        // Varmaan sekunneista.
+        aikaKulkee.add(Calendar.SECOND, -aikaNyt.get(Calendar.SECOND));
+        aikaKulkee.add(Calendar.MINUTE, -aikaNyt.get(Calendar.MINUTE));
+        aikaKulkee.add(Calendar.HOUR_OF_DAY, -aikaNyt.get(Calendar.HOUR_OF_DAY));
+        aikaKulkee.add(Calendar.DAY_OF_MONTH, -aikaNyt.get(Calendar.DAY_OF_MONTH));
+        aikaKulkee.add(Calendar.MONTH, -(aikaNyt.get(Calendar.MONTH) + 1));
+        aikaKulkee.add(Calendar.YEAR, -aikaNyt.get(Calendar.YEAR));
+
+        return aikaKulkee;
+    }
+
     public void aikaKulkeeSekuntiKerrallaan(Calendar tapahtumanAika) {
-        
+
         int i = 0;
         while (i < 21) {
             tapahtumanAika.add(Calendar.SECOND, -1);
-            
+
             try {
                 Thread.sleep(1000);
                 // Mikä on InterruptedException, jonka Thread.sleep voi heittää?
             } catch (InterruptedException e) {
                 System.out.println("Ei onnistunut!");
             }
-            
+
             tulostaAika(tapahtumanAika);
             i++;
         }
@@ -66,7 +90,7 @@ public class Lahtolaskenta {
             tapahtumanAika.add(Calendar.MINUTE, -1);
             i++;
         }
-        
+
         tulostaAika(tapahtumanAika);
     }
 
