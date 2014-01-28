@@ -2,6 +2,8 @@ package count3210.count3210.domain;
 
 import count3210.count3210.ui.Kyselija;
 import java.util.Calendar;
+import org.joda.time.*;
+
 
 public class Lahtolaskenta {
 
@@ -65,6 +67,8 @@ public class Lahtolaskenta {
             System.out.println("Lähtölaskenta:");
             // Tähän while-loop, calendar add -1 second ja tulostusta joka sekunti.
         }
+        
+        
     }
 
     public void aikojenErotus(Calendar aikaNyt, Calendar aikaKulkee) {
@@ -76,6 +80,9 @@ public class Lahtolaskenta {
         aikaKulkee.add(Calendar.DAY_OF_MONTH, -aikaNyt.get(Calendar.DAY_OF_MONTH));
         aikaKulkee.add(Calendar.MONTH, -aikaNyt.get(Calendar.MONTH));
         aikaKulkee.add(Calendar.YEAR, -aikaNyt.get(Calendar.YEAR));
+        
+        // Kokeillaan Joda-Time librarya.
+        
     }
 
     public void aikaKulkeeSekuntiKerrallaan(Calendar tapahtumanAika) {
