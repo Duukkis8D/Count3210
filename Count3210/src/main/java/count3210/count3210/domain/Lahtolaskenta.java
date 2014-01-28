@@ -10,23 +10,31 @@ public class Lahtolaskenta {
     public void kaynnista() {
 
         Calendar aikaNyt = Calendar.getInstance();
+        DateTime aikaNyt2 = new DateTime();
         // Tulostetaan kokeeksi tämänhetkinen päiväys.
-        Lahtolaskenta.tulostaAika(aikaNyt);
+        System.out.println("Calendar:");
+        tulostaAikaCalendar(aikaNyt);
+        System.out.println("DateTime:");
+        tulostaAikaDateTime(aikaNyt2);
 
         // Kysytään käyttäjältä päiväys.
         Kyselija kyselija = new Kyselija();
-        Calendar tapahtumanAika = kyselija.kysy();
+        Calendar tapahtumanAika = kyselija.kysyCalendar();
 
-        tulostaAika(tapahtumanAika);
+        tulostaAikaCalendar(tapahtumanAika);
 
         aikaKulkeeAikojenErotuksesta(aikaNyt, tapahtumanAika);
     }
 
-    public static void tulostaAika(Calendar aika) {
+    public static void tulostaAikaDateTime(DateTime aika) {
+        System.out.println("\n" + aika.toString() + "\n");
+    }
+    
+    public static void tulostaAikaCalendar(Calendar aika) {
 
         // Tämä tulostaa väärin ainakin tapaukset, joissa kahden päiväyksen
-        // erotuksessa on 0 kuukautta. Pitäisikö erotuksen tulostukseen
-        // olla oma metodinsa, jossa kuukauteen ei summattaisi ykköstä?
+        // erotuksessa on 0 kuukautta. Erotuksen tulostukseen pitää olla
+        // oma metodinsa, jossa kuukauteen ei summatta ykköstä.
         
         // Kuukausi pitänee tallentaa välillisesti muuttujaan,
         // jotta sen saa tulostettua oikein.
@@ -40,7 +48,7 @@ public class Lahtolaskenta {
                 + aika.get(Calendar.SECOND) + " sekuntia\n");
     }
     
-    public static void tulostaLahtolaskenta(Calendar aika) {
+    public static void tulostaLahtolaskentaCalendar(Calendar aika) {
         System.out.println("\n" + aika.get(Calendar.YEAR) + " vuotta "
                 + aika.get(Calendar.MONTH) + " kuukautta "
                 + aika.get(Calendar.DAY_OF_MONTH) + " vuorokautta "
@@ -63,12 +71,12 @@ public class Lahtolaskenta {
             // Ongelma on ehkä, että vuorokaudet loppuvat ykköseen, eivät nollaan.
             aikojenErotus(aikaNyt, aikaKulkee);
             System.out.println("Erotus:");
-            tulostaLahtolaskenta(aikaKulkee);
+            tulostaLahtolaskentaCalendar(aikaKulkee);
             System.out.println("Lähtölaskenta:");
             // Tähän while-loop, calendar add -1 second ja tulostusta joka sekunti.
+            // Ajankulun kannalta tarkempi tapa voisi kuulemma olla synkronoida
+            // ajan kulkua järjestelmän kellon tahtiin.
         }
-        
-        
     }
 
     public void aikojenErotus(Calendar aikaNyt, Calendar aikaKulkee) {
@@ -77,11 +85,15 @@ public class Lahtolaskenta {
         aikaKulkee.add(Calendar.SECOND, -aikaNyt.get(Calendar.SECOND));
         aikaKulkee.add(Calendar.MINUTE, -aikaNyt.get(Calendar.MINUTE));
         aikaKulkee.add(Calendar.HOUR_OF_DAY, -aikaNyt.get(Calendar.HOUR_OF_DAY));
-        aikaKulkee.add(Calendar.DAY_OF_MONTH, -aikaNyt.get(Calendar.DAY_OF_MONTH));
+        // Jos vuorokausien erotus on 0, pitäisi se tulostaa 0:na, eikä
+        // ykkösenä. Nyt tulostusmetodi on kuitenkin erikseen, enkä osaa yhdistää
+        // tulostusta tähän metodiin oikein.
+        aikaKulkee.add(Calendar.DAY_OF_MONTH, -aikaNyt.get(Calendar.DAY_OF_MONTH));        
         aikaKulkee.add(Calendar.MONTH, -aikaNyt.get(Calendar.MONTH));
         aikaKulkee.add(Calendar.YEAR, -aikaNyt.get(Calendar.YEAR));
         
         // Kokeillaan Joda-Time librarya.
+        DateTime nyt = new DateTime();
         
     }
 
@@ -98,7 +110,7 @@ public class Lahtolaskenta {
                 System.out.println("Ei onnistunut!");
             }
 
-            tulostaAika(tapahtumanAika);
+            tulostaAikaCalendar(tapahtumanAika);
             i++;
         }
     }
@@ -113,7 +125,7 @@ public class Lahtolaskenta {
             i++;
         }
 
-        tulostaAika(tapahtumanAika);
+        tulostaAikaCalendar(tapahtumanAika);
     }
 
     public void aikaKulkeeManuaalisesti(Laskuri tunnit, Laskuri minuutit, Laskuri sekunnit) {

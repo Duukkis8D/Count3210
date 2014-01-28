@@ -5,16 +5,18 @@ import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.utils.Tiedostonlukija;
 import count3210.count3210.utils.Tiedostoontallentaja;
 import java.util.Calendar;
+import org.joda.time.DateTime;
 
 public class Kyselija {
     private Tiedostonlukija lukija;
     private Calendar tapahtumanAika = Calendar.getInstance();
+    private DateTime tapahtumanAika2;
     
     public Kyselija() {
         lukija = new Tiedostonlukija();
     }
     
-    public Calendar kysy() {
+    public Calendar kysyCalendar() {
         // Kysy päiväyksen sekuntien, minuuttien, tuntien,
         // vuorokausien, kuukausien ja vuosien arvo käyttäjältä.
         System.out.print("vuodet: ");
@@ -38,8 +40,25 @@ public class Kyselija {
         System.out.println();
 
         Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
-        tiedostoontallentaja.setAika(tapahtumanAika, vv, kk, vrk, tun, min, sek);
+        tiedostoontallentaja.setAikaCalendar(tapahtumanAika,
+                vv, kk, vrk, tun, min, sek);
         
         return tapahtumanAika;
+    }
+    
+    public DateTime kysyDateTime() {
+        
+        int vv = 2016;
+        int kk = 4;
+        int vrk = 1;
+        int tun = 0;
+        int min = 0;
+        int sek = 0;
+        
+        Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
+        tiedostoontallentaja.setAikaDateTime(tapahtumanAika2,
+                vv, kk, vrk, tun, min, sek);
+        
+        return tapahtumanAika2;
     }
 }
