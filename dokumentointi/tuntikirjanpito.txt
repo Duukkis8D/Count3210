@@ -34,5 +34,9 @@ Tekstikäyttöliittymän koodausta.
 27.1. 3 t 45 min
 Ohjelmalogiikan koodausta.
 
+28.1. 4 t 30 min
+Ohjelmalogiikan koodausta.
+Joda-Time -kirjastoon tutustumista.
+
 
 Muista PIT-raportti seuraavaan deadlineen!

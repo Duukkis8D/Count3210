@@ -19,15 +19,23 @@ public class Lahtolaskenta {
 
         // Kysytään käyttäjältä päiväys.
         Kyselija kyselija = new Kyselija();
-        Calendar tapahtumanAika = kyselija.kysyCalendar();
-
-        tulostaAikaCalendar(tapahtumanAika);
-
-        aikaKulkeeAikojenErotuksesta(aikaNyt, tapahtumanAika);
+//        Calendar tapahtumanAika = kyselija.kysyCalendar();
+        DateTime tapahtumanAika2 = kyselija.kysyDateTime();
+        
+//        tulostaAikaCalendar(tapahtumanAika);
+        tulostaAikaDateTime(tapahtumanAika2);
+        
+//        aikaKulkeeAikojenErotuksestaCalendar(aikaNyt, tapahtumanAika);
+        aikaKulkeeAikojenErotuksestaDateTime(aikaNyt2, tapahtumanAika2);
+        
     }
 
     public static void tulostaAikaDateTime(DateTime aika) {
         System.out.println("\n" + aika.toString() + "\n");
+    }
+    
+    public static void tulostaLahtolaskentaDuration(Duration aika) {
+        
     }
     
     public static void tulostaAikaCalendar(Calendar aika) {
@@ -56,8 +64,24 @@ public class Lahtolaskenta {
                 + aika.get(Calendar.MINUTE) + " minuuttia "
                 + aika.get(Calendar.SECOND) + " sekuntia\n");
     }
+    
+    public void aikaKulkeeAikojenErotuksestaDateTime(DateTime aikaNyt2, DateTime tapahtumanAika2) {
 
-    public void aikaKulkeeAikojenErotuksesta(Calendar aikaNyt, Calendar tapahtumanAika) {
+        // Onko konstruktoriin tapahtuma-ajan laittaminen oikea tapa luoda aikaKulkee?
+        // Pitäisikö aika sen sijaan asettaa sille vasta luonnin jälkeen?
+        DateTime aikaKulkee = new DateTime(tapahtumanAika2);
+        aikaKulkee.minus(aikaNyt2.getSecondOfMinute());
+        aikaKulkee.minus(aikaNyt2.getMinuteOfHour());
+        aikaKulkee.minus(aikaNyt2.getHourOfDay());
+        aikaKulkee.minus(aikaNyt2.getDayOfMonth());
+        aikaKulkee.minus(aikaNyt2.getMonthOfYear());
+        aikaKulkee.minus(aikaNyt2.getYear());
+        
+        System.out.println("Erotus:");
+        tulostaAikaDateTime(aikaKulkee);
+    }
+
+    public void aikaKulkeeAikojenErotuksestaCalendar(Calendar aikaNyt, Calendar tapahtumanAika) {
         // tapahtumaAika-olion aikaa ja aikaNyt-olion aikaa tulee verrata toisiinsa.
 
         // Jos tapahtuman aika on myöhemmin kuin nykyinen aika,
@@ -90,11 +114,7 @@ public class Lahtolaskenta {
         // tulostusta tähän metodiin oikein.
         aikaKulkee.add(Calendar.DAY_OF_MONTH, -aikaNyt.get(Calendar.DAY_OF_MONTH));        
         aikaKulkee.add(Calendar.MONTH, -aikaNyt.get(Calendar.MONTH));
-        aikaKulkee.add(Calendar.YEAR, -aikaNyt.get(Calendar.YEAR));
-        
-        // Kokeillaan Joda-Time librarya.
-        DateTime nyt = new DateTime();
-        
+        aikaKulkee.add(Calendar.YEAR, -aikaNyt.get(Calendar.YEAR));        
     }
 
     public void aikaKulkeeSekuntiKerrallaan(Calendar tapahtumanAika) {
