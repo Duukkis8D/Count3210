@@ -3,6 +3,8 @@ package count3210.count3210.domain;
 import count3210.count3210.ui.Kyselija;
 import java.util.Calendar;
 import org.joda.time.*;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 
 public class Lahtolaskenta {
@@ -31,7 +33,10 @@ public class Lahtolaskenta {
     }
 
     public static void tulostaAikaDateTime(DateTime aika) {
-        System.out.println("\n" + aika.toString() + "\n");
+//        System.out.println("\n" + aika.toString() + "\n");
+        DateTimeFormatter dtf = DateTimeFormat.forPattern(
+                "yyyy, MMMM");
+        System.out.println("\n" + dtf.print(aika) + "\n");
     }
     
     public static void tulostaLahtolaskentaDuration(Duration aika) {
@@ -69,7 +74,13 @@ public class Lahtolaskenta {
 
         // Onko konstruktoriin tapahtuma-ajan laittaminen oikea tapa luoda aikaKulkee?
         // Pitäisikö aika sen sijaan asettaa sille vasta luonnin jälkeen?
-        DateTime aikaKulkee = new DateTime(tapahtumanAika2);
+//        DateTime aikaKulkee = new DateTime(tapahtumanAika2);
+        DateTime aikaKulkee = new DateTime();
+        aikaKulkee = tapahtumanAika2;
+        DateTime tallennettavaTapahtumaAika = new DateTime();
+        tallennettavaTapahtumaAika = tapahtumanAika2; 
+       
+        // Seuraavista tulee NullPointerException.
         aikaKulkee.minus(aikaNyt2.getSecondOfMinute());
         aikaKulkee.minus(aikaNyt2.getMinuteOfHour());
         aikaKulkee.minus(aikaNyt2.getHourOfDay());
@@ -90,7 +101,8 @@ public class Lahtolaskenta {
             Calendar aikaKulkee = tapahtumanAika;
             Calendar tallennettavaTapahtumaAika = Calendar.getInstance();
             // Tallenna tapahtuma-aika tiedostoon.
-            tapahtumanAika = tallennettavaTapahtumaAika;
+            tapahtumanAika = tallennettavaTapahtumaAika; // Pitäisikö tämä olla toisinpäin niin kuin
+                                                         // DateTime:n tapauksessa?
 
             // Ongelma on ehkä, että vuorokaudet loppuvat ykköseen, eivät nollaan.
             aikojenErotus(aikaNyt, aikaKulkee);
