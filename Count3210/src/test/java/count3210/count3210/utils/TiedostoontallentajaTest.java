@@ -30,6 +30,16 @@ public class TiedostoontallentajaTest {
     
     @Before
     public void setUp() {
+        
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    @Test
+    public void tallennuksenJalkeenTiedostoOnOlemassa() {
+        // Tallentaa tiedostoon nykyisen ajan.
         DateTime aika = DateTime.now();
         String tapahtumanNimi = "Tapahtuma";
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
@@ -39,22 +49,31 @@ public class TiedostoontallentajaTest {
         tallentaja.tallennaTiedostoon(tapahtuma);
     
         tiedosto = tallentaja.getTiedosto();
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    @Test
-    public void tiedostoonTallennuksenJalkeenTiedostoOnOlemassa() {
         
         assertEquals(tiedosto.exists(), true);
+        tiedosto.delete();
     }
     
     @Test
-    public void tiedostoonTallennuksenJalkeenTiedostoSisaltaaJotain() throws FileNotFoundException {
-        // Lue tässä, että tiedostossa on jotain sisältöä (char).
+    public void tallennuksenJalkeenTiedostoSisaltaaJotain() throws FileNotFoundException {
+        DateTime aika = DateTime.now();
+        String tapahtumanNimi = "Tapahtuma";
+        Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
+        tapahtuma.setTapahtuma(aika);
+    
+        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja();
+        tallentaja.tallennaTiedostoon(tapahtuma);
+    
+        tiedosto = tallentaja.getTiedosto();
+        
         Scanner lukija = new Scanner(tiedosto);
         
+        StringBuilder tekstiaToivonMukaan = new StringBuilder();
+        while (lukija.hasNext()) {
+            tekstiaToivonMukaan.append(lukija.next());
+        }
+       
+        assertTrue(tekstiaToivonMukaan.length() > 0);
+        tiedosto.delete();
     }
 }

@@ -12,7 +12,7 @@ public class Tiedostoontallentaja {
     private File laskurit;
     
     public Tiedostoontallentaja() {
-       laskurit = new File("laskurit.cfg");
+       laskurit = new File("laskurit.data");
     }
     
     public void tallennaTiedostoon(Tapahtuma tapahtuma) {

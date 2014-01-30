@@ -1,5 +1,5 @@
 Count3210
 =========
 
-Deadline 2 -selitykset:
-Kokeilin lähtölaskentaa (laskuria) aluksi koodaamalla laskurin etenemiselle logiikan itse. Ehdin tehdä testejä vain Laskuri-luokalle, jonka yksinkertainen tehtävä oli vähentää aikayksiköstä kerrallaan yksi (esimerkiksi yksi sekunti) pois. Sitten keksin tehdä laskurin toisella tavalla käyttäen lähinnä Calendar-luokkaa, mutta toteutus jäi pahasti kesken. En myöskään ehtinyt tekemään testejä uudelle keksinnölleni. Aihemäärittelyä olen laajentanut.
+Deadline 3 -selitykset:
+Minulla kesti kymmeniä tunteja, että sain lähtölaskennan peruslogiikaltaan toimimaan. Calendar:iin ja Yoda-Time:n DateTime-luokkaan sekä moniin muihin tutustuminen vei siis paljon aikaa. Siksi testien tekoon ei ole jäänyt juuri aikaa.
