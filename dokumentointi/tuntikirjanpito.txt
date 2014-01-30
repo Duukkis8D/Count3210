@@ -43,5 +43,7 @@ Ohjelmalogiikan koodausta.
 Joda-Time -kirjastoon tutustumista.
 Graafisen käyttöliittymän suunnittelu paperille.
 
+30.1. x TUNTIA
+
 
 Muista PIT-raportti seuraavaan deadlineen!
