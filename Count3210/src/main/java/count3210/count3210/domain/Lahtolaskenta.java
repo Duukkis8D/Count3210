@@ -32,11 +32,21 @@ public class Lahtolaskenta {
         
     }
 
+    public static void tulostaAikaPeriod(Period ajanjakso) {
+        
+        System.out.println(ajanjakso.getYears() + " vuotta " 
+                + ajanjakso.getMonths() + " kuukautta "
+                + ajanjakso.getDays() + " vuorokautta "
+                + ajanjakso.getHours() + " tuntia "
+                + ajanjakso.getMinutes() + " minuuttia "
+                + ajanjakso.getSeconds() + " sekuntia ");
+    }
+    
     public static void tulostaAikaDateTime(DateTime aika) {
-//        System.out.println("\n" + aika.toString() + "\n");
-        DateTimeFormatter dtf = DateTimeFormat.forPattern(
-                "yyyy, MMMM");
-        System.out.println("\n" + dtf.print(aika) + "\n");
+        System.out.println("\n" + aika.toString() + "\n");
+//        DateTimeFormatter dtf = DateTimeFormat.forPattern(
+//                "yyyy, MMMM");
+//        System.out.println("\n" + dtf.print(aika) + "\n");
     }
     
     public static void tulostaLahtolaskentaDuration(Duration aika) {
@@ -72,24 +82,49 @@ public class Lahtolaskenta {
     
     public void aikaKulkeeAikojenErotuksestaDateTime(DateTime aikaNyt2, DateTime tapahtumanAika2) {
 
-        // Onko konstruktoriin tapahtuma-ajan laittaminen oikea tapa luoda aikaKulkee?
-        // Pitäisikö aika sen sijaan asettaa sille vasta luonnin jälkeen?
-//        DateTime aikaKulkee = new DateTime(tapahtumanAika2);
-        DateTime aikaKulkee = new DateTime();
-        aikaKulkee = tapahtumanAika2;
         DateTime tallennettavaTapahtumaAika = new DateTime();
-        tallennettavaTapahtumaAika = tapahtumanAika2; 
-       
-        // Seuraavista tulee NullPointerException.
-        aikaKulkee.minus(aikaNyt2.getSecondOfMinute());
-        aikaKulkee.minus(aikaNyt2.getMinuteOfHour());
-        aikaKulkee.minus(aikaNyt2.getHourOfDay());
-        aikaKulkee.minus(aikaNyt2.getDayOfMonth());
-        aikaKulkee.minus(aikaNyt2.getMonthOfYear());
-        aikaKulkee.minus(aikaNyt2.getYear());
+        tallennettavaTapahtumaAika = tapahtumanAika2;
         
+//        Period ajanjakso = new Period(aikaNyt2, tapahtumanAika2);
+//        
+//        System.out.println("Erotus:");
+//        tulostaAikaPeriod(ajanjakso);       
+//        System.out.println();
+//
+//        int i = 0;
+//        while (i < 51) {
+//            ajanjakso = ajanjakso.minusSeconds(1);
+//
+//            try {
+//                Thread.sleep(1000);
+//                // Mikä on InterruptedException, jonka Thread.sleep voi heittää?
+//            } catch (InterruptedException e) {
+//                System.out.println("Ei onnistunut!");
+//            }
+//
+//            tulostaAikaPeriod(ajanjakso);
+//            i++;
+//        }
         System.out.println("Erotus:");
-        tulostaAikaDateTime(aikaKulkee);
+        
+        int i = 0;
+        while (i < 51) {
+            DateTime nyt = DateTime.now();
+
+            try {
+                Thread.sleep(1000);
+                // Mikä on InterruptedException, jonka Thread.sleep voi heittää?
+            } catch (InterruptedException e) {
+                System.out.println("Ei onnistunut!");
+            }
+            
+            System.out.println(Days.daysBetween(nyt, tapahtumanAika2).getDays() + " vuorokautta "
+                + Hours.hoursBetween(nyt, tapahtumanAika2).getHours() % 24 + " tuntia "
+                + Minutes.minutesBetween(nyt, tapahtumanAika2).getMinutes() % 60 + " minuuttia "
+                + Seconds.secondsBetween(nyt, tapahtumanAika2).getSeconds() % 60 + " sekuntia");
+            
+            i++;
+        }
     }
 
     public void aikaKulkeeAikojenErotuksestaCalendar(Calendar aikaNyt, Calendar tapahtumanAika) {

@@ -48,16 +48,17 @@ public class Kyselija {
     
     public DateTime kysyDateTime() {
         
-        int vv = 2016;
-        int kk = 4;
-        int vrk = 1;
-        int tun = 0;
+        int vv = 2014;
+        int kk = 2;
+        int vrk = 28;
+        int tun = 21;
         int min = 0;
         int sek = 0;
         
+        tapahtumanAika2 = new DateTime(vv, kk, vrk, tun, min, sek);
         Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
-        tiedostoontallentaja.setAikaDateTime(tapahtumanAika2,
-                vv, kk, vrk, tun, min, sek);
+//        tiedostoontallentaja.setAikaDateTime(tapahtumanAika2,
+//                vv, kk, vrk, tun, min, sek);
         
         return tapahtumanAika2;
     }
