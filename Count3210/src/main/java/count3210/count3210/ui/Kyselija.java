@@ -2,6 +2,7 @@
 package count3210.count3210.ui;
 
 import count3210.count3210.domain.Lahtolaskenta;
+import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.utils.Tiedostonlukija;
 import count3210.count3210.utils.Tiedostoontallentaja;
 import java.util.Calendar;
@@ -40,8 +41,6 @@ public class Kyselija {
         System.out.println();
 
         Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
-        tiedostoontallentaja.setAikaCalendar(tapahtumanAika,
-                vv, kk, vrk, tun, min, sek);
         
         return tapahtumanAika;
     }
@@ -49,16 +48,21 @@ public class Kyselija {
     public DateTime kysyDateTime() {
         
         int vv = 2014;
-        int kk = 2;
-        int vrk = 28;
-        int tun = 21;
+        int kk = 1;
+        int vrk = 30;
+        int tun = 22;
         int min = 0;
         int sek = 0;
+        String tapahtumanNimi = "Deadline";
         
         tapahtumanAika2 = new DateTime(vv, kk, vrk, tun, min, sek);
+        Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
+        tapahtuma.setTapahtuma(tapahtumanAika2);
+        
+        // Olisi hyvä, jos tiedostoontallentaja luotaisi vain kerran.
+        // Aina uusia tapahtumia lisättäessä käytettäisi samaa tallentajaa.
         Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
-//        tiedostoontallentaja.setAikaDateTime(tapahtumanAika2,
-//                vv, kk, vrk, tun, min, sek);
+        tiedostoontallentaja.tallennaTiedostoon(tapahtuma);
         
         return tapahtumanAika2;
     }
