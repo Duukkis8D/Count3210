@@ -15,7 +15,7 @@ public class Tiedostoontallentaja {
     }
     
     public void tallennaTiedostoon(Tapahtuma tapahtuma) {
-        
+        // Testaa että tiedostoon tallentuu oikeat arvot.
         try {
             FileWriter tallentaja = new FileWriter("laskurit.txt", true);
             tallentaja.append(tapahtuma.getNimi() + "\n");
@@ -24,7 +24,7 @@ public class Tiedostoontallentaja {
                             + tapahtuma.getTapahtuma().getDayOfMonth() + ","
                             + tapahtuma.getTapahtuma().getHourOfDay() + ","
                             + tapahtuma.getTapahtuma().getMinuteOfHour() + ","
-                            + tapahtuma.getTapahtuma().getSecondOfMinute());
+                            + tapahtuma.getTapahtuma().getSecondOfMinute() + "\n");
             tallentaja.close();
         } catch (IOException e) {
             System.out.println("Tallennus ei onnistunut." + "\n"
