@@ -45,7 +45,7 @@ public class Kyselija {
         return tapahtumanAika;
     }
     
-    public DateTime kysyDateTime() {
+    public DateTime kysyAika() {
         
         int vv = 2014;
         int kk = 1;

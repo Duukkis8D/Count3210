@@ -21,7 +21,7 @@ public class Lahtolaskenta {
         // Kysytään käyttäjältä päiväys.
         Kyselija kyselija = new Kyselija();
 //        Calendar tapahtumanAika = kyselija.kysyCalendar();
-        DateTime tapahtumanAika2 = kyselija.kysyDateTime();
+        DateTime tapahtumanAika2 = kyselija.kysyAika();
         
 //        tulostaAikaCalendar(tapahtumanAika);
         tulostaAika(tapahtumanAika2);

@@ -1,12 +1,11 @@
 
 package count3210.count3210.domain;
-// Tämä luokka tulee sisältämään ainakin tapahtuman nimen ja ajan.
 
 import org.joda.time.*;
 
 public class Tapahtuma {
-    String nimi;
-    DateTime tapahtuma;
+    private String nimi;
+    private DateTime tapahtuma;
     // Toistuvuus kerran, kerran viikossa, kuussa?
     
     public Tapahtuma(String nimi) {

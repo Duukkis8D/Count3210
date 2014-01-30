@@ -2,22 +2,23 @@
 package count3210.count3210.utils;
 
 import count3210.count3210.domain.Tapahtuma;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 import org.joda.time.DateTime;
 
 public class Tiedostoontallentaja {
-    
+    private File laskurit;
     
     public Tiedostoontallentaja() {
-       
+       laskurit = new File("laskurit.cfg");
     }
     
     public void tallennaTiedostoon(Tapahtuma tapahtuma) {
         // Testaa että tiedostoon tallentuu oikeat arvot.
         try {
-            FileWriter tallentaja = new FileWriter("laskurit.txt", true);
+            FileWriter tallentaja = new FileWriter(laskurit, true);
             tallentaja.append(tapahtuma.getNimi() + "\n");
             tallentaja.append(tapahtuma.getTapahtuma().getYear() + ","
                             + tapahtuma.getTapahtuma().getMonthOfYear() + ","
@@ -30,6 +31,9 @@ public class Tiedostoontallentaja {
             System.out.println("Tallennus ei onnistunut." + "\n"
                     + e.getMessage());
         }
-        
+    }
+    
+    public File getTiedosto() {
+        return laskurit;
     }
 }
