@@ -49,3 +49,7 @@ Testien tekoa.
 Cobertura- ja Pit-raporttien teko.
 Graafisen käyttöliittymän suunnittelua.
 
+2.2. x tuntia
+GUI:n koodausta.
+
+
