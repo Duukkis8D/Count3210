@@ -107,61 +107,7 @@ public class UI implements Runnable {
         tapahtumaRuutu.setBackground(Color.BLACK);
         tapahtumaRuutu.setForeground(Color.WHITE);
         
-        JLabel tapahtumanNimi = new JLabel("tapahtuman nimi");
-        tapahtumanNimi.setBackground(Color.BLACK);
-        tapahtumanNimi.setForeground(Color.WHITE);
-        GridBagConstraints tapahtumanNimelle = new GridBagConstraints();
-        tapahtumanNimelle.gridx = 0;
-        tapahtumanNimelle.gridy = 0;
-        tapahtumaRuutu.add(tapahtumanNimi, tapahtumanNimelle);
-        
-        JTextField nimi = new JTextField("tapahtuman nimi");
-        nimi.setBackground(Color.BLACK);
-        nimi.setForeground(Color.WHITE);
-        GridBagConstraints nimelle = new GridBagConstraints();
-        nimelle.gridx = 1;
-        nimelle.gridy = 0;
-        tapahtumaRuutu.add(nimi, nimelle);
-        
-        JLabel ajankohta = new JLabel("ajankohta");
-        ajankohta.setBackground(Color.BLACK);
-        ajankohta.setForeground(Color.WHITE);
-        GridBagConstraints ajankohdalle = new GridBagConstraints();
-        ajankohdalle.gridx = 0;
-        ajankohdalle.gridy = 1;
-        tapahtumaRuutu.add(ajankohta, ajankohdalle);
-        
-        JTextField paivays = new JTextField("pp:kk:vvvv,tt:mm:ss");
-        paivays.setBackground(Color.BLACK);
-        paivays.setForeground(Color.WHITE);
-        GridBagConstraints paivaykselle = new GridBagConstraints();
-        paivaykselle.gridx = 1;
-        paivaykselle.gridy = 1;
-        tapahtumaRuutu.add(paivays, paivaykselle);
-        
-        JLabel toistuvuus = new JLabel("toistuvuus");
-        toistuvuus.setBackground(Color.BLACK);
-        toistuvuus.setForeground(Color.WHITE);
-        GridBagConstraints toistuvuudelle = new GridBagConstraints();
-        toistuvuudelle.gridx = 0;
-        toistuvuudelle.gridy = 2;
-        tapahtumaRuutu.add(toistuvuus, toistuvuudelle);
-        
-        String[] valinnat = {"kerran", "kerran sek", "kerran min"};
-        JComboBox toistuvuusValinta = new JComboBox(valinnat);
-        toistuvuusValinta.setBackground(Color.BLACK);
-        toistuvuusValinta.setForeground(Color.WHITE);
-        GridBagConstraints toistuvuusValinnalle = new GridBagConstraints();
-        toistuvuusValinnalle.gridx = 1;
-        toistuvuusValinnalle.gridy = 2;
-        tapahtumaRuutu.add(toistuvuusValinta, toistuvuusValinnalle);
-        
-        JButton aloita = new JButton("aloita");
-        GridBagConstraints aloitaNappulalle = new GridBagConstraints();
-        aloitaNappulalle.gridx = 0;
-        aloitaNappulalle.gridy = 3;
-        aloitaNappulalle.gridwidth = 2;
-        tapahtumaRuutu.add(aloita, aloitaNappulalle);
+        luoMuokattavanTapahtumaRuudunSisalto(tapahtumaRuutu);
         
         tapahtumaPaneeli.add(tapahtumaRuutu);
         
@@ -171,15 +117,88 @@ public class UI implements Runnable {
     }
     
     public void luoTapahtumanSelitekentta(JPanel tapahtumaRuutu) {
-        
+        JLabel tapahtumanNimi = new JLabel("tapahtuman nimi");
+        tapahtumanNimi.setBackground(Color.BLACK);
+        tapahtumanNimi.setForeground(Color.WHITE);
+        GridBagConstraints tapahtumanNimelle = new GridBagConstraints();
+        tapahtumanNimelle.gridx = 0;
+        tapahtumanNimelle.gridy = 0;
+        tapahtumaRuutu.add(tapahtumanNimi, tapahtumanNimelle);
     }
     
-    public void luoMuokattavaTapahtumanNimiKentta(JPanel tapahtumaRuutu) {
+    public JTextField luoMuokattavaTapahtumanNimiKentta(JPanel tapahtumaRuutu) {
+        JTextField nimi = new JTextField("tapahtuman nimi");
+        nimi.setBackground(Color.BLACK);
+        nimi.setForeground(Color.WHITE);
+        GridBagConstraints nimelle = new GridBagConstraints();
+        nimelle.gridx = 1;
+        nimelle.gridy = 0;
+        tapahtumaRuutu.add(nimi, nimelle);
         
+        return nimi;
     }
     
     public void luoAjankohtaSelitekentta(JPanel tapahtumaRuutu) {
+        JLabel ajankohta = new JLabel("ajankohta");
+        ajankohta.setBackground(Color.BLACK);
+        ajankohta.setForeground(Color.WHITE);
+        GridBagConstraints ajankohdalle = new GridBagConstraints();
+        ajankohdalle.gridx = 0;
+        ajankohdalle.gridy = 1;
+        tapahtumaRuutu.add(ajankohta, ajankohdalle);
+    }
+    
+    public JTextField luoAjankohtaKentta(JPanel tapahtumaRuutu) {
+        JTextField paivays = new JTextField("pp:kk:vvvv,tt:mm:ss");
+        paivays.setBackground(Color.BLACK);
+        paivays.setForeground(Color.WHITE);
+        GridBagConstraints paivaykselle = new GridBagConstraints();
+        paivaykselle.gridx = 1;
+        paivaykselle.gridy = 1;
+        tapahtumaRuutu.add(paivays, paivaykselle);
         
+        return paivays;
+    }
+    
+    public void luoToistuvuusSeliteKentta(JPanel tapahtumaRuutu) {
+        JLabel toistuvuus = new JLabel("toistuvuus");
+        toistuvuus.setBackground(Color.BLACK);
+        toistuvuus.setForeground(Color.WHITE);
+        GridBagConstraints toistuvuudelle = new GridBagConstraints();
+        toistuvuudelle.gridx = 0;
+        toistuvuudelle.gridy = 2;
+        tapahtumaRuutu.add(toistuvuus, toistuvuudelle);
+    }
+    
+    public void luoToistuvuusValintalaatikko(JPanel tapahtumaRuutu) {
+        String[] valinnat = {"kerran", "kerran sek", "kerran min"};
+        JComboBox toistuvuusValinta = new JComboBox(valinnat);
+        toistuvuusValinta.setBackground(Color.BLACK);
+        toistuvuusValinta.setForeground(Color.WHITE);
+        GridBagConstraints toistuvuusValinnalle = new GridBagConstraints();
+        toistuvuusValinnalle.gridx = 1;
+        toistuvuusValinnalle.gridy = 2;
+        tapahtumaRuutu.add(toistuvuusValinta, toistuvuusValinnalle);
+    }
+    
+    public void luoAloitaNappula(JPanel tapahtumaRuutu, JTextField nimi, JTextField paivays) {
+        JButton aloita = new JButton("aloita");
+        aloita.addActionListener(new AloitaNappulanKuuntelija(nimi, paivays));
+        GridBagConstraints aloitaNappulalle = new GridBagConstraints();
+        aloitaNappulalle.gridx = 0;
+        aloitaNappulalle.gridy = 3;
+        aloitaNappulalle.gridwidth = 2;
+        tapahtumaRuutu.add(aloita, aloitaNappulalle);
+    }
+    
+    public void luoMuokattavanTapahtumaRuudunSisalto(JPanel tapahtumaRuutu) {
+        luoTapahtumanSelitekentta(tapahtumaRuutu);
+        JTextField nimi = luoMuokattavaTapahtumanNimiKentta(tapahtumaRuutu);
+        luoAjankohtaSelitekentta(tapahtumaRuutu);
+        JTextField paivays = luoAjankohtaKentta(tapahtumaRuutu);
+        luoToistuvuusSeliteKentta(tapahtumaRuutu);
+        luoToistuvuusValintalaatikko(tapahtumaRuutu);
+        luoAloitaNappula(tapahtumaRuutu, nimi, paivays);
     }
     
     public void luoTapahtumaKentta(JPanel tapahtumaRuutu) {

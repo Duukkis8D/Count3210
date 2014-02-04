@@ -21,22 +21,22 @@ public class Kyselija {
         // Kysy päiväyksen sekuntien, minuuttien, tuntien,
         // vuorokausien, kuukausien ja vuosien arvo käyttäjältä.
         System.out.print("vuodet: ");
-//        int vv = lukija.lue();
+//        int vv = lukija.lueTekstikayttoliittyma();
         int vv = 2016;
         System.out.print("kuukaudet: ");
-//        int kk = lukija.lue();
+//        int kk = lukija.lueTekstikayttoliittyma();
         int kk = 4;
         System.out.print("vuorokaudet: ");
-//        int vrk = lukija.lue();
+//        int vrk = lukija.lueTekstikayttoliittyma();
         int vrk = 1;    
         System.out.print("tunnit: ");
-//        int tun = lukija.lue();
+//        int tun = lukija.lueTekstikayttoliittyma();
         int tun = 0;
         System.out.print("minuutit: ");
-//        int min = lukija.lue();
+//        int min = lukija.lueTekstikayttoliittyma();
         int min = 0;
         System.out.print("sekunnit: ");
-//        int sek = lukija.lue();
+//        int sek = lukija.lueTekstikayttoliittyma();
         int sek = 0;
         System.out.println();
 
