@@ -11,7 +11,9 @@ import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -99,12 +101,89 @@ public class UI implements Runnable {
         // Tähän koodia muokattavasta tapahtumaRuudusta, joka näkyy käyttäjälle
         // heti lisää tapahtuma -nappulasta painamisen jälkeen ja myös
         // tapahtuman muokkaa-nappulasta painaessa.
+        JPanel tapahtumaRuutu = new JPanel();
+        GridBagLayout layout = new GridBagLayout();
+        tapahtumaRuutu.setLayout(layout);
+        tapahtumaRuutu.setBackground(Color.BLACK);
+        tapahtumaRuutu.setForeground(Color.WHITE);
+        
+        JLabel tapahtumanNimi = new JLabel("tapahtuman nimi");
+        tapahtumanNimi.setBackground(Color.BLACK);
+        tapahtumanNimi.setForeground(Color.WHITE);
+        GridBagConstraints tapahtumanNimelle = new GridBagConstraints();
+        tapahtumanNimelle.gridx = 0;
+        tapahtumanNimelle.gridy = 0;
+        tapahtumaRuutu.add(tapahtumanNimi, tapahtumanNimelle);
+        
+        JTextField nimi = new JTextField("tapahtuman nimi");
+        nimi.setBackground(Color.BLACK);
+        nimi.setForeground(Color.WHITE);
+        GridBagConstraints nimelle = new GridBagConstraints();
+        nimelle.gridx = 1;
+        nimelle.gridy = 0;
+        tapahtumaRuutu.add(nimi, nimelle);
+        
+        JLabel ajankohta = new JLabel("ajankohta");
+        ajankohta.setBackground(Color.BLACK);
+        ajankohta.setForeground(Color.WHITE);
+        GridBagConstraints ajankohdalle = new GridBagConstraints();
+        ajankohdalle.gridx = 0;
+        ajankohdalle.gridy = 1;
+        tapahtumaRuutu.add(ajankohta, ajankohdalle);
+        
+        JTextField paivays = new JTextField("pp:kk:vvvv,tt:mm:ss");
+        paivays.setBackground(Color.BLACK);
+        paivays.setForeground(Color.WHITE);
+        GridBagConstraints paivaykselle = new GridBagConstraints();
+        paivaykselle.gridx = 1;
+        paivaykselle.gridy = 1;
+        tapahtumaRuutu.add(paivays, paivaykselle);
+        
+        JLabel toistuvuus = new JLabel("toistuvuus");
+        toistuvuus.setBackground(Color.BLACK);
+        toistuvuus.setForeground(Color.WHITE);
+        GridBagConstraints toistuvuudelle = new GridBagConstraints();
+        toistuvuudelle.gridx = 0;
+        toistuvuudelle.gridy = 2;
+        tapahtumaRuutu.add(toistuvuus, toistuvuudelle);
+        
+        String[] valinnat = {"kerran", "kerran sek", "kerran min"};
+        JComboBox toistuvuusValinta = new JComboBox(valinnat);
+        toistuvuusValinta.setBackground(Color.BLACK);
+        toistuvuusValinta.setForeground(Color.WHITE);
+        GridBagConstraints toistuvuusValinnalle = new GridBagConstraints();
+        toistuvuusValinnalle.gridx = 1;
+        toistuvuusValinnalle.gridy = 2;
+        tapahtumaRuutu.add(toistuvuusValinta, toistuvuusValinnalle);
+        
+        JButton aloita = new JButton("aloita");
+        GridBagConstraints aloitaNappulalle = new GridBagConstraints();
+        aloitaNappulalle.gridx = 0;
+        aloitaNappulalle.gridy = 3;
+        aloitaNappulalle.gridwidth = 2;
+        tapahtumaRuutu.add(aloita, aloitaNappulalle);
+        
+        tapahtumaPaneeli.add(tapahtumaRuutu);
+        
+        tapahtumaPaneeli.updateUI();
         
         return tapahtumaPaneeli;
     }
     
+    public void luoTapahtumanSelitekentta(JPanel tapahtumaRuutu) {
+        
+    }
+    
+    public void luoMuokattavaTapahtumanNimiKentta(JPanel tapahtumaRuutu) {
+        
+    }
+    
+    public void luoAjankohtaSelitekentta(JPanel tapahtumaRuutu) {
+        
+    }
+    
     public void luoTapahtumaKentta(JPanel tapahtumaRuutu) {
-        JTextField tapahtumanNimi = new JTextField("tapahtuman nimi");
+        JTextArea tapahtumanNimi = new JTextArea("tapahtuman nimi");
         tapahtumanNimi.setBackground(Color.BLUE);
         tapahtumanNimi.setForeground(Color.WHITE);
         GridBagConstraints tapahtumanNimelle = new GridBagConstraints();

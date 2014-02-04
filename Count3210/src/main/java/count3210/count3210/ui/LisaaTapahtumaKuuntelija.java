@@ -16,7 +16,7 @@ public class LisaaTapahtumaKuuntelija implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        ui.luoTapahtumaRuutu(tapahtumaPaneeli);
+        ui.luoMuokattavaTapahtumaRuutu(tapahtumaPaneeli);
     }
     
 }
