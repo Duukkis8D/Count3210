@@ -13,7 +13,6 @@ public class TapahtumaAikakentanLukija {
     }
 
     public int[] lueGUI() {
-        // tapahtumanAika2 = new DateTime(vv, kk, vrk, tun, min, sek);
         // pp:kk:vvvv,tt:mm:ss
         int vrk = 0;
         int kk = 0;
@@ -23,12 +22,12 @@ public class TapahtumaAikakentanLukija {
         int sek = 0;
         
         try {
-            vrk = Integer.parseInt(paivays.getText(0, 1));
-            kk = Integer.parseInt(paivays.getText(3, 1));
-            v = Integer.parseInt(paivays.getText(6, 3));
-            t = Integer.parseInt(paivays.getText(11, 1));
-            min = Integer.parseInt(paivays.getText(14, 1));
-            sek = Integer.parseInt(paivays.getText(17, 1));
+            vrk = Integer.parseInt(paivays.getText(0, 2));
+            kk = Integer.parseInt(paivays.getText(3, 2));
+            v = Integer.parseInt(paivays.getText(6, 4));
+            t = Integer.parseInt(paivays.getText(11, 2));
+            min = Integer.parseInt(paivays.getText(14, 2));
+            sek = Integer.parseInt(paivays.getText(17, 2));
         } catch (BadLocationException e) {
             System.out.println("Tekstikentän päiväys ei ollut oikeassa muodossa.");
         }

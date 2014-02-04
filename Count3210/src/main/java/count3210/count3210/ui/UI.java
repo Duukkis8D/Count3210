@@ -34,7 +34,6 @@ public class UI implements Runnable {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         luoKomponentit(frame.getContentPane());
-        
 
         frame.pack();
         frame.setVisible(true);

@@ -15,32 +15,33 @@ public class AloitaNappulanKuuntelija implements ActionListener {
     
     public AloitaNappulanKuuntelija(JTextField nimi, JTextField paivays) {
         this.nimi = nimi;
+        this.paivays = paivays;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
-        Tapahtuma tapahtuma = new Tapahtuma(nimi.getText());
         TapahtumaAikakentanLukija tapahtumaAikakentanLukija = new TapahtumaAikakentanLukija(paivays);
         
         int[] tapahtumaAika = tapahtumaAikakentanLukija.lueGUI();
+        // pp:kk:vvvv,tt:mm:ss
         
-        int vrk = 0;
-        int kk = 0;
-        int v = 0;
-        int t = 0;
-        int min = 0;
-        int sek = 0;
+        int vrk = tapahtumaAika[0];
+        int kk = tapahtumaAika[1];
+        int v = tapahtumaAika[2];
+        int t = tapahtumaAika[3];
+        int min = tapahtumaAika[4];
+        int sek = tapahtumaAika[5];
         
-        for (int aikaYksikko : tapahtumaAika) {
-            
-        }
+        DateTime tapahtumaAikaTallennettava = new DateTime(v, kk, vrk, t, min, sek);
+        Tapahtuma tapahtuma = new Tapahtuma(nimi.getText());
+        tapahtuma.setTapahtuma(tapahtumaAikaTallennettava);
         
-        DateTime tapahtumaAikaTallennettava = new DateTime();
+        Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
+        tiedostoontallentaja.tallennaTiedostoon(tapahtuma);
         
-//        tapahtuma.setTapahtuma(DateTime tapahtuma);
-//        tiedostoontallentaja.tallennaTiedostoon(Tapahtuma tapahtuma);
+        // Tapahtuman muokkausruudun pitäisi nyt muuttua ruuduksi, jota ei voi muokata.
         
-        // Tapahtuman muokkausruutu muuttuu ruuduksi, jota ei voi muokata.
+        // Pitäisikö tapahtumaruudusta ja muokattavasta tapahtumaruudusta tehdä luokat, jotta
+        // ne voisi luoda tietokoneen näytölle helpommin ymmärrettävässä muodossa?
     }
 }
