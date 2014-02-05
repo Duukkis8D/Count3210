@@ -7,16 +7,16 @@ import javax.swing.JPanel;
 
 public class LisaaTapahtumaKuuntelija implements ActionListener {
     private JPanel tapahtumaPaneeli;
-    private UI ui;
+    private MuokattavaTapahtumaruutu ruutu;
     
-    public LisaaTapahtumaKuuntelija(JPanel tapahtumaPaneeli, UI ui) {
+    public LisaaTapahtumaKuuntelija(JPanel tapahtumaPaneeli) {
         this.tapahtumaPaneeli = tapahtumaPaneeli;
-        this.ui = ui;
+        ruutu = new MuokattavaTapahtumaruutu(this.tapahtumaPaneeli);
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        ui.luoMuokattavaTapahtumaRuutu(tapahtumaPaneeli);
+        ruutu.luoRuutu();
     }
     
 }

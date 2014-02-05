@@ -57,7 +57,7 @@ public class Kyselija {
         
         tapahtumanAika2 = new DateTime(vv, kk, vrk, tun, min, sek);
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
-        tapahtuma.setTapahtuma(tapahtumanAika2);
+        tapahtuma.setTapahtumaAika(tapahtumanAika2);
         
         // Olisi hyvä, jos tiedostoontallentaja luotaisi vain kerran.
         // Aina uusia tapahtumia lisättäessä käytettäisi samaa tallentajaa.

@@ -43,7 +43,7 @@ public class TiedostoontallentajaTest {
         DateTime aika = DateTime.now();
         String tapahtumanNimi = "Tapahtuma";
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
-        tapahtuma.setTapahtuma(aika);
+        tapahtuma.setTapahtumaAika(aika);
     
         Tiedostoontallentaja tallentaja = new Tiedostoontallentaja();
         tallentaja.tallennaTiedostoon(tapahtuma);
@@ -59,7 +59,7 @@ public class TiedostoontallentajaTest {
         DateTime aika = DateTime.now();
         String tapahtumanNimi = "Tapahtuma";
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
-        tapahtuma.setTapahtuma(aika);
+        tapahtuma.setTapahtumaAika(aika);
     
         Tiedostoontallentaja tallentaja = new Tiedostoontallentaja();
         tallentaja.tallennaTiedostoon(tapahtuma);

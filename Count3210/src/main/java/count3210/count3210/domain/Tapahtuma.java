@@ -5,7 +5,7 @@ import org.joda.time.*;
 
 public class Tapahtuma {
     private String nimi;
-    private DateTime tapahtuma;
+    private DateTime tapahtumaAika;
     // Toistuvuus kerran, kerran viikossa, kuussa?
     
     public Tapahtuma(String nimi) {
@@ -16,11 +16,15 @@ public class Tapahtuma {
         return nimi;
     }
     
-    public void setTapahtuma(DateTime tapahtuma) {
-        this.tapahtuma = tapahtuma;
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+    
+    public void setTapahtumaAika(DateTime tapahtumaAika) {
+        this.tapahtumaAika = tapahtumaAika;
     }
     
     public DateTime getTapahtuma() {
-        return tapahtuma;
+        return tapahtumaAika;
     }
 }
