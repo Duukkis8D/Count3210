@@ -16,13 +16,15 @@ public class AloitaNappulanKuuntelija implements ActionListener {
     private JTextField paivays;
     private JButton aloitaNappula;
     private MuokattavaTapahtumaruutu ruutu;
+    private UI ui;
     
     public AloitaNappulanKuuntelija(JTextField nimi, JTextField paivays,
-            JButton aloitaNappula, MuokattavaTapahtumaruutu ruutu) {
+            JButton aloitaNappula, UI ui, MuokattavaTapahtumaruutu ruutu) {
         this.nimi = nimi;
         this.paivays = paivays;
         this.aloitaNappula = aloitaNappula;
         this.ruutu = ruutu;
+        this.ui = ui;
     }
     
     @Override
@@ -41,11 +43,23 @@ public class AloitaNappulanKuuntelija implements ActionListener {
         TapahtumaruutujenJarjestelija jarjestelija = new
                 TapahtumaruutujenJarjestelija();
         jarjestelija.lisaaListaan(ruutu);
+        
+        ui.poistaMuokattavaTapahtumaruutuTapahtumapaneelista(ruutu);
+        
         // Kun listaan tallennus on tehty, samalle paikalle listassa voisi luoda ruudun,
         // jota ei voi muokata mutta jolla on sama Tapahtuma-olio. Toisaalta koko
         // listasysteemi ei välttämättä ole tarpeellinen, jos poiston ja korvaamisen
         // pystyy tekemään LayoutManagerin avulla. Olisiko kaikkien LayoutManagerien
         // yhteisestä removeLayoutComponent-metodista hyötyä?
+        
+        // Yksi vaihtoehto voisi
+        // olla poistaa tapahtumaPaneelista kaikki sisältö ja luoda siihen aina
+        // uudelleen kaikki tapahtumaRuudut aloita-nappulaa painettaessa.
+        
+        // Toinen vaihtoehto voisi olla poistaa tapahtumaPaneelista tietty Muokattava
+        // tapahtumaruutu. Identifiointi onnistuu olion sisältämän Tapahtuma-olion
+        // avulla. Sitten TapahtumaruutujenJarjestelijan listalta voisi hakea
+        // oikean MuokattavaTapahtumaruudun
     }
     
     public DateTime tapahtumaAikakentanLuku() {

@@ -11,7 +11,8 @@ public class TapahtumaAikakentanLukija {
     public TapahtumaAikakentanLukija(JTextField paivays) {
         this.paivays = paivays;
     }
-
+    
+    // Tästä metodista voisi tehdä testejä.
     public int[] lueGUI() {
         // pp:kk:vvvv,tt:mm:ss
         int vrk = 0;

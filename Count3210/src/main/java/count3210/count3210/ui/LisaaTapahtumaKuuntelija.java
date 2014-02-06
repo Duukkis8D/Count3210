@@ -6,17 +6,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 public class LisaaTapahtumaKuuntelija implements ActionListener {
-    private JPanel tapahtumaPaneeli;
+    private UI ui;
     private MuokattavaTapahtumaruutu ruutu;
     
-    public LisaaTapahtumaKuuntelija(JPanel tapahtumaPaneeli) {
-        this.tapahtumaPaneeli = tapahtumaPaneeli;
-        ruutu = new MuokattavaTapahtumaruutu(this.tapahtumaPaneeli);
+    public LisaaTapahtumaKuuntelija(UI ui) {
+        this.ui = ui;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
+        ruutu = new MuokattavaTapahtumaruutu(ui);
         ruutu.luoRuutu();
+        ui.lisaaMuokattavaTapahtumaruutuTapahtumapaneeliin(ruutu);
     }
     
 }
