@@ -10,6 +10,12 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import org.joda.time.DateTime;
 
+/** Luokka huolehtii tapahtumista, jotka alkavat käyttäjän painaessa aloita-nappia.
+ * MuokattavaTapahtumaruutu-luokan ilmentymä poistetaan tapahtumapaneelista, johon
+ * lisätään sitten Lahtolaskentaruutu-luokan ilmentymä. Lahtolaskentaruutu-luokan
+ * ilmentymällä on samat lähtölaskentaan liittyvät ominaisuudet kuin
+ * MuokattavaTapahtumaruutu-luokan ilmentymällä.
+ */
 public class AloitaNappulanKuuntelija implements ActionListener {
 
     private JTextField nimi;

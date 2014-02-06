@@ -5,9 +5,10 @@ import count3210.count3210.domain.Tapahtuma;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Calendar;
-import org.joda.time.DateTime;
 
+/** Luokan tehtävänä on tallentaa tiedostoon talteen käyttäjän luoman
+ * lähtölaskentatapahtuman ominaisuudet.
+ */
 public class Tiedostoontallentaja {
     private File laskurit;
     

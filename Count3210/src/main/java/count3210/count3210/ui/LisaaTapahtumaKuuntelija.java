@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
+/** Luokan tehtävänä on huolehtia lisää tapahtuma -napin painalluksen
+ * jälkeisistä tapahtumista.
+ */
 public class LisaaTapahtumaKuuntelija implements ActionListener {
     private UI ui;
     private MuokattavaTapahtumaruutu ruutu;

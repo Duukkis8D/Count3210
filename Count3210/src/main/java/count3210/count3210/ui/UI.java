@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
+/** Luokan tehtävänä on luoda peruskomponentit käyttäjän näkemälle graafiselle
+ * käyttöliittymälle.
+ */
 public class UI implements Runnable {
 
     private JFrame frame;
@@ -54,7 +57,7 @@ public class UI implements Runnable {
     }
 
     private JPanel luoToimintopaneeli() {
-        JPanel paneeli = new JPanel(new GridLayout(4, 1));
+        JPanel paneeli = new JPanel(new GridLayout(5, 1));
 
         return paneeli;
     }
@@ -62,10 +65,12 @@ public class UI implements Runnable {
     private void luoToimintonappulat(JPanel toimintopaneeli) {
         JButton lisaaTapahtuma = new JButton("lisää tapahtuma");
         lisaaTapahtuma.addActionListener(new LisaaTapahtumaKuuntelija(this));
+        JButton jarjesta = new JButton("järjestä tapahtumat");
         JButton poistaKaikki = new JButton("poista kaikki tapahtumat");
         JButton tuoTapahtumia = new JButton("tuo tapahtumia Hotmail-kalenterista");
 
         toimintopaneeli.add(lisaaTapahtuma);
+        toimintopaneeli.add(jarjesta);
         toimintopaneeli.add(poistaKaikki);
         toimintopaneeli.add(tuoTapahtumia);
     }

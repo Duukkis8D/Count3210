@@ -2,8 +2,11 @@ package count3210.count3210.utils;
 
 import javax.swing.JTextField;
 import javax.swing.text.BadLocationException;
-import org.joda.time.DateTime;
 
+/** Luokan tehtävänä on lukea käyttäjän syöte tapahtuma-aikatekstikentästä.
+ * Se muuntaa String-tyyppisen merkkijonon int-lukuarvoksi, jota DateTime-luokka
+ * ymmärtää.
+ */
 public class TapahtumaAikakentanLukija {
 
     private JTextField paivays;

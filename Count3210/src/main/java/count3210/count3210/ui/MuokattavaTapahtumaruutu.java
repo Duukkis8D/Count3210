@@ -11,6 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/** Luokan tehtävä on näyttää käyttäjälle graafiset komponentit, joiden avulla
+ * hän voi luoda lähtölaskentapahtuman tai muokata jo olemassa olevaa
+ * lähtölaskentatapahtumaa.
+ */
 public class MuokattavaTapahtumaruutu extends JPanel implements TapahtumapaneelinRuutu {
     private Tapahtuma tapahtuma;
     private UI ui;

@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/** Luokan tehtävä on näyttää käyttäjälle hänen luomansa lähtölaskentatapahtuman
+ * graafinen käyttöliittymä.
+ */
 public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu {
     private Tapahtuma tapahtuma;
     
