@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class MuokattavaTapahtumaruutu extends JPanel {
+public class MuokattavaTapahtumaruutu extends JPanel implements TapahtumapaneelinRuutu {
     private Tapahtuma tapahtuma;
     private UI ui;
     

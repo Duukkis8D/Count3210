@@ -1,6 +1,7 @@
 
 package count3210.count3210.ui;
 
+import count3210.count3210.domain.Tapahtuma;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,41 +9,33 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class Tapahtumaruutu {
-    private JPanel tapahtumaPaneeli;
+public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu {
+    private Tapahtuma tapahtuma;
     
-    public Tapahtumaruutu(JPanel tapahtumaPaneeli) {
-        this.tapahtumaPaneeli = tapahtumaPaneeli;
+    public Lahtolaskentaruutu() {
     }
     
-    public JPanel luoRuutu() {
-        JPanel tapahtumaRuutu = new JPanel();
+    public void luoRuutu() {
         GridBagLayout layout = new GridBagLayout();
-        tapahtumaRuutu.setLayout(layout);
+        this.setLayout(layout);
         // Kokoa ei pysty asettamaan ehkä siksi, koska tapahtumaPaneeli käyttää
         // GridLayoutia, jossa on ennalta määrätyn verran ruutuja.
 //        tapahtumaRuutu.setSize(100, 100);
-        tapahtumaRuutu.setBackground(Color.BLUE);
-        tapahtumaRuutu.setForeground(Color.WHITE);
+        this.setBackground(Color.BLUE);
+        this.setForeground(Color.WHITE);
         
-        luoRuudunSisalto(tapahtumaRuutu);
-        
-        tapahtumaPaneeli.add(tapahtumaRuutu);
-        
-        tapahtumaPaneeli.updateUI();
-        
-        return tapahtumaRuutu;
+        luoRuudunSisalto();
     }
     
-    public void luoRuudunSisalto(JPanel tapahtumaRuutu) {
-        luoTapahtumaKentta(tapahtumaRuutu);
-        luoLahtolaskentaKentta(tapahtumaRuutu);
-        luoPoistaNappula(tapahtumaRuutu);
-        luoMuokkaaNappula(tapahtumaRuutu);
-        luoIlmoitinalue(tapahtumaRuutu);
+    public void luoRuudunSisalto() {
+        luoTapahtumaKentta();
+        luoLahtolaskentaKentta();
+        luoPoistaNappula();
+        luoMuokkaaNappula();
+        luoIlmoitinalue();
     }
     
-    public void luoTapahtumaKentta(JPanel tapahtumaRuutu) {
+    public void luoTapahtumaKentta() {
         JTextArea tapahtumanNimi = new JTextArea("tapahtuman nimi");
         tapahtumanNimi.setBackground(Color.BLUE);
         tapahtumanNimi.setForeground(Color.WHITE);
@@ -50,10 +43,10 @@ public class Tapahtumaruutu {
         tapahtumanNimelle.gridx = 0;
         tapahtumanNimelle.gridy = 0;
         tapahtumanNimelle.gridwidth = 3;
-        tapahtumaRuutu.add(tapahtumanNimi, tapahtumanNimelle);
+        this.add(tapahtumanNimi, tapahtumanNimelle);
     }
     
-    public void luoLahtolaskentaKentta(JPanel tapahtumaRuutu) {
+    public void luoLahtolaskentaKentta() {
         JTextArea lahtolaskentaKentta = new JTextArea("tähän lähtölaskenta");
         lahtolaskentaKentta.setBackground(Color.BLUE);
         lahtolaskentaKentta.setForeground(Color.WHITE);
@@ -61,32 +54,40 @@ public class Tapahtumaruutu {
         lahtolaskennalle.gridx = 0;
         lahtolaskennalle.gridy = 1;
         lahtolaskennalle.gridwidth = 3;
-        tapahtumaRuutu.add(lahtolaskentaKentta, lahtolaskennalle);
+        this.add(lahtolaskentaKentta, lahtolaskennalle);
     }
     
-    public void luoPoistaNappula(JPanel tapahtumaRuutu) {
+    public void luoPoistaNappula() {
         JButton poista = new JButton("poista");
         GridBagConstraints poistaNappulalle = new GridBagConstraints();
         poistaNappulalle.gridx = 0;
         poistaNappulalle.gridy = 2;
-        tapahtumaRuutu.add(poista, poistaNappulalle);
+        this.add(poista, poistaNappulalle);
     }
     
-    public void luoMuokkaaNappula(JPanel tapahtumaRuutu) {
+    public void luoMuokkaaNappula() {
         JButton muokkaa = new JButton("muokkaa");
         GridBagConstraints muokkaaNappulalle = new GridBagConstraints();
         muokkaaNappulalle.gridx = 1;
         muokkaaNappulalle.gridy = 2;
-        tapahtumaRuutu.add(muokkaa, muokkaaNappulalle);
+        this.add(muokkaa, muokkaaNappulalle);
     }
     
-    public void luoIlmoitinalue(JPanel tapahtumaRuutu) {
+    public void luoIlmoitinalue() {
         JTextArea ilmoitinalue = new JTextArea("ilmoitinalue");
         ilmoitinalue.setBackground(Color.BLUE);
         ilmoitinalue.setForeground(Color.WHITE);
         GridBagConstraints ilmoitinalueelle = new GridBagConstraints();
         ilmoitinalueelle.gridx = 2;
         ilmoitinalueelle.gridy = 2;
-        tapahtumaRuutu.add(ilmoitinalue, ilmoitinalueelle);
+        this.add(ilmoitinalue, ilmoitinalueelle);
+    }
+    
+    public void setTapahtuma(Tapahtuma tapahtuma) {
+        this.tapahtuma = tapahtuma;
+    }
+    
+    public Tapahtuma getTapahtuma() {
+        return tapahtuma;
     }
 }

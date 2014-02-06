@@ -69,7 +69,10 @@ public class UI implements Runnable {
         toimintopaneeli.add(poistaKaikki);
         toimintopaneeli.add(tuoTapahtumia);
     }
-
+    
+    // Miten tämä ja poista-metodi voisi hyödyntää TapahtumapaneelinRuutu-interfacea? Olisi
+    // kätevää, jos samaa metodia voisi käyttää sekä MuokattavaTapahtumaruutu- että Lahtolaskenta-
+    // ruutu-tyyppisten komponenttien lisäämiseen tai poistamiseen.
     public void lisaaMuokattavaTapahtumaruutuTapahtumapaneeliin(MuokattavaTapahtumaruutu ruutu) {
         tapahtumapaneeli.add(ruutu);
         tapahtumapaneeli.updateUI();
@@ -80,6 +83,16 @@ public class UI implements Runnable {
         tapahtumapaneeli.updateUI();
     }
 
+    public void lisaaLahtolaskentaruutuTapahtumapaneeliin(Lahtolaskentaruutu lahtolaskentaruutu) {
+        tapahtumapaneeli.add(lahtolaskentaruutu);
+        tapahtumapaneeli.updateUI();
+    }
+    
+    public void poistaLahtolaskentaruutuTapahtumapaneelista(Lahtolaskentaruutu lahtolaskentaruutu) {
+        tapahtumapaneeli.remove(lahtolaskentaruutu);
+        tapahtumapaneeli.updateUI();
+    }
+    
     public JFrame getFrame() {
         return frame;
     }
