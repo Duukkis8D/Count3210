@@ -3,6 +3,10 @@ package count3210.count3210.domain;
 
 import org.joda.time.*;
 
+/** Luokan tehtävä on tallentaa eri lähtölaskentalaskurien ominaisuudet,
+ * jotta niitä voi käyttää lähtölaskennan esittämiseen graafisessa
+ * muodossa käyttäjälle.
+ */
 public class Tapahtuma {
     private String nimi;
     private DateTime tapahtumaAika;

@@ -2,9 +2,6 @@ package count3210.count3210.domain;
 
 import count3210.count3210.ui.Kyselija;
 import org.joda.time.*;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-
 
 public class Lahtolaskenta {
 
