@@ -1,8 +1,10 @@
 package count3210.count3210.ui;
 
+import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -67,6 +69,7 @@ public class UI implements Runnable {
         lisaaTapahtuma.addActionListener(new LisaaTapahtumaKuuntelija(this));
         JButton jarjesta = new JButton("järjestä tapahtumat");
         JButton poistaKaikki = new JButton("poista kaikki tapahtumat");
+        poistaKaikki.addActionListener(new PoistaKaikkiKuuntelija(this));
         JButton tuoTapahtumia = new JButton("tuo tapahtumia Hotmail-kalenterista");
 
         toimintopaneeli.add(lisaaTapahtuma);
@@ -100,6 +103,15 @@ public class UI implements Runnable {
     
     public JFrame getFrame() {
         return frame;
+    }
+
+    public void poistaKaikkiTapahtumapaneelinRuudut() {
+        TapahtumaruutujenJarjestelija jarjestelija = new TapahtumaruutujenJarjestelija();
+        ArrayList<Lahtolaskentaruutu> ruudut = jarjestelija.getTapahtumaruudut();
+        
+        for (Lahtolaskentaruutu ruutu : ruudut) {
+            tapahtumapaneeli.remove(ruutu);
+        }
     }
 
 }

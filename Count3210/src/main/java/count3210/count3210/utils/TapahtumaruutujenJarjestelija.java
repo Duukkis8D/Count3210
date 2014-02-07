@@ -26,4 +26,8 @@ public class TapahtumaruutujenJarjestelija {
     public void jarjesteleTapahtumanNimenMukaan() {
         
     }
+    
+    public ArrayList<Lahtolaskentaruutu> getTapahtumaruudut() {
+        return tapahtumaruudut;
+    }
 }
