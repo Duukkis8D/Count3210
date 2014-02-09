@@ -12,16 +12,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
-/** Luokan tehtävänä on luoda peruskomponentit käyttäjän näkemälle graafiselle
+/**
+ * Luokan tehtävänä on luoda peruskomponentit käyttäjän näkemälle graafiselle
  * käyttöliittymälle.
  */
 public class UI implements Runnable {
 
     private JFrame frame;
     private JPanel tapahtumapaneeli;
+    private TapahtumaruutujenJarjestelija jarjestelija;
 
     public UI() {
-
+        jarjestelija = new TapahtumaruutujenJarjestelija();
     }
 
     @Override
@@ -77,7 +79,7 @@ public class UI implements Runnable {
         toimintopaneeli.add(poistaKaikki);
         toimintopaneeli.add(tuoTapahtumia);
     }
-    
+
     // Miten tämä ja poista-metodi voisi hyödyntää TapahtumapaneelinRuutu-interfacea? Olisi
     // kätevää, jos samaa metodia voisi käyttää sekä MuokattavaTapahtumaruutu- että Lahtolaskenta-
     // ruutu-tyyppisten komponenttien lisäämiseen tai poistamiseen.
@@ -85,7 +87,7 @@ public class UI implements Runnable {
         tapahtumapaneeli.add(ruutu);
         tapahtumapaneeli.updateUI();
     }
-    
+
     public void poistaMuokattavaTapahtumaruutuTapahtumapaneelista(MuokattavaTapahtumaruutu ruutu) {
         tapahtumapaneeli.remove(ruutu);
         tapahtumapaneeli.updateUI();
@@ -95,23 +97,30 @@ public class UI implements Runnable {
         tapahtumapaneeli.add(lahtolaskentaruutu);
         tapahtumapaneeli.updateUI();
     }
-    
+
     public void poistaLahtolaskentaruutuTapahtumapaneelista(Lahtolaskentaruutu lahtolaskentaruutu) {
         tapahtumapaneeli.remove(lahtolaskentaruutu);
         tapahtumapaneeli.updateUI();
     }
-    
+
     public JFrame getFrame() {
         return frame;
     }
 
     public void poistaKaikkiTapahtumapaneelinRuudut() {
-        TapahtumaruutujenJarjestelija jarjestelija = new TapahtumaruutujenJarjestelija();
-        ArrayList<Lahtolaskentaruutu> ruudut = jarjestelija.getTapahtumaruudut();
+        ArrayList<TapahtumapaneelinRuutu> ruudut = jarjestelija.getTapahtumaruudut();
         
-        for (Lahtolaskentaruutu ruutu : ruudut) {
-            tapahtumapaneeli.remove(ruutu);
+        for (TapahtumapaneelinRuutu ruutu : ruudut) {
+            // Tyyppimuunnos HaluttuTyyppi muuttuja = (HaluttuTyyppi) vanhaMuuttuja;
+            JPanel poistettavaRuutu = (JPanel) ruutu;
+            tapahtumapaneeli.remove(poistettavaRuutu);
         }
+
+        tapahtumapaneeli.updateUI();
+    }
+    
+    public TapahtumaruutujenJarjestelija getTapahtumaruutujenJarjestelija() {
+        return jarjestelija;
     }
 
 }

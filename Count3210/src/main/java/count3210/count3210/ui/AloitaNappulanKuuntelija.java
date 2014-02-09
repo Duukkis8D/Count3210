@@ -53,8 +53,7 @@ public class AloitaNappulanKuuntelija implements ActionListener {
         lahtolaskentaruutu.luoRuutu();
         ui.lisaaLahtolaskentaruutuTapahtumapaneeliin(lahtolaskentaruutu);
         
-        TapahtumaruutujenJarjestelija jarjestelija = new TapahtumaruutujenJarjestelija();
-        jarjestelija.lisaaListaan(lahtolaskentaruutu);
+        ui.getTapahtumaruutujenJarjestelija().lisaaListaan(lahtolaskentaruutu);
         // Nyt kun lahtolaskentaruutu on lisätty listaan, voidaan lista järjestää
         // haluttuun järjestykseen, poistaa tapahtumapaneelista kaikki
         // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.

@@ -2,6 +2,7 @@
 package count3210.count3210.utils;
 
 import count3210.count3210.ui.Lahtolaskentaruutu;
+import count3210.count3210.ui.TapahtumapaneelinRuutu;
 import java.util.ArrayList;
 
 /** Luokan tehtävänä on järjestää graafisen käyttöliittymän tapahtumaruudut
@@ -9,13 +10,13 @@ import java.util.ArrayList;
  * ajankohdan tai nimen mukaan.
  */
 public class TapahtumaruutujenJarjestelija {
-    private ArrayList<Lahtolaskentaruutu> tapahtumaruudut;
+    private ArrayList<TapahtumapaneelinRuutu> tapahtumaruudut;
     
     public TapahtumaruutujenJarjestelija() {
-        tapahtumaruudut = new ArrayList<Lahtolaskentaruutu>();
+        tapahtumaruudut = new ArrayList<TapahtumapaneelinRuutu>();
     }
     
-    public void lisaaListaan(Lahtolaskentaruutu ruutu) {
+    public void lisaaListaan(TapahtumapaneelinRuutu ruutu) {
         tapahtumaruudut.add(ruutu);
     }
     
@@ -27,7 +28,7 @@ public class TapahtumaruutujenJarjestelija {
         
     }
     
-    public ArrayList<Lahtolaskentaruutu> getTapahtumaruudut() {
+    public ArrayList<TapahtumapaneelinRuutu> getTapahtumaruudut() {
         return tapahtumaruudut;
     }
 }
