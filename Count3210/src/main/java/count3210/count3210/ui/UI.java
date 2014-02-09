@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
+import org.joda.time.Period;
 
 /**
  * Luokan tehtävänä on luoda peruskomponentit käyttäjän näkemälle graafiselle
@@ -121,6 +122,13 @@ public class UI implements Runnable {
     
     public TapahtumaruutujenJarjestelija getTapahtumaruutujenJarjestelija() {
         return jarjestelija;
+    }
+    
+    public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu,
+            Period ajanjakso) {
+        lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
+        
+        tapahtumapaneeli.updateUI();
     }
 
 }

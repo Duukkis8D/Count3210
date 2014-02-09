@@ -1,5 +1,6 @@
 package count3210.count3210.ui;
 
+import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.utils.TapahtumaAikakentanLukija;
 import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
@@ -57,10 +58,15 @@ public class AloitaNappulanKuuntelija implements ActionListener {
         // Nyt kun lahtolaskentaruutu on lisätty listaan, voidaan lista järjestää
         // haluttuun järjestykseen, poistaa tapahtumapaneelista kaikki
         // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.
+        
+        Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
+        lahtolaskenta.kaynnista(lahtolaskentaruutu, 
+                lahtolaskentaruutu.getLahtolaskentaKentta(), ui);
     }
 
     public DateTime tapahtumaAikakentanLuku() {
-        TapahtumaAikakentanLukija tapahtumaAikakentanLukija = new TapahtumaAikakentanLukija(paivays);
+        TapahtumaAikakentanLukija tapahtumaAikakentanLukija = 
+                new TapahtumaAikakentanLukija(paivays);
 
         int[] tapahtumaAika = tapahtumaAikakentanLukija.lueGUI();
         // pp:kk:vvvv,tt:mm:ss
@@ -72,7 +78,8 @@ public class AloitaNappulanKuuntelija implements ActionListener {
         int min = tapahtumaAika[4];
         int sek = tapahtumaAika[5];
 
-        DateTime tapahtumaAikaTallennettava = new DateTime(v, kk, vrk, t, min, sek);
+        DateTime tapahtumaAikaTallennettava = 
+                new DateTime(v, kk, vrk, t, min, sek);
         return tapahtumaAikaTallennettava;
     }
 }

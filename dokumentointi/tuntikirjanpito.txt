@@ -71,5 +71,12 @@ GUI:n koodausta.
 Testien tekoa.
 Javadocin kirjoittamista luokille.
 
+7.2. 45 min
+Tapahtumankuuntelijoiden koodausta.
+
+9.2. 3 t 45 min
+Tapahtumankuuntelijoiden koodausta.
+Ohjelmalogiikan koodausta.
+
 Muista tehdä sekvenssikaavioita ja javadocia metodeille!
 

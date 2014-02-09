@@ -8,12 +8,14 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import org.joda.time.Period;
 
 /** Luokan tehtävä on näyttää käyttäjälle hänen luomansa lähtölaskentatapahtuman
  * graafinen käyttöliittymä.
  */
 public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu {
     private Tapahtuma tapahtuma;
+    private JTextArea lahtolaskentaKentta;
     
     public Lahtolaskentaruutu() {
     }
@@ -50,7 +52,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     }
     
     public void luoLahtolaskentaKentta() {
-        JTextArea lahtolaskentaKentta = new JTextArea("tähän lähtölaskenta");
+        lahtolaskentaKentta = new JTextArea("tähän lähtölaskenta");
         lahtolaskentaKentta.setBackground(Color.BLUE);
         lahtolaskentaKentta.setForeground(Color.WHITE);
         GridBagConstraints lahtolaskennalle = new GridBagConstraints();
@@ -92,5 +94,21 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     
     public Tapahtuma getTapahtuma() {
         return tapahtuma;
+    }
+    
+    public JTextArea getLahtolaskentaKentta() {
+        return lahtolaskentaKentta;
+    }
+
+    public void paivitaLahtolaskentaKentta(Period ajanjakso) {
+        lahtolaskentaKentta.setText(ajanjakso.getYears() + " v "
+                + ajanjakso.getMonths() + " kk "
+                + ajanjakso.getDays() + " vrk "
+                + ajanjakso.getHours() + " t "
+                + ajanjakso.getMinutes() + " min "
+                + ajanjakso.getSeconds() + " sek");
+        
+//        lahtolaskentaKentta.updateUI();
+        this.updateUI();
     }
 }

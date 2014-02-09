@@ -1,7 +1,6 @@
 
 package count3210.count3210.utils;
 
-import count3210.count3210.ui.Lahtolaskentaruutu;
 import count3210.count3210.ui.TapahtumapaneelinRuutu;
 import java.util.ArrayList;
 

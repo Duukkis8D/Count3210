@@ -21,12 +21,12 @@ public class Tiedostoontallentaja {
         try {
             FileWriter tallentaja = new FileWriter(laskurit, true);
             tallentaja.append(tapahtuma.getNimi() + "\n");
-            tallentaja.append(tapahtuma.getTapahtuma().getYear() + ","
-                            + tapahtuma.getTapahtuma().getMonthOfYear() + ","
-                            + tapahtuma.getTapahtuma().getDayOfMonth() + ","
-                            + tapahtuma.getTapahtuma().getHourOfDay() + ","
-                            + tapahtuma.getTapahtuma().getMinuteOfHour() + ","
-                            + tapahtuma.getTapahtuma().getSecondOfMinute() + "\n");
+            tallentaja.append(tapahtuma.getTapahtumaAika().getYear() + ","
+                            + tapahtuma.getTapahtumaAika().getMonthOfYear() + ","
+                            + tapahtuma.getTapahtumaAika().getDayOfMonth() + ","
+                            + tapahtuma.getTapahtumaAika().getHourOfDay() + ","
+                            + tapahtuma.getTapahtumaAika().getMinuteOfHour() + ","
+                            + tapahtuma.getTapahtumaAika().getSecondOfMinute() + "\n");
             tallentaja.close();
         } catch (IOException e) {
             System.out.println("Tallennus ei onnistunut." + "\n"

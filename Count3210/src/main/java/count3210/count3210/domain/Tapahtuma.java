@@ -28,7 +28,7 @@ public class Tapahtuma {
         this.tapahtumaAika = tapahtumaAika;
     }
     
-    public DateTime getTapahtuma() {
+    public DateTime getTapahtumaAika() {
         return tapahtumaAika;
     }
 }
