@@ -110,7 +110,7 @@ public class UI implements Runnable {
 
     public void poistaKaikkiTapahtumapaneelinRuudut() {
         ArrayList<TapahtumapaneelinRuutu> ruudut = jarjestelija.getTapahtumaruudut();
-        
+
         for (TapahtumapaneelinRuutu ruutu : ruudut) {
             // Tyyppimuunnos HaluttuTyyppi muuttuja = (HaluttuTyyppi) vanhaMuuttuja;
             JPanel poistettavaRuutu = (JPanel) ruutu;
@@ -119,15 +119,37 @@ public class UI implements Runnable {
 
         tapahtumapaneeli.updateUI();
     }
-    
+
     public TapahtumaruutujenJarjestelija getTapahtumaruutujenJarjestelija() {
         return jarjestelija;
     }
-    
+
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu,
             Period ajanjakso) {
+        /*
+         19:22 <@ransum> nyt sulla on toi Thread.sleep väärässä threadissa
+         19:23 <@ransum> tää menee nyt vähän rinnakkaisohjelmoinnin puolelle, mut graafinen käli ja ohjelmalogiikka saatetaan suorittaa eri 
+         threadeissa
+         19:23 <@ransum> tl;dr: sun pitäis saada toi thread.sleep looppeineen kälin sisään
+         19:24 <@ransum> esim. run()-metodin sisään tai sieltä kutsuttavaan omaan metodiinsa
+         19:24 < duukkis> Eli pitäisi laittaa se odottaminen UI-luokkaan, joka on runnable.
+         19:24 <@ransum> jeps
+         19:25 < duukkis> Siinä onkin miettimistä.
+         19:26 < duukkis> Mut eiköhän se onnistu. (:
+         19:26 <@ransum> voit harkita vaikka jonkinlaista etene()-metodia, joka tulisi tuonne Lahtolaskenta-luokkaan
+         19:26 <@ransum> jota sitten kutsuttaisiin kälin puolelta loopista
+         19:26 <@ransum> tjsp
+         */
+
+        // Seuraava jumitti ohjelman, kun se oli Lahtolaskenta-luokassa.
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.out.println("Ei onnistunut!");
+        }
+
         lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
-        
+
         tapahtumapaneeli.updateUI();
     }
 

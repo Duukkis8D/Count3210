@@ -53,13 +53,6 @@ public class Lahtolaskenta {
             tapahtumaAika = tapahtumaAika.minusSeconds(1);
             tapahtuma.setTapahtumaAika(tapahtumaAika);
             lahtolaskentaruutu.setTapahtuma(tapahtuma);
-
-            // Seuraava jumittaa ohjelman.
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                System.out.println("Ei onnistunut!");
-            }
         }
         
         // Tämä toimii, jos aikayksikköinä tulostetaan vain vuorokaudet,
