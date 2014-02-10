@@ -60,8 +60,7 @@ public class AloitaNappulanKuuntelija implements ActionListener {
         // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.
         
         Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
-        lahtolaskenta.kaynnista(lahtolaskentaruutu, 
-                lahtolaskentaruutu.getLahtolaskentaKentta(), ui);
+        lahtolaskenta.kaynnista(lahtolaskentaruutu, ui);
     }
 
     public DateTime tapahtumaAikakentanLuku() {
