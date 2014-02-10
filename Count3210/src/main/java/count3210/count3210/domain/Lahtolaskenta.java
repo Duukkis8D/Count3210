@@ -1,6 +1,5 @@
 package count3210.count3210.domain;
 
-import count3210.count3210.ui.Kyselija;
 import count3210.count3210.ui.Lahtolaskentaruutu;
 import count3210.count3210.ui.UI;
 import javax.swing.JTextArea;
@@ -26,7 +25,11 @@ public class Lahtolaskenta {
 //        System.out.println("\n" + dtf.print(aika) + "\n");
     }
     
-    public void kaynnista(Lahtolaskentaruutu lahtolaskentaruutu, UI ui) {
+    public void lahtolaskennanAlustus() {
+        
+    }
+    
+    public void etene(Lahtolaskentaruutu lahtolaskentaruutu, UI ui) {
 
         DateTime aikaNyt = DateTime.now();
         
@@ -47,8 +50,7 @@ public class Lahtolaskenta {
                 aikayksikkoja = aikayksikkoja + aikayksikko;
             }
                     
-            ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu, 
-                    ajanjakso);
+            ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
             
             tapahtumaAika = tapahtumaAika.minusSeconds(1);
             tapahtuma.setTapahtumaAika(tapahtumaAika);

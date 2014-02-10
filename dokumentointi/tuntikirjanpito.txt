@@ -78,5 +78,9 @@ Tapahtumankuuntelijoiden koodausta.
 Tapahtumankuuntelijoiden koodausta.
 Ohjelmalogiikan koodausta.
 
+10.2. 3 t 15 min
+Tapahtumankuuntelijoiden koodausta.
+Ohjelmalogiikan koodausta.
+
 Muista tehdä sekvenssikaavioita ja javadocia metodeille!
 

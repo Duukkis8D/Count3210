@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import org.joda.time.DateTime;
+import org.joda.time.Period;
 
 /** Luokka huolehtii tapahtumista, jotka alkavat käyttäjän painaessa aloita-nappia.
  * MuokattavaTapahtumaruutu-luokan ilmentymä poistetaan tapahtumapaneelista, johon
@@ -59,8 +60,7 @@ public class AloitaNappulanKuuntelija implements ActionListener {
         // haluttuun järjestykseen, poistaa tapahtumapaneelista kaikki
         // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.
         
-        Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
-        lahtolaskenta.kaynnista(lahtolaskentaruutu, ui);
+        ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
     }
 
     public DateTime tapahtumaAikakentanLuku() {

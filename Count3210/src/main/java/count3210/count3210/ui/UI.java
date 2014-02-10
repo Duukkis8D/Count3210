@@ -1,5 +1,6 @@
 package count3210.count3210.ui;
 
+import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -124,8 +125,7 @@ public class UI implements Runnable {
         return jarjestelija;
     }
 
-    public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu,
-            Period ajanjakso) {
+    public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu) {
         /*
          19:22 <@ransum> nyt sulla on toi Thread.sleep väärässä threadissa
          19:23 <@ransum> tää menee nyt vähän rinnakkaisohjelmoinnin puolelle, mut graafinen käli ja ohjelmalogiikka saatetaan suorittaa eri 
@@ -141,16 +141,26 @@ public class UI implements Runnable {
          19:26 <@ransum> tjsp
          */
 
-        // Seuraava jumitti ohjelman, kun se oli Lahtolaskenta-luokassa.
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            System.out.println("Ei onnistunut!");
+        Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
+        lahtolaskenta.lahtolaskennanAlustus();
+        
+        // Palauta jokin indeksiluku Lahtolaskenta-luokan metodista, jonka
+        // mukaan tässä while-loopissa toimitaan.
+        while (true) {
+            lahtolaskenta.etene(lahtolaskentaruutu, this);
+            
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("Ei onnistunut!");
+            }
+
+            // Miten Period-luokan ilmentymää voisi kierrättää ohjelmassa niin,
+            // että sen saisi tähän while-looppiin?
+            lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
+
+            tapahtumapaneeli.updateUI();
         }
-
-        lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
-
-        tapahtumapaneeli.updateUI();
     }
 
 }
