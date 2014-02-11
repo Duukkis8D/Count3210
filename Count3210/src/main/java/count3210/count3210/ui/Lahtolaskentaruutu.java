@@ -16,8 +16,10 @@ import org.joda.time.Period;
 public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu {
     private Tapahtuma tapahtuma;
     private JTextArea lahtolaskentaKentta;
+    private int aikayksikkoja;
     
     public Lahtolaskentaruutu() {
+        this.aikayksikkoja = 0;
     }
     
     public void luoRuutu() {

@@ -142,22 +142,19 @@ public class UI implements Runnable {
          */
 
         Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
-        lahtolaskenta.lahtolaskennanAlustus();
         
-        // Palauta jokin indeksiluku Lahtolaskenta-luokan metodista, jonka
-        // mukaan tässä while-loopissa toimitaan.
+        // while (aikayksikkoja > 0)
         while (true) {
-            lahtolaskenta.etene(lahtolaskentaruutu, this);
+            lahtolaskenta.etene(lahtolaskentaruutu);
             
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 System.out.println("Ei onnistunut!");
             }
-
-            // Miten Period-luokan ilmentymää voisi kierrättää ohjelmassa niin,
-            // että sen saisi tähän while-looppiin?
-            lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
+            
+            lahtolaskentaruutu.paivitaLahtolaskentaKentta(
+                    lahtolaskenta.getAjanjakso());
 
             tapahtumapaneeli.updateUI();
         }
