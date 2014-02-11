@@ -19,7 +19,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     private int aikayksikkoja;
     
     public Lahtolaskentaruutu() {
-        this.aikayksikkoja = 0;
+        this.aikayksikkoja = 99;
     }
     
     public void luoRuutu() {
@@ -112,5 +112,13 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
         
 //        lahtolaskentaKentta.updateUI();
         this.updateUI();
+    }
+    
+    public void setAikayksikkoja(int aikayksikkoja) {
+        this.aikayksikkoja = aikayksikkoja;
+    }
+    
+    public int getAikayksikkoja() {
+        return aikayksikkoja;
     }
 }

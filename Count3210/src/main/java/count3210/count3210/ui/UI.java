@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
-import org.joda.time.Period;
 
 /**
  * Luokan tehtävänä on luoda peruskomponentit käyttäjän näkemälle graafiselle
@@ -142,16 +141,17 @@ public class UI implements Runnable {
          */
 
         Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
+        int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
         
-        // while (aikayksikkoja > 0)
-        while (true) {
+        while (aikayksikkoja > 0) {
+            aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
             lahtolaskenta.etene(lahtolaskentaruutu);
             
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                System.out.println("Ei onnistunut!");
-            }
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                System.out.println("Ei onnistunut!");
+//            }
             
             lahtolaskentaruutu.paivitaLahtolaskentaKentta(
                     lahtolaskenta.getAjanjakso());

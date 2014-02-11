@@ -44,11 +44,7 @@ public class Lahtolaskenta {
         for (int aikayksikko : aikayksikkoTaulukko) {
             aikayksikkoja = aikayksikkoja + aikayksikko;
         }
-        // Tässä pitäisi esimerkiksi tallentaa lahtolaskentaruudun
-        // aikayksikkoja-muuttujan arvoksi edellisen kohdan samannimisen
-        // muuttujan arvo.
-        
-        lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
+        lahtolaskentaruutu.setAikayksikkoja(aikayksikkoja);
 
         // Tämä toimii, jos aikayksikköinä tulostetaan vain vuorokaudet,
         // tunnit, minuutit ja sekunnit.
