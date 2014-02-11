@@ -142,10 +142,13 @@ public class UI implements Runnable {
 
         Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
+        System.out.println("1. Jumiiko?\n");
         
+        // Looppi jää pyörimään. Muutetaanko aikayksikkoja-muuttujaa oikein?
         while (aikayksikkoja > 0) {
-            aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
+//            aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
             lahtolaskenta.etene(lahtolaskentaruutu);
+            System.out.println("2. Jumiiko?");
             
 //            try {
 //                Thread.sleep(1000);
@@ -155,6 +158,9 @@ public class UI implements Runnable {
             
             lahtolaskentaruutu.paivitaLahtolaskentaKentta(
                     lahtolaskenta.getAjanjakso());
+            System.out.println("3. Jumiiko?");
+            aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
+            System.out.println("4. Jumiiko?");
 
             tapahtumapaneeli.updateUI();
         }

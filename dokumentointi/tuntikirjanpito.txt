@@ -82,5 +82,8 @@ Ohjelmalogiikan koodausta.
 Tapahtumankuuntelijoiden koodausta.
 Ohjelmalogiikan koodausta.
 
+11.2. 4 t
+Ohjelmalogiikan koodausta.
+
 Muista tehdä sekvenssikaavioita ja javadocia metodeille!
 
