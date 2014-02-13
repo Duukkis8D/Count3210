@@ -26,7 +26,16 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
         this.aikayksikkoja = 99;
     }
     
+    /** Metodi luo tämän olion ulkoiset puitteet ja sisällön.
+     */
     public void luoRuutu() {
+        luoRuudunUlkonako();
+        luoRuudunSisalto();
+    }
+    
+    /** Metodi luo tämän olion ulkoiset puitteet.
+     */
+    public void luoRuudunUlkonako() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
         // Kokoa ei pysty asettamaan ehkä siksi, koska tapahtumaPaneeli käyttää
@@ -34,18 +43,22 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
 //        tapahtumaRuutu.setSize(100, 100);
         this.setBackground(Color.BLUE);
         this.setForeground(Color.WHITE);
-        
-        luoRuudunSisalto();
     }
     
+    /** Metodi luo tämän olion sisällön.
+     */
     public void luoRuudunSisalto() {
         luoTapahtumaKentta();
         luoLahtolaskentaKentta();
-        luoPoistaNappula();
-        luoMuokkaaNappula();
+        luoPoistaNappi();
+        luoMuokkaaNappi();
         luoIlmoitinalue();
     }
     
+    /** Metodi luo tämän olion tapahtumatekstikentän, jossa näkyy käyttäjän
+     * syöttämä tapahtuman nimi. Toistaiseksi siinä näkyy kuitenkin vain teksti
+     * "tapahtuman nimi".
+     */
     public void luoTapahtumaKentta() {
         JTextArea tapahtumanNimi = new JTextArea("tapahtuman nimi");
         tapahtumanNimi.setBackground(Color.BLUE);
@@ -57,6 +70,9 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
         this.add(tapahtumanNimi, tapahtumanNimelle);
     }
     
+    /** Metodi luo lähtölaskentatekstikentän, jossa näkyy jäljellä oleva
+     aika käyttäjän luomaan tapahtumaan.
+     */
     public void luoLahtolaskentaKentta() {
         lahtolaskentaKentta = new JTextArea("tähän lähtölaskenta");
         lahtolaskentaKentta.setBackground(Color.BLUE);
@@ -68,22 +84,33 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
         this.add(lahtolaskentaKentta, lahtolaskennalle);
     }
     
-    public void luoPoistaNappula() {
+    /** Metodi luo poista-napin, jolla voi poistaa koko
+     * Lahtolaskentaruutu-luokan ilmentymän ohjelman muistista. Tällä
+     * hetkellä nappi ei kuitenkaan tee mitään.
+     */
+    public void luoPoistaNappi() {
         JButton poista = new JButton("poista");
-        GridBagConstraints poistaNappulalle = new GridBagConstraints();
-        poistaNappulalle.gridx = 0;
-        poistaNappulalle.gridy = 2;
-        this.add(poista, poistaNappulalle);
+        GridBagConstraints poistaNapille = new GridBagConstraints();
+        poistaNapille.gridx = 0;
+        poistaNapille.gridy = 2;
+        this.add(poista, poistaNapille);
     }
     
-    public void luoMuokkaaNappula() {
+    /** Metodi luo muokkaa-napin, jolla voi muokata käyttäjän luomaa
+     tapahtumaa graafisen käyttöliittymän kautta. Nykyisellään nappi ei
+     kuitenkaan tee vielä mitään.
+     */
+    public void luoMuokkaaNappi() {
         JButton muokkaa = new JButton("muokkaa");
-        GridBagConstraints muokkaaNappulalle = new GridBagConstraints();
-        muokkaaNappulalle.gridx = 1;
-        muokkaaNappulalle.gridy = 2;
-        this.add(muokkaa, muokkaaNappulalle);
+        GridBagConstraints muokkaaNapille = new GridBagConstraints();
+        muokkaaNapille.gridx = 1;
+        muokkaaNapille.gridy = 2;
+        this.add(muokkaa, muokkaaNapille);
     }
     
+    /** Metodi luo ilmoitinalueen, johon on myöhemmin tarkoitus tulla symbolit
+     tapahtuman ominaisuuksille: hälytys ja toistuvuus.
+     */
     public void luoIlmoitinalue() {
         JTextArea ilmoitinalue = new JTextArea("ilmoitinalue");
         ilmoitinalue.setBackground(Color.BLUE);
@@ -106,6 +133,13 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
         return lahtolaskentaKentta;
     }
 
+    /** Metodi päivittää lähtölaskentatekstikentän, jossa näkyy kulloinkin
+     * jäljellä oleva aika tapahtuman alkuun.
+     * 
+     * @param ajanjakso Ajanjakso sisältää kaikki tapahtumaan jäljellä olevan
+     * ajan aikayksiköt. Niistä metodissa tulostetaan vuodet, kuukaudet,
+     * vuorokaudet, tunnit, minuutit ja sekunnit.
+     */
     public void paivitaLahtolaskentaKentta(Period ajanjakso) {
         lahtolaskentaKentta.setText(ajanjakso.getYears() + " v "
                 + ajanjakso.getMonths() + " kk "
@@ -118,6 +152,13 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
         this.updateUI();
     }
     
+    /** Metodi asettaa tälle oliolle aikayksikköarvon, joka saadaan
+     summaamalla kaikki Period luokan ilmentymän kenttien arvot. (Kun
+     * aikayksikkoja-muuttujan arvo vähenee nollaan, lähtölaskennan tulisi
+     * pysähtyä.)
+     * 
+     * @param aikayksikkoja Aikayksikköjen lukumäärä.
+     */
     public void setAikayksikkoja(int aikayksikkoja) {
         this.aikayksikkoja = aikayksikkoja;
     }

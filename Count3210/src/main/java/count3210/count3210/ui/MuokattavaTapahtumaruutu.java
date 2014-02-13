@@ -27,12 +27,15 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
         // Tähän koodia muokattavasta tapahtumaRuudusta, joka näkyy käyttäjälle
         // heti lisää tapahtuma -nappulasta painamisen jälkeen ja myös
         // tapahtuman muokkaa-nappulasta painaessa.
+        luoRuudunUlkonako();
+        luoRuudunSisalto();
+    }
+    
+    public void luoRuudunUlkonako() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
         this.setBackground(Color.BLACK);
         this.setForeground(Color.WHITE);
-        
-        luoRuudunSisalto();
     }
     
     public void luoRuudunSisalto() {
