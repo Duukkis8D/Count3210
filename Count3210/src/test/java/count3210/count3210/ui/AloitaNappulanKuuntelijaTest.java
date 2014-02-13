@@ -48,7 +48,7 @@ public class AloitaNappulanKuuntelijaTest {
     @Test
     public void DateTimellaOnOikeaArvoVuorokausissa() {
         AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
-                paivays, aloitaNappula, ui, ruutu);
+                paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
         assertEquals(lahtolaskennanAika.getDayOfMonth(), 11);
@@ -64,7 +64,7 @@ public class AloitaNappulanKuuntelijaTest {
     @Test
     public void DateTimellaOnOikeaArvoKuukausissa() {
         AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
-                paivays, aloitaNappula, ui, ruutu);
+                paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
         assertEquals(lahtolaskennanAika.getMonthOfYear(), 12);
@@ -73,7 +73,7 @@ public class AloitaNappulanKuuntelijaTest {
     @Test
     public void DateTimellaOnOikeaArvoVuosissa() {
         AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
-                paivays, aloitaNappula, ui, ruutu);
+                paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
         assertEquals(lahtolaskennanAika.getYear(), 2100);
@@ -82,7 +82,7 @@ public class AloitaNappulanKuuntelijaTest {
     @Test
     public void DateTimellaOnOikeaArvoTunneissa() {
         AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
-                paivays, aloitaNappula, ui, ruutu);
+                paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
         assertEquals(lahtolaskennanAika.getHourOfDay(), 21);
@@ -91,7 +91,7 @@ public class AloitaNappulanKuuntelijaTest {
     @Test
     public void DateTimellaOnOikeaArvoMinuuteissa() {
         AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
-                paivays, aloitaNappula, ui, ruutu);
+                paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
         assertEquals(lahtolaskennanAika.getMinuteOfHour(), 00);
@@ -100,7 +100,7 @@ public class AloitaNappulanKuuntelijaTest {
     @Test
     public void DateTimellaOnOikeaArvoSekunneissa() {
         AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
-                paivays, aloitaNappula, ui, ruutu);
+                paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
         assertEquals(lahtolaskennanAika.getSecondOfMinute(), 00);

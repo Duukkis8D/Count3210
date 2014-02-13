@@ -112,7 +112,7 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     
     public void luoAloitaNappula(JTextField nimi, JTextField paivays) {
         JButton aloita = new JButton("aloita");
-        aloita.addActionListener(new AloitaNappulanKuuntelija(nimi, paivays, aloita, ui, this));
+        aloita.addActionListener(new AloitaNappulanKuuntelija(nimi, paivays, ui, this));
         GridBagConstraints aloitaNappulalle = new GridBagConstraints();
         aloitaNappulalle.gridx = 0;
         aloitaNappulalle.gridy = 3;

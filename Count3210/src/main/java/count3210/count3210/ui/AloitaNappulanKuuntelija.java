@@ -1,16 +1,13 @@
 package count3210.count3210.ui;
 
-import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.utils.TapahtumaAikakentanLukija;
-import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
 import count3210.count3210.utils.Tiedostoontallentaja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import org.joda.time.DateTime;
-import org.joda.time.Period;
 
 /** Luokka huolehtii tapahtumista, jotka alkavat käyttäjän painaessa aloita-nappia.
  * MuokattavaTapahtumaruutu-luokan ilmentymä poistetaan tapahtumapaneelista, johon
@@ -26,15 +23,27 @@ public class AloitaNappulanKuuntelija implements ActionListener {
     private MuokattavaTapahtumaruutu ruutu;
     private UI ui;
 
-    public AloitaNappulanKuuntelija(JTextField nimi, JTextField paivays,
-            JButton aloitaNappula, UI ui, MuokattavaTapahtumaruutu ruutu) {
+    /** Konstruktorissa annetaan parametrina UI-luokan ilmentymä,
+     * MuokattavaTapahtumaruutu-luokan ilmentymä ja sen ominaisuuksia, joita
+     * tässä luokassa tarvitaan.
+     * 
+     * @param nimi MuokattavaTapahtumaruutu-luokan ilmentymän tapahtuman nimi.
+     * @param paivays MuokattavaTapahtumaruutu-luokan ilmentymän
+     * päiväys-tekstikenttä.
+     * @param ruutu MuokattavaTapahtumaruutu-luokan ilmentymä.
+     * @param ui UI-luokan ilmentymä, joka tuottaa graafisen käyttöliittymän.
+     */
+    public AloitaNappulanKuuntelija(JTextField nimi, JTextField paivays, UI ui,
+            MuokattavaTapahtumaruutu ruutu) {
         this.nimi = nimi;
         this.paivays = paivays;
-        this.aloitaNappula = aloitaNappula;
         this.ruutu = ruutu;
         this.ui = ui;
     }
 
+    /** Metodi huolehtii kunkin Lahtolaskentaruutu-luokan ilmentymän aloita-
+     napin painalluksen jälkeisistä tapahtumista.
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
 
@@ -62,7 +71,10 @@ public class AloitaNappulanKuuntelija implements ActionListener {
         
         ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
     }
-
+    
+    /** Metodi lukee käyttäjän syöttämän tekstin tapahtumaAikakentta-oliosta.
+     @return Tiedostoon tallennettava tapahtuma-aika.
+     */
     public DateTime tapahtumaAikakentanLuku() {
         TapahtumaAikakentanLukija tapahtumaAikakentanLukija = 
                 new TapahtumaAikakentanLukija(paivays);

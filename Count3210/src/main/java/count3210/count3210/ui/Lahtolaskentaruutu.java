@@ -18,6 +18,10 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     private JTextArea lahtolaskentaKentta;
     private int aikayksikkoja;
     
+    /** Konstruktori asettaa aikayksikkoja-muuttujan arvoksi 99, joka on
+     satunnaisesti valittu luku. Luvun tulee olla yli nolla, jotta UI-luokassa
+     oleva while-loop toimii.
+     */
     public Lahtolaskentaruutu() {
         this.aikayksikkoja = 99;
     }

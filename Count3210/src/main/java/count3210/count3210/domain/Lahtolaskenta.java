@@ -1,7 +1,6 @@
 package count3210.count3210.domain;
 
 import count3210.count3210.ui.Lahtolaskentaruutu;
-import javax.swing.JTextArea;
 import org.joda.time.*;
 
 public class Lahtolaskenta {
@@ -10,24 +9,11 @@ public class Lahtolaskenta {
     public Lahtolaskenta() {
     }
 
-    public static void naytaLahtolaskenta(Period ajanjakso,
-            Lahtolaskentaruutu lahtolaskentaruutu, JTextArea lahtolaskentakentta) {
-
-        System.out.println(ajanjakso.getYears() + " vuotta "
-                + ajanjakso.getMonths() + " kuukautta "
-                + ajanjakso.getDays() + " vuorokautta "
-                + ajanjakso.getHours() + " tuntia "
-                + ajanjakso.getMinutes() + " minuuttia "
-                + ajanjakso.getSeconds() + " sekuntia ");
-    }
-
-    public static void tulostaAika(DateTime aika) {
-        System.out.println("\n" + aika.toString() + "\n");
-//        DateTimeFormatter dtf = DateTimeFormat.forPattern(
-//                "yyyy, MMMM");
-//        System.out.println("\n" + dtf.print(aika) + "\n");
-    }
-
+    /** Metodi suorittaa yhden lähtölaskentaruudun laskurin etenemiskierroksen.
+     
+     @param lahtolaskentaruutu Tietty lähtölaskentaruutu, johon liittyy oma
+     * laskurinsa.
+     */
     public void etene(Lahtolaskentaruutu lahtolaskentaruutu) {
 
         // Ajankulun kannalta tarkempi tapa voisi kuulemma olla synkronoida

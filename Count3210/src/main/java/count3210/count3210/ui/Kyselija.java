@@ -1,13 +1,15 @@
 
 package count3210.count3210.ui;
 
-import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.utils.Tiedostonlukija;
 import count3210.count3210.utils.Tiedostoontallentaja;
 import java.util.Calendar;
 import org.joda.time.DateTime;
 
+/** Ehkä tarpeeton luokka. Tämä oli käytössä, kun ohjelmassa oli vielä
+ tekstipohjainen käyttöliittymä.
+ */
 public class Kyselija {
     private Tiedostonlukija lukija;
     private Calendar tapahtumanAika = Calendar.getInstance();

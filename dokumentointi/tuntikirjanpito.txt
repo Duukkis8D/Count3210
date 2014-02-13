@@ -2,11 +2,11 @@
 Kurssiasioihin perehtyminen kokonaisuutena.
 Git-ohjeeseen perehtyminen.
 
-15.1., 1 t 45 min
+15.1. 1 t 45 min
 Repositorion luominen.
 Repotreenejä.
 
-16.1., 4 t 15 min
+16.1. 4 t 15 min
 Repotreenejä.
 NetBeans-projektin luominen.
 Aihemäärittelyn kirjoittaminen ja muuta dokumentointia.
@@ -84,6 +84,9 @@ Ohjelmalogiikan koodausta.
 
 11.2. 4 t
 Ohjelmalogiikan koodausta.
+
+12.2. 2 t 30 min
+Javadocin kirjoittamista metodeille.
 
 Muista tehdä sekvenssikaavioita ja javadocia metodeille!
 
