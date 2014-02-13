@@ -129,12 +129,18 @@ public class UI implements Runnable {
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu) {
         // Käytä Timeria.
         int viive = 1000;
-        ActionListener lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu);
-        new Timer(viive, lahtolaskenta).start();
+        ActionListener lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);
+        Timer ajastin = new Timer(viive, lahtolaskenta);
+        ajastin.start();
         
-        // Mistä tulee seuraava error?
-        lahtolaskentaruutu.paivitaLahtolaskentaKentta(
-                lahtolaskenta.getAjanjakso());
+        // ajastin ei vielä pysähdy.
+        int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
+        if (aikayksikkoja == 0) {
+            ajastin.stop();
+        }
+    }
+    
+    public void paivitaTapahtumapaneeli() {
         tapahtumapaneeli.updateUI();
     }
 }

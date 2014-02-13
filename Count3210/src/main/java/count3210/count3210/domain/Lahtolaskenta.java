@@ -1,6 +1,7 @@
 package count3210.count3210.domain;
 
 import count3210.count3210.ui.Lahtolaskentaruutu;
+import count3210.count3210.ui.UI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.joda.time.*;
@@ -9,8 +10,11 @@ public class Lahtolaskenta implements ActionListener {
 
     private Period ajanjakso;
     private Lahtolaskentaruutu lahtolaskentaruutu;
+    private UI ui;
 
-    public Lahtolaskenta(Lahtolaskentaruutu lahtolaskentaruutu) {
+    public Lahtolaskenta(Lahtolaskentaruutu lahtolaskentaruutu, UI ui) {
+        this.lahtolaskentaruutu = lahtolaskentaruutu;
+        this.ui = ui;
     }
 
     public Period getAjanjakso() {
@@ -20,21 +24,22 @@ public class Lahtolaskenta implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-        
-        if (aikayksikkoja > 0) {
-            Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
-            DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
-            DateTime aikaNyt = DateTime.now();
 
-            ajanjakso = new Period(aikaNyt, tapahtumaAika);
+        Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
+        DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
+        DateTime aikaNyt = DateTime.now();
 
-            int[] aikayksikkoTaulukko = ajanjakso.getValues();
-            aikayksikkoja = 0;
-            for (int aikayksikko : aikayksikkoTaulukko) {
-                aikayksikkoja = aikayksikkoja + aikayksikko;
-            }
-            lahtolaskentaruutu.setAikayksikkoja(aikayksikkoja);
+        ajanjakso = new Period(aikaNyt, tapahtumaAika);
+
+        int[] aikayksikkoTaulukko = ajanjakso.getValues();
+        aikayksikkoja = 0;
+        for (int aikayksikko : aikayksikkoTaulukko) {
+            aikayksikkoja = aikayksikkoja + aikayksikko;
         }
+        lahtolaskentaruutu.setAikayksikkoja(aikayksikkoja);
+
+        lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
+        ui.paivitaTapahtumapaneeli();
 
         // Tämä toimii, jos aikayksikköinä tulostetaan vain vuorokaudet,
         // tunnit, minuutit ja sekunnit.
