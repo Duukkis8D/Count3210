@@ -1,12 +1,15 @@
 package count3210.count3210.domain;
 
 import count3210.count3210.ui.Lahtolaskentaruutu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import org.joda.time.*;
 
-public class Lahtolaskenta {
+public class Lahtolaskenta implements ActionListener {
     private Period ajanjakso;
+    private Lahtolaskentaruutu lahtolaskentaruutu;
     
-    public Lahtolaskenta() {
+    public Lahtolaskenta(Lahtolaskentaruutu lahtolaskentaruutu) {
     }
 
     /** Metodi suorittaa yhden lähtölaskentaruudun laskurin etenemiskierroksen.
@@ -15,16 +18,21 @@ public class Lahtolaskenta {
      * laskurinsa.
      */
     public void etene(Lahtolaskentaruutu lahtolaskentaruutu) {
+        
+    }
+    
+    public Period getAjanjakso() {
+        return ajanjakso;
+    }
 
-        // Ajankulun kannalta tarkempi tapa voisi kuulemma olla synkronoida
-        // ajan kulkua järjestelmän kellon tahtiin. Ohjelmoinnin jatkokurssin
-        // matopelin Timer-luokasta voisi kuulemma olla apua.
+    @Override
+    public void actionPerformed(ActionEvent ae) {
         Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
         DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
         DateTime aikaNyt = DateTime.now();
         
         ajanjakso = new Period(aikaNyt, tapahtumaAika);
-
+        
         int[] aikayksikkoTaulukko = ajanjakso.getValues();
         int aikayksikkoja = 0;
         for (int aikayksikko : aikayksikkoTaulukko) {
@@ -54,9 +62,5 @@ public class Lahtolaskenta {
 //            
 //            i++;
 //        }
-    }
-    
-    public Period getAjanjakso() {
-        return ajanjakso;
     }
 }

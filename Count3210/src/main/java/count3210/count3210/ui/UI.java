@@ -5,6 +5,7 @@ import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -125,30 +126,16 @@ public class UI implements Runnable {
     }
 
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu) {
-        /*
-         19:22 <@ransum> nyt sulla on toi Thread.sleep väärässä threadissa
-         19:23 <@ransum> tää menee nyt vähän rinnakkaisohjelmoinnin puolelle, mut graafinen käli ja ohjelmalogiikka saatetaan suorittaa eri 
-         threadeissa
-         19:23 <@ransum> tl;dr: sun pitäis saada toi thread.sleep looppeineen kälin sisään
-         19:24 <@ransum> esim. run()-metodin sisään tai sieltä kutsuttavaan omaan metodiinsa
-         19:24 < duukkis> Eli pitäisi laittaa se odottaminen UI-luokkaan, joka on runnable.
-         19:24 <@ransum> jeps
-         19:25 < duukkis> Siinä onkin miettimistä.
-         19:26 < duukkis> Mut eiköhän se onnistu. (:
-         19:26 <@ransum> voit harkita vaikka jonkinlaista etene()-metodia, joka tulisi tuonne Lahtolaskenta-luokkaan
-         19:26 <@ransum> jota sitten kutsuttaisiin kälin puolelta loopista
-         19:26 <@ransum> tjsp
-         */
-
-        Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
+        // Käytä Timeria.
+        ActionListener lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu);
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-        System.out.println("1. Jumiiko?\n");
         
-        // Looppi jää pyörimään. Muutetaanko aikayksikkoja-muuttujaa oikein?
+        // Ohjelma ei ehdi näyttää mitään uutta käyttöliittymäkomponenttia,
+        // koska aikayksikköjä lasketaan koko ajan.
         while (aikayksikkoja > 0) {
+            System.out.println(aikayksikkoja);
 //            aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
             lahtolaskenta.etene(lahtolaskentaruutu);
-            System.out.println("2. Jumiiko?");
             
 //            try {
 //                Thread.sleep(1000);
@@ -158,9 +145,7 @@ public class UI implements Runnable {
             
             lahtolaskentaruutu.paivitaLahtolaskentaKentta(
                     lahtolaskenta.getAjanjakso());
-            System.out.println("3. Jumiiko?");
             aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-            System.out.println("4. Jumiiko?");
 
             tapahtumapaneeli.updateUI();
         }
