@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
 /**
@@ -127,28 +128,13 @@ public class UI implements Runnable {
 
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu) {
         // Käytä Timeria.
+        int viive = 1000;
         ActionListener lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu);
-        int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
+        new Timer(viive, lahtolaskenta).start();
         
-        // Ohjelma ei ehdi näyttää mitään uutta käyttöliittymäkomponenttia,
-        // koska aikayksikköjä lasketaan koko ajan.
-        while (aikayksikkoja > 0) {
-            System.out.println(aikayksikkoja);
-//            aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-            lahtolaskenta.etene(lahtolaskentaruutu);
-            
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//                System.out.println("Ei onnistunut!");
-//            }
-            
-            lahtolaskentaruutu.paivitaLahtolaskentaKentta(
-                    lahtolaskenta.getAjanjakso());
-            aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-
-            tapahtumapaneeli.updateUI();
-        }
+        // Mistä tulee seuraava error?
+        lahtolaskentaruutu.paivitaLahtolaskentaKentta(
+                lahtolaskenta.getAjanjakso());
+        tapahtumapaneeli.updateUI();
     }
-
 }

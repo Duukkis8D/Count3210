@@ -6,39 +6,35 @@ import java.awt.event.ActionListener;
 import org.joda.time.*;
 
 public class Lahtolaskenta implements ActionListener {
+
     private Period ajanjakso;
     private Lahtolaskentaruutu lahtolaskentaruutu;
-    
+
     public Lahtolaskenta(Lahtolaskentaruutu lahtolaskentaruutu) {
     }
 
-    /** Metodi suorittaa yhden lähtölaskentaruudun laskurin etenemiskierroksen.
-     
-     @param lahtolaskentaruutu Tietty lähtölaskentaruutu, johon liittyy oma
-     * laskurinsa.
-     */
-    public void etene(Lahtolaskentaruutu lahtolaskentaruutu) {
-        
-    }
-    
     public Period getAjanjakso() {
         return ajanjakso;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
-        DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
-        DateTime aikaNyt = DateTime.now();
+        int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
         
-        ajanjakso = new Period(aikaNyt, tapahtumaAika);
-        
-        int[] aikayksikkoTaulukko = ajanjakso.getValues();
-        int aikayksikkoja = 0;
-        for (int aikayksikko : aikayksikkoTaulukko) {
-            aikayksikkoja = aikayksikkoja + aikayksikko;
+        if (aikayksikkoja > 0) {
+            Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
+            DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
+            DateTime aikaNyt = DateTime.now();
+
+            ajanjakso = new Period(aikaNyt, tapahtumaAika);
+
+            int[] aikayksikkoTaulukko = ajanjakso.getValues();
+            aikayksikkoja = 0;
+            for (int aikayksikko : aikayksikkoTaulukko) {
+                aikayksikkoja = aikayksikkoja + aikayksikko;
+            }
+            lahtolaskentaruutu.setAikayksikkoja(aikayksikkoja);
         }
-        lahtolaskentaruutu.setAikayksikkoja(aikayksikkoja);
 
         // Tämä toimii, jos aikayksikköinä tulostetaan vain vuorokaudet,
         // tunnit, minuutit ja sekunnit.
