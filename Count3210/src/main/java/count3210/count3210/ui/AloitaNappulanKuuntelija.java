@@ -5,7 +5,6 @@ import count3210.count3210.utils.TapahtumaAikakentanLukija;
 import count3210.count3210.utils.Tiedostoontallentaja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JTextField;
 import org.joda.time.DateTime;
 
@@ -19,7 +18,6 @@ public class AloitaNappulanKuuntelija implements ActionListener {
 
     private JTextField nimi;
     private JTextField paivays;
-    private JButton aloitaNappula;
     private MuokattavaTapahtumaruutu ruutu;
     private UI ui;
 

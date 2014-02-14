@@ -127,17 +127,11 @@ public class UI implements Runnable {
     }
 
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu) {
-        // Käytä Timeria.
         int viive = 1000;
-        ActionListener lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);
+        Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);
         Timer ajastin = new Timer(viive, lahtolaskenta);
+        lahtolaskenta.setAjastin(ajastin);
         ajastin.start();
-        
-        // ajastin ei vielä pysähdy.
-        int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-        if (aikayksikkoja == 0) {
-            ajastin.stop();
-        }
     }
     
     public void paivitaTapahtumapaneeli() {

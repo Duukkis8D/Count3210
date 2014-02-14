@@ -93,5 +93,9 @@ Javadocin kirjoittamista metodeille.
 Tapahtumankuuntelijoiden koodausta.
 Ohjelmalogiikan koodausta.
 
+14.2. 1 t
+Ohjelmalogiikan koodausta.
+Tapahtumankuuntelijoiden koodausta.
+
 Muista tehdä sekvenssikaavioita ja javadocia metodeille!
 

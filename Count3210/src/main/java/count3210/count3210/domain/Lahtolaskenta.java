@@ -4,6 +4,7 @@ import count3210.count3210.ui.Lahtolaskentaruutu;
 import count3210.count3210.ui.UI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Timer;
 import org.joda.time.*;
 
 public class Lahtolaskenta implements ActionListener {
@@ -11,6 +12,7 @@ public class Lahtolaskenta implements ActionListener {
     private Period ajanjakso;
     private Lahtolaskentaruutu lahtolaskentaruutu;
     private UI ui;
+    private Timer ajastin;
 
     public Lahtolaskenta(Lahtolaskentaruutu lahtolaskentaruutu, UI ui) {
         this.lahtolaskentaruutu = lahtolaskentaruutu;
@@ -20,10 +22,21 @@ public class Lahtolaskenta implements ActionListener {
     public Period getAjanjakso() {
         return ajanjakso;
     }
+    
+    public void setAjastin(Timer ajastin) {
+        this.ajastin = ajastin;
+    }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
+        // aikayksikkoja-muuttujan arvo ei pääse nollaan, vaikka kaikki
+        // lähtölaskentakentässä olevat numerot olisivat nolla tai vähemmän
+        // kuin nolla. Miksi?
+        System.out.println(aikayksikkoja);
+        if (aikayksikkoja == 0) {
+            ajastin.stop();
+        }
 
         Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
         DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
@@ -40,28 +53,5 @@ public class Lahtolaskenta implements ActionListener {
 
         lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
         ui.paivitaTapahtumapaneeli();
-
-        // Tämä toimii, jos aikayksikköinä tulostetaan vain vuorokaudet,
-        // tunnit, minuutit ja sekunnit.
-//        System.out.println("Erotus:");
-//        
-//        int i = 0;
-//        while (i < 51) {
-//            DateTime nyt = DateTime.now();
-//
-//            try {
-//                Thread.sleep(1000);
-//                // Mikä on InterruptedException, jonka Thread.sleep voi heittää?
-//            } catch (InterruptedException e) {
-//                System.out.println("Ei onnistunut!");
-//            }
-//            
-//            System.out.println(Days.daysBetween(nyt, tapahtumanAika2).getDays() + " vuorokautta "
-//                + Hours.hoursBetween(nyt, tapahtumanAika2).getHours() % 24 + " tuntia "
-//                + Minutes.minutesBetween(nyt, tapahtumanAika2).getMinutes() % 60 + " minuuttia "
-//                + Seconds.secondsBetween(nyt, tapahtumanAika2).getSeconds() % 60 + " sekuntia");
-//            
-//            i++;
-//        }
     }
 }
