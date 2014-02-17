@@ -97,5 +97,10 @@ Ohjelmalogiikan koodausta.
 Ohjelmalogiikan koodausta.
 Tapahtumankuuntelijoiden koodausta.
 
+16.2. 5 t 15 min
+Koodikatselmoinnin kirjoittaminen.
+Ohjelmalogiikan koodausta.
+Tapahtumankuuntelijoiden koodausta.
+
 Muista tehdä sekvenssikaavioita ja javadocia metodeille!
 

@@ -126,10 +126,12 @@ public class UI implements Runnable {
         return jarjestelija;
     }
 
-    public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu lahtolaskentaruutu) {
+    public void paivitaLahtolaskentaruudunLahtolaskentaKentta
+        (Lahtolaskentaruutu lahtolaskentaruutu) {
         int viive = 1000;
         Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);
         Timer ajastin = new Timer(viive, lahtolaskenta);
+        ajastin.setInitialDelay(0);
         lahtolaskenta.setAjastin(ajastin);
         ajastin.start();
     }

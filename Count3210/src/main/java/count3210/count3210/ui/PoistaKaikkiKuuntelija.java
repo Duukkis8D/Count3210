@@ -14,6 +14,7 @@ public class PoistaKaikkiKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         ui.poistaKaikkiTapahtumapaneelinRuudut();
+        // Lisäksi pitäisi pysäyttää lähtölaskennan etenemismetodi.
     }
     
 }

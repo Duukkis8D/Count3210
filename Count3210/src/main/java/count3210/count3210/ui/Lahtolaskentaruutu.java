@@ -15,6 +15,7 @@ import org.joda.time.Period;
  */
 public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu {
     private Tapahtuma tapahtuma;
+    private JTextArea tapahtumanNimi;
     private JTextArea lahtolaskentaKentta;
     private int aikayksikkoja;
     
@@ -31,6 +32,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     public void luoRuutu() {
         luoRuudunUlkonako();
         luoRuudunSisalto();
+        setTapahtumanNimi();
     }
     
     /** Metodi luo tämän olion ulkoiset puitteet.
@@ -60,7 +62,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      * "tapahtuman nimi".
      */
     public void luoTapahtumaKentta() {
-        JTextArea tapahtumanNimi = new JTextArea("tapahtuman nimi");
+        tapahtumanNimi = new JTextArea();
         tapahtumanNimi.setBackground(Color.BLUE);
         tapahtumanNimi.setForeground(Color.WHITE);
         GridBagConstraints tapahtumanNimelle = new GridBagConstraints();
@@ -148,12 +150,15 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
                 + ajanjakso.getMinutes() + " min "
                 + ajanjakso.getSeconds() + " sek");
         
-//        lahtolaskentaKentta.updateUI();
         this.updateUI();
     }
     
+    public void setTapahtumanNimi() {
+        tapahtumanNimi.setText(tapahtuma.getNimi());
+    }
+    
     /** Metodi asettaa tälle oliolle aikayksikköarvon, joka saadaan
-     summaamalla kaikki Period luokan ilmentymän kenttien arvot. (Kun
+     summaamalla tietyt Period luokan ilmentymän kenttien arvot. (Kun
      * aikayksikkoja-muuttujan arvo vähenee nollaan, lähtölaskennan tulisi
      * pysähtyä.)
      * 

@@ -29,26 +29,24 @@ public class Lahtolaskenta implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-        // aikayksikkoja-muuttujan arvo ei pääse nollaan, vaikka kaikki
-        // lähtölaskentakentässä olevat numerot olisivat nolla tai vähemmän
-        // kuin nolla. Miksi?
         System.out.println(aikayksikkoja);
         if (aikayksikkoja == 0) {
             ajastin.stop();
         }
-
+        
         Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
         DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
         DateTime aikaNyt = DateTime.now();
 
         ajanjakso = new Period(aikaNyt, tapahtumaAika);
-
-        int[] aikayksikkoTaulukko = ajanjakso.getValues();
-        aikayksikkoja = 0;
-        for (int aikayksikko : aikayksikkoTaulukko) {
-            aikayksikkoja = aikayksikkoja + aikayksikko;
-        }
+        
+        aikayksikkoja = ajanjakso.getValue(0) + ajanjakso.getValue(1) +
+                ajanjakso.getValue(2) + ajanjakso.getValue(3) +
+                ajanjakso.getValue(4) + ajanjakso.getValue(5) +
+                ajanjakso.getValue(6);
+        
         lahtolaskentaruutu.setAikayksikkoja(aikayksikkoja);
 
         lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
