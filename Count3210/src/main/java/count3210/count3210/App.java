@@ -1,6 +1,5 @@
 package count3210.count3210;
 
-import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.ui.UI;
 import javax.swing.SwingUtilities;
 
@@ -10,8 +9,5 @@ public class App {
         
         UI ui = new UI();
         SwingUtilities.invokeLater(ui);
-//        Lahtolaskenta lahtolaskenta = new Lahtolaskenta();
-//        
-//        lahtolaskenta.kaynnista();
     }
 }

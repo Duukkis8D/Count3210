@@ -128,8 +128,10 @@ public class UI implements Runnable {
 
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta
         (Lahtolaskentaruutu lahtolaskentaruutu) {
-        int viive = 1000;
         Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);
+        lahtolaskentaruutu.setLahtolaskenta(lahtolaskenta);
+        
+        int viive = 1000;
         Timer ajastin = new Timer(viive, lahtolaskenta);
         ajastin.setInitialDelay(0);
         lahtolaskenta.setAjastin(ajastin);

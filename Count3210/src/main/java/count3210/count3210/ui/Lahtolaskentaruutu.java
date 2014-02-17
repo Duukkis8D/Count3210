@@ -1,6 +1,7 @@
 
 package count3210.count3210.ui;
 
+import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -18,6 +19,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     private JTextArea tapahtumanNimi;
     private JTextArea lahtolaskentaKentta;
     private int aikayksikkoja;
+    private Lahtolaskenta lahtolaskenta;
     
     /** Konstruktori asettaa aikayksikkoja-muuttujan arvoksi 99, joka on
      satunnaisesti valittu luku. Luvun tulee olla yli nolla, jotta UI-luokan
@@ -153,6 +155,9 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
         this.updateUI();
     }
     
+    /** Metodi asettaa tapahtumanNimi-kenttään käyttäjän syöttämän tapahtuman
+     nimen.
+     */
     public void setTapahtumanNimi() {
         tapahtumanNimi.setText(tapahtuma.getNimi());
     }
@@ -170,5 +175,13 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     
     public int getAikayksikkoja() {
         return aikayksikkoja;
+    }
+
+    public void setLahtolaskenta(Lahtolaskenta lahtolaskenta) {
+        this.lahtolaskenta = lahtolaskenta;
+    }
+    
+    public Lahtolaskenta getLahtolaskenta() {
+        return lahtolaskenta;
     }
 }

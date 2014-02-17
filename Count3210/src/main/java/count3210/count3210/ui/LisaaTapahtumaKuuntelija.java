@@ -9,15 +9,17 @@ import java.awt.event.ActionListener;
  */
 public class LisaaTapahtumaKuuntelija implements ActionListener {
     private UI ui;
-    private MuokattavaTapahtumaruutu ruutu;
     
     public LisaaTapahtumaKuuntelija(UI ui) {
         this.ui = ui;
     }
     
+    /** Metodi luo MuokattavaTapahtumaruutu-luokan ilmentymän ja tekee muutkin
+     * toimeenpiteet, joilla tapahtumaruutu saadaan ruudulle näkyviin.
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        ruutu = new MuokattavaTapahtumaruutu(ui);
+        MuokattavaTapahtumaruutu ruutu = new MuokattavaTapahtumaruutu(ui);
         ruutu.luoRuutu();
         
         ui.getTapahtumaruutujenJarjestelija().lisaaListaan(ruutu);

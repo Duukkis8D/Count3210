@@ -52,4 +52,8 @@ public class Lahtolaskenta implements ActionListener {
         lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
         ui.paivitaTapahtumapaneeli();
     }
+    
+    public void pysaytaAjastin() {
+        ajastin.stop();
+    }
 }
