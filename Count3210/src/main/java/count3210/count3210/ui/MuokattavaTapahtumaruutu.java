@@ -34,7 +34,7 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     public void luoRuudunUlkonako() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.DARK_GRAY);
         this.setForeground(Color.WHITE);
     }
     
@@ -50,7 +50,7 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     
     public void luoTapahtumanSelitekentta() {
         JLabel tapahtumanNimi = new JLabel("tapahtuman nimi");
-        tapahtumanNimi.setBackground(Color.BLACK);
+        tapahtumanNimi.setBackground(Color.DARK_GRAY);
         tapahtumanNimi.setForeground(Color.WHITE);
         GridBagConstraints tapahtumanNimelle = new GridBagConstraints();
         tapahtumanNimelle.gridx = 0;
@@ -60,7 +60,7 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     
     public JTextField luoMuokattavaTapahtumanNimiKentta() {
         JTextField nimi = new JTextField("tapahtuman nimi");
-        nimi.setBackground(Color.BLACK);
+        nimi.setBackground(Color.DARK_GRAY);
         nimi.setForeground(Color.WHITE);
         GridBagConstraints nimelle = new GridBagConstraints();
         nimelle.gridx = 1;
@@ -72,7 +72,7 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     
     public void luoAjankohtaSelitekentta() {
         JLabel ajankohta = new JLabel("ajankohta");
-        ajankohta.setBackground(Color.BLACK);
+        ajankohta.setBackground(Color.DARK_GRAY);
         ajankohta.setForeground(Color.WHITE);
         GridBagConstraints ajankohdalle = new GridBagConstraints();
         ajankohdalle.gridx = 0;
@@ -82,7 +82,7 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     
     public JTextField luoAjankohtaKentta() {
         JTextField paivays = new JTextField("pp:kk:vvvv,tt:mm:ss");
-        paivays.setBackground(Color.BLACK);
+        paivays.setBackground(Color.DARK_GRAY);
         paivays.setForeground(Color.WHITE);
         GridBagConstraints paivaykselle = new GridBagConstraints();
         paivaykselle.gridx = 1;
@@ -94,7 +94,7 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     
     public void luoToistuvuusSeliteKentta() {
         JLabel toistuvuus = new JLabel("toistuvuus");
-        toistuvuus.setBackground(Color.BLACK);
+        toistuvuus.setBackground(Color.DARK_GRAY);
         toistuvuus.setForeground(Color.WHITE);
         GridBagConstraints toistuvuudelle = new GridBagConstraints();
         toistuvuudelle.gridx = 0;
@@ -105,7 +105,7 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     public void luoToistuvuusValintalaatikko() {
         String[] valinnat = {"kerran", "kerran sek", "kerran min"};
         JComboBox toistuvuusValinta = new JComboBox(valinnat);
-        toistuvuusValinta.setBackground(Color.BLACK);
+        toistuvuusValinta.setBackground(Color.DARK_GRAY);
         toistuvuusValinta.setForeground(Color.WHITE);
         GridBagConstraints toistuvuusValinnalle = new GridBagConstraints();
         toistuvuusValinnalle.gridx = 1;

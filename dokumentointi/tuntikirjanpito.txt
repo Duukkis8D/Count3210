@@ -102,5 +102,15 @@ Koodikatselmoinnin kirjoittaminen.
 Ohjelmalogiikan koodausta.
 Tapahtumankuuntelijoiden koodausta.
 
-Muista tehdä sekvenssikaavioita ja javadocia metodeille!
+17.2. 3 t 15 min
+Ohjelmalogiikan koodausta
+Tapahtumankuuntelijoiden koodausta.
+GUI:n koodausta.
+
+18.2. 4 t 15 min
+Ohjelmalogiikan koodausta.
+Tapahtumankuuntelijoiden koodausta.
+GUI:n koodausta.
+
+Muista tehdä sekvenssikaavioita, päivittää luokkakaavio, uusia pit-raportti ja kirjoittaa javadocia metodeille!
 

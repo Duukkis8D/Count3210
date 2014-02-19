@@ -11,9 +11,14 @@ public class Tapahtuma {
     private String nimi;
     private DateTime tapahtumaAika;
     // Toistuvuus kerran, kerran viikossa, kuussa?
+    private String toistuvuus;
     
     public Tapahtuma(String nimi) {
         this.nimi = nimi;
+    }
+    
+    public Tapahtuma(StringBuilder nimenRakentaja) {
+        setNimi(nimenRakentaja.toString());
     }
     
     public String getNimi() {
@@ -30,5 +35,10 @@ public class Tapahtuma {
     
     public DateTime getTapahtumaAika() {
         return tapahtumaAika;
+    }
+    
+    public String getToistuvuus() {
+        toistuvuus = "toistuvuus?";
+        return toistuvuus;
     }
 }

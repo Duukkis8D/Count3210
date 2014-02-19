@@ -1,11 +1,12 @@
 package count3210.count3210.ui;
 
 import count3210.count3210.domain.Lahtolaskenta;
+import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
+import count3210.count3210.utils.Tiedostonlukija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -48,6 +49,7 @@ public class UI implements Runnable {
         JTextArea otsikko1 = new JTextArea("Tapahtumat");
         tapahtumapaneeli = luoTapahtumapaneeli();
         tapahtumapaneeli.add(otsikko1);
+        luoMuistissaOlevatLaskurit();
         container.add(tapahtumapaneeli);
 
         JTextArea otsikko2 = new JTextArea("Toiminnot");
@@ -82,6 +84,17 @@ public class UI implements Runnable {
         toimintopaneeli.add(poistaKaikki);
         toimintopaneeli.add(tuoTapahtumia);
     }
+    
+    private void luoMuistissaOlevatLaskurit() {
+        // Tuodaan muistissa olevat tapahtumatiedot Tiedostonlukija-luokan
+        // ilmentymän avulla.
+        Tiedostonlukija lukija = new Tiedostonlukija();
+        ArrayList<Tapahtuma> tapahtumatiedot = lukija.tuoLahtolaskentalaskurit();
+        
+        // Luodaan lahtolaskentaruutu ja lisätään se tapahtumapaneeliin.
+        
+        // Lisätään ruutu tapahtumaruutujen järjestelijän listalle.
+    }
 
     // Miten tämä ja poista-metodi voisi hyödyntää TapahtumapaneelinRuutu-interfacea? Olisi
     // kätevää, jos samaa metodia voisi käyttää sekä MuokattavaTapahtumaruutu- että Lahtolaskenta-
@@ -110,6 +123,7 @@ public class UI implements Runnable {
         return frame;
     }
 
+    // Tälle metodille voisi tehdä testit.
     public void poistaKaikkiTapahtumapaneelinRuudut() {
         ArrayList<TapahtumapaneelinRuutu> ruudut = jarjestelija.getTapahtumaruudut();
 
@@ -126,6 +140,7 @@ public class UI implements Runnable {
         return jarjestelija;
     }
 
+    // Tälle metodille voisi tehdä testit.
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta
         (Lahtolaskentaruutu lahtolaskentaruutu) {
         Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);

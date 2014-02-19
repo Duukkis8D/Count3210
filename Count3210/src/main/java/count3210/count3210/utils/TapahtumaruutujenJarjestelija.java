@@ -27,6 +27,10 @@ public class TapahtumaruutujenJarjestelija {
         
     }
     
+    public void poistaKaikkiTapahtumat() {
+        tapahtumaruudut.clear();
+    }
+    
     public ArrayList<TapahtumapaneelinRuutu> getTapahtumaruudut() {
         return tapahtumaruudut;
     }
