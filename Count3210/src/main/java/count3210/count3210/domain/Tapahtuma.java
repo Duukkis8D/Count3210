@@ -41,4 +41,8 @@ public class Tapahtuma {
         toistuvuus = "toistuvuus?";
         return toistuvuus;
     }
+
+    public void setToistuvuus(String toistuvuus) {
+        this.toistuvuus = toistuvuus;
+    }
 }

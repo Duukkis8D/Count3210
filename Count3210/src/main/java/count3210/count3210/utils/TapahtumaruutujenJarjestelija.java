@@ -1,6 +1,7 @@
 
 package count3210.count3210.utils;
 
+import count3210.count3210.ui.AloitaNapinKuuntelija;
 import count3210.count3210.ui.TapahtumapaneelinRuutu;
 import java.util.ArrayList;
 
@@ -19,6 +20,10 @@ public class TapahtumaruutujenJarjestelija {
         tapahtumaruudut.add(ruutu);
     }
     
+    public void lisaaListaan(TapahtumapaneelinRuutu ruutu, 
+            AloitaNapinKuuntelija kuuntelija) {
+        
+    }
     public void jarjesteleAjankohdanMukaan() {
         
     }

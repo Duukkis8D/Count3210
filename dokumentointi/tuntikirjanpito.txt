@@ -112,5 +112,9 @@ Ohjelmalogiikan koodausta.
 Tapahtumankuuntelijoiden koodausta.
 GUI:n koodausta.
 
+21.2. x tuntia
+15:15-16:15
+17:45-16:30
+
 Muista tehdä sekvenssikaavioita, päivittää luokkakaavio, uusia pit-raportti ja kirjoittaa javadocia metodeille!
 

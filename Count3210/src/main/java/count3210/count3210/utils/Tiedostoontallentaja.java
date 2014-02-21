@@ -21,13 +21,13 @@ public class Tiedostoontallentaja {
         // Testaa että tiedostoon tallentuu oikeat arvot.
         try {
             FileWriter tallentaja = new FileWriter(laskurit, true);
-            tallentaja.append(tapahtuma.getNimi() + "\n");
-            tallentaja.append(tapahtuma.getTapahtumaAika().getYear() + ","
-                    + tapahtuma.getTapahtumaAika().getMonthOfYear() + ","
-                    + tapahtuma.getTapahtumaAika().getDayOfMonth() + ","
-                    + tapahtuma.getTapahtumaAika().getHourOfDay() + ","
-                    + tapahtuma.getTapahtumaAika().getMinuteOfHour() + ","
-                    + tapahtuma.getTapahtumaAika().getSecondOfMinute() + "\n");
+            tallentaja.append(tapahtuma.getNimi() + ";");
+            tallentaja.append(tapahtuma.getTapahtumaAika().getYear() + ";"
+                    + tapahtuma.getTapahtumaAika().getMonthOfYear() + ";"
+                    + tapahtuma.getTapahtumaAika().getDayOfMonth() + ";"
+                    + tapahtuma.getTapahtumaAika().getHourOfDay() + ";"
+                    + tapahtuma.getTapahtumaAika().getMinuteOfHour() + ";"
+                    + tapahtuma.getTapahtumaAika().getSecondOfMinute() + ";");
             tallentaja.append(tapahtuma.getToistuvuus() + "\n");
             tallentaja.close();
         } catch (IOException e) {

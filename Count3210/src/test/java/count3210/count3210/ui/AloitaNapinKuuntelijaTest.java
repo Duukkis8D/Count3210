@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class AloitaNappulanKuuntelijaTest {
+public class AloitaNapinKuuntelijaTest {
     private JTextField paivays;
     private int[] tapahtumaAika;
     private JTextField nimi;
@@ -20,7 +20,7 @@ public class AloitaNappulanKuuntelijaTest {
     private UI ui;
     private MuokattavaTapahtumaruutu ruutu;
     
-    public AloitaNappulanKuuntelijaTest() {
+    public AloitaNapinKuuntelijaTest() {
     }
     
     @BeforeClass
@@ -47,23 +47,16 @@ public class AloitaNappulanKuuntelijaTest {
 
     @Test
     public void DateTimellaOnOikeaArvoVuorokausissa() {
-        AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
+        AloitaNapinKuuntelija kuuntelija = new AloitaNapinKuuntelija(nimi,
                 paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
         assertEquals(lahtolaskennanAika.getDayOfMonth(), 11);
-        
-        // tallentaja.append(tapahtuma.getTapahtuma().getYear() + ","
-//                            + tapahtuma.getTapahtuma().getMonthOfYear() + ","
-//                            + tapahtuma.getTapahtuma().getDayOfMonth() + ","
-//                            + tapahtuma.getTapahtuma().getHourOfDay() + ","
-//                            + tapahtuma.getTapahtuma().getMinuteOfHour() + ","
-//                            + tapahtuma.getTapahtuma().getSecondOfMinute() + "\n");
     }
     
     @Test
     public void DateTimellaOnOikeaArvoKuukausissa() {
-        AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
+        AloitaNapinKuuntelija kuuntelija = new AloitaNapinKuuntelija(nimi,
                 paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
@@ -72,7 +65,7 @@ public class AloitaNappulanKuuntelijaTest {
     
     @Test
     public void DateTimellaOnOikeaArvoVuosissa() {
-        AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
+        AloitaNapinKuuntelija kuuntelija = new AloitaNapinKuuntelija(nimi, 
                 paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
@@ -81,7 +74,7 @@ public class AloitaNappulanKuuntelijaTest {
     
     @Test
     public void DateTimellaOnOikeaArvoTunneissa() {
-        AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
+        AloitaNapinKuuntelija kuuntelija = new AloitaNapinKuuntelija(nimi, 
                 paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
@@ -90,7 +83,7 @@ public class AloitaNappulanKuuntelijaTest {
     
     @Test
     public void DateTimellaOnOikeaArvoMinuuteissa() {
-        AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
+        AloitaNapinKuuntelija kuuntelija = new AloitaNapinKuuntelija(nimi, 
                 paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         
@@ -99,7 +92,7 @@ public class AloitaNappulanKuuntelijaTest {
     
     @Test
     public void DateTimellaOnOikeaArvoSekunneissa() {
-        AloitaNappulanKuuntelija kuuntelija = new AloitaNappulanKuuntelija(nimi,
+        AloitaNapinKuuntelija kuuntelija = new AloitaNapinKuuntelija(nimi,
                 paivays, ui, ruutu);
         DateTime lahtolaskennanAika = kuuntelija.tapahtumaAikakentanLuku();
         

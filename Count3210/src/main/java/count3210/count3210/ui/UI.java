@@ -49,7 +49,7 @@ public class UI implements Runnable {
         JTextArea otsikko1 = new JTextArea("Tapahtumat");
         tapahtumapaneeli = luoTapahtumapaneeli();
         tapahtumapaneeli.add(otsikko1);
-        luoMuistissaOlevatLaskurit();
+//        luoMuistissaOlevatLaskurit();
         container.add(tapahtumapaneeli);
 
         JTextArea otsikko2 = new JTextArea("Toiminnot");
@@ -94,6 +94,17 @@ public class UI implements Runnable {
         // Luodaan lahtolaskentaruutu ja lisätään se tapahtumapaneeliin.
         
         // Lisätään ruutu tapahtumaruutujen järjestelijän listalle.
+        
+        for (Tapahtuma tapahtuma : tapahtumatiedot) {
+            Lahtolaskentaruutu ruutu = new Lahtolaskentaruutu();
+            ruutu.setTapahtuma(tapahtuma);
+            ruutu.setTapahtumanNimi();
+            
+            lisaaLahtolaskentaruutuTapahtumapaneeliin(ruutu);
+            jarjestelija.lisaaListaan(ruutu);
+            
+            paivitaLahtolaskentaruudunLahtolaskentaKentta(ruutu);
+        }
     }
 
     // Miten tämä ja poista-metodi voisi hyödyntää TapahtumapaneelinRuutu-interfacea? Olisi
