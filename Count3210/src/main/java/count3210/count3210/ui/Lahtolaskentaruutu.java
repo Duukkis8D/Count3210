@@ -145,6 +145,10 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      * vuorokaudet, tunnit, minuutit ja sekunnit.
      */
     public void paivitaLahtolaskentaKentta(Period ajanjakso) {
+        // Periodia pitäisi muuttaa niin, ettei viikkoja oteta huomioon, vaan
+        // ne muutetaan vuorokausiksi. Nyt vähän yli 9 päivän päästä tuleva
+        // tapahtuma näyttäytyy vuorokausikentässä 2 vrk. Viikkoja en tässä ole
+        // tulostanut vaan ainoastaan debuggausmielessä.
         lahtolaskentaKentta.setText(ajanjakso.getYears() + " v "
                 + ajanjakso.getMonths() + " kk "
                 + ajanjakso.getDays() + " vrk "

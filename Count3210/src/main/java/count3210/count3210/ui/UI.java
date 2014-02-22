@@ -49,7 +49,7 @@ public class UI implements Runnable {
         JTextArea otsikko1 = new JTextArea("Tapahtumat");
         tapahtumapaneeli = luoTapahtumapaneeli();
         tapahtumapaneeli.add(otsikko1);
-//        luoMuistissaOlevatLaskurit();
+        luoMuistissaOlevatLaskurit();
         container.add(tapahtumapaneeli);
 
         JTextArea otsikko2 = new JTextArea("Toiminnot");
@@ -84,26 +84,23 @@ public class UI implements Runnable {
         toimintopaneeli.add(poistaKaikki);
         toimintopaneeli.add(tuoTapahtumia);
     }
-    
+
     private void luoMuistissaOlevatLaskurit() {
-        // Tuodaan muistissa olevat tapahtumatiedot Tiedostonlukija-luokan
-        // ilmentymän avulla.
         Tiedostonlukija lukija = new Tiedostonlukija();
-        ArrayList<Tapahtuma> tapahtumatiedot = lukija.tuoLahtolaskentalaskurit();
+
+        if (lukija.onkoTiedostoa()) {
+            ArrayList<Tapahtuma> tapahtumatiedot = lukija.tuoLahtolaskentalaskurit();
         
-        // Luodaan lahtolaskentaruutu ja lisätään se tapahtumapaneeliin.
-        
-        // Lisätään ruutu tapahtumaruutujen järjestelijän listalle.
-        
-        for (Tapahtuma tapahtuma : tapahtumatiedot) {
-            Lahtolaskentaruutu ruutu = new Lahtolaskentaruutu();
-            ruutu.setTapahtuma(tapahtuma);
-            ruutu.setTapahtumanNimi();
-            
-            lisaaLahtolaskentaruutuTapahtumapaneeliin(ruutu);
-            jarjestelija.lisaaListaan(ruutu);
-            
-            paivitaLahtolaskentaruudunLahtolaskentaKentta(ruutu);
+            for (Tapahtuma tapahtuma : tapahtumatiedot) {
+                Lahtolaskentaruutu ruutu = new Lahtolaskentaruutu();
+                ruutu.setTapahtuma(tapahtuma);
+                ruutu.luoRuutu();
+
+                lisaaLahtolaskentaruutuTapahtumapaneeliin(ruutu);
+                jarjestelija.lisaaListaan(ruutu);
+
+                paivitaLahtolaskentaruudunLahtolaskentaKentta(ruutu);
+            }
         }
     }
 
@@ -136,7 +133,8 @@ public class UI implements Runnable {
 
     // Tälle metodille voisi tehdä testit.
     public void poistaKaikkiTapahtumapaneelinRuudut() {
-        ArrayList<TapahtumapaneelinRuutu> ruudut = jarjestelija.getTapahtumaruudut();
+        ArrayList<TapahtumapaneelinRuutu> ruudut = 
+                jarjestelija.getTapahtumaruudut();
 
         for (TapahtumapaneelinRuutu ruutu : ruudut) {
             // Tyyppimuunnos HaluttuTyyppi muuttuja = (HaluttuTyyppi) vanhaMuuttuja;
@@ -152,18 +150,19 @@ public class UI implements Runnable {
     }
 
     // Tälle metodille voisi tehdä testit.
-    public void paivitaLahtolaskentaruudunLahtolaskentaKentta
-        (Lahtolaskentaruutu lahtolaskentaruutu) {
-        Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);
+    public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu 
+            lahtolaskentaruutu) {
+        Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, 
+                this);
         lahtolaskentaruutu.setLahtolaskenta(lahtolaskenta);
-        
+
         int viive = 1000;
         Timer ajastin = new Timer(viive, lahtolaskenta);
         ajastin.setInitialDelay(0);
         lahtolaskenta.setAjastin(ajastin);
         ajastin.start();
     }
-    
+
     public void paivitaTapahtumapaneeli() {
         tapahtumapaneeli.updateUI();
     }

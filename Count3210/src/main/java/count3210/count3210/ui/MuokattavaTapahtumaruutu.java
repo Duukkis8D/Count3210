@@ -15,7 +15,8 @@ import javax.swing.JTextField;
  * hän voi luoda lähtölaskentapahtuman tai muokata jo olemassa olevaa
  * lähtölaskentatapahtumaa.
  */
-public class MuokattavaTapahtumaruutu extends JPanel implements TapahtumapaneelinRuutu {
+public class MuokattavaTapahtumaruutu extends JPanel implements 
+        TapahtumapaneelinRuutu {
     private Tapahtuma tapahtuma;
     private UI ui;
     
@@ -115,7 +116,8 @@ public class MuokattavaTapahtumaruutu extends JPanel implements Tapahtumapaneeli
     
     public void luoAloitaNappula(JTextField nimi, JTextField paivays) {
         JButton aloita = new JButton("aloita");
-        aloita.addActionListener(new AloitaNapinKuuntelija(nimi, paivays, ui, this));
+        aloita.addActionListener(new AloitaNapinKuuntelija(nimi, paivays, ui, 
+                this));
         GridBagConstraints aloitaNappulalle = new GridBagConstraints();
         aloitaNappulalle.gridx = 0;
         aloitaNappulalle.gridy = 3;

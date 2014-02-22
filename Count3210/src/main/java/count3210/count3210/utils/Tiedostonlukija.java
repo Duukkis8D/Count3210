@@ -18,7 +18,15 @@ public class Tiedostonlukija {
         try {
             lukija = new Scanner(laskurit);
         } catch (FileNotFoundException e) {
-            System.out.println("Tiedostoa ei löytynyt!");
+            System.out.println("Tiedostoa ei löytynyt! \n" + e.getMessage());
+        }
+    }
+    
+    public boolean onkoTiedostoa() {
+        if (laskurit.exists()) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -27,9 +35,6 @@ public class Tiedostonlukija {
         ArrayList<Tapahtuma> tapahtumatiedot = new ArrayList<Tapahtuma>();
 
         while (lukija.hasNextLine()) {
-            // Miten kulloisenkin rivin ensimmäisen merkin voi tallentaa
-            // StringBuilderilla, kun lukija.next() siirtää aina lukijan
-            // sormea seuraavaan merkkiin?
             String tallennettuRivi = new String(lukija.nextLine());
             String[] rivi = tallennettuRivi.split(";");
 

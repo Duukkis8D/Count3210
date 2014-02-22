@@ -26,12 +26,12 @@ public class Lahtolaskenta implements ActionListener {
     public void setAjastin(Timer ajastin) {
         this.ajastin = ajastin;
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-        System.out.println(aikayksikkoja);
+//        System.out.println(aikayksikkoja);
         if (aikayksikkoja == 0) {
             ajastin.stop();
         }
@@ -39,8 +39,14 @@ public class Lahtolaskenta implements ActionListener {
         Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
         DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
         DateTime aikaNyt = DateTime.now();
+//        System.out.println(tapahtumaAika + "\n" + aikaNyt + "\n");
 
         ajanjakso = new Period(aikaNyt, tapahtumaAika);
+        System.out.println(ajanjakso.getYears() + " v " + ajanjakso.getMonths()
+                + " kk " + ajanjakso.getWeeks() + " vkoa " + ajanjakso.getDays()
+                + " vrk " + ajanjakso.getHours() + " t " 
+                + ajanjakso.getMinutes() + " min " + ajanjakso.getSeconds()
+                + " sek");
         
         aikayksikkoja = ajanjakso.getValue(0) + ajanjakso.getValue(1) +
                 ajanjakso.getValue(2) + ajanjakso.getValue(3) +
