@@ -1,5 +1,8 @@
 package count3210.count3210.ui;
 
+import count3210.count3210.ui.listeners.TyhjennaTapahtumalistaKuuntelija;
+import count3210.count3210.ui.listeners.PoistaKaikkiKuuntelija;
+import count3210.count3210.ui.listeners.LisaaTapahtumaKuuntelija;
 import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
@@ -66,7 +69,7 @@ public class UI implements Runnable {
     }
 
     private JPanel luoToimintopaneeli() {
-        JPanel paneeli = new JPanel(new GridLayout(5, 1));
+        JPanel paneeli = new JPanel(new GridLayout(6, 1));
 
         return paneeli;
     }
@@ -75,18 +78,22 @@ public class UI implements Runnable {
         JButton lisaaTapahtuma = new JButton("lisää tapahtuma");
         lisaaTapahtuma.addActionListener(new LisaaTapahtumaKuuntelija(this));
         JButton jarjesta = new JButton("järjestä tapahtumat");
+        JButton tyhjenna = new JButton("tyhjennä tapahtumalista");
+        tyhjenna.addActionListener(new TyhjennaTapahtumalistaKuuntelija(this));
         JButton poistaKaikki = new JButton("poista kaikki tapahtumat");
         poistaKaikki.addActionListener(new PoistaKaikkiKuuntelija(this));
-        JButton tuoTapahtumia = new JButton("tuo tapahtumia Hotmail-kalenterista");
+        JButton tuoTapahtumia = new JButton(
+                "tuo tapahtumia Hotmail-kalenterista");
 
         toimintopaneeli.add(lisaaTapahtuma);
         toimintopaneeli.add(jarjesta);
+        toimintopaneeli.add(tyhjenna);
         toimintopaneeli.add(poistaKaikki);
         toimintopaneeli.add(tuoTapahtumia);
     }
 
     private void luoMuistissaOlevatLaskurit() {
-        Tiedostonlukija lukija = new Tiedostonlukija();
+        Tiedostonlukija lukija = new Tiedostonlukija("laskurit.data");
 
         if (lukija.onkoTiedostoa()) {
             ArrayList<Tapahtuma> tapahtumatiedot = lukija.tuoLahtolaskentalaskurit();

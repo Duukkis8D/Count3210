@@ -45,7 +45,8 @@ public class TiedostoontallentajaTest {
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
         tapahtuma.setTapahtumaAika(aika);
     
-        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja();
+        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja(
+                "testi.data");
         tallentaja.tallennaTiedostoon(tapahtuma);
     
         tiedosto = tallentaja.getTiedosto();
@@ -61,7 +62,8 @@ public class TiedostoontallentajaTest {
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
         tapahtuma.setTapahtumaAika(aika);
     
-        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja();
+        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja(
+                "testi.data");
         tallentaja.tallennaTiedostoon(tapahtuma);
     
         tiedosto = tallentaja.getTiedosto();

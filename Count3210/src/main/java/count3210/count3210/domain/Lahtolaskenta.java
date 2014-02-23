@@ -22,43 +22,47 @@ public class Lahtolaskenta implements ActionListener {
     public Period getAjanjakso() {
         return ajanjakso;
     }
-    
+
     public void setAjastin(Timer ajastin) {
         this.ajastin = ajastin;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
+
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
-//        System.out.println(aikayksikkoja);
         if (aikayksikkoja == 0) {
             ajastin.stop();
         }
+
+        ajanjaksonLuonti();
+        lahtolaskentaruudunPaivitys(aikayksikkoja);
         
+        ui.paivitaTapahtumapaneeli();
+    }
+
+    public void ajanjaksonLuonti() {
         Tapahtuma tapahtuma = lahtolaskentaruutu.getTapahtuma();
         DateTime tapahtumaAika = tapahtuma.getTapahtumaAika();
         DateTime aikaNyt = DateTime.now();
-//        System.out.println(tapahtumaAika + "\n" + aikaNyt + "\n");
 
         ajanjakso = new Period(aikaNyt, tapahtumaAika);
-        System.out.println(ajanjakso.getYears() + " v " + ajanjakso.getMonths()
-                + " kk " + ajanjakso.getWeeks() + " vkoa " + ajanjakso.getDays()
-                + " vrk " + ajanjakso.getHours() + " t " 
-                + ajanjakso.getMinutes() + " min " + ajanjakso.getSeconds()
-                + " sek");
-        
-        aikayksikkoja = ajanjakso.getValue(0) + ajanjakso.getValue(1) +
-                ajanjakso.getValue(2) + ajanjakso.getValue(3) +
-                ajanjakso.getValue(4) + ajanjakso.getValue(5) +
-                ajanjakso.getValue(6);
-        
+    }
+
+    public void lahtolaskentaruudunPaivitys(int aikayksikkoja) {
+        // aikayksikkoja-muuttuja saa arvokseen ajanjakso-olion seuraavien
+        // kenttien arvot: vuodet, kuukaudet, viikot, vuorokaudet, tunnit,
+        // minuutit ja sekunnit.
+        aikayksikkoja = ajanjakso.getValue(0) + ajanjakso.getValue(1)
+                + ajanjakso.getValue(2) + ajanjakso.getValue(3)
+                + ajanjakso.getValue(4) + ajanjakso.getValue(5)
+                + ajanjakso.getValue(6);
+
         lahtolaskentaruutu.setAikayksikkoja(aikayksikkoja);
 
         lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
-        ui.paivitaTapahtumapaneeli();
     }
-    
+
     public void pysaytaAjastin() {
         ajastin.stop();
     }

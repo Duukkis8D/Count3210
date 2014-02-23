@@ -3,6 +3,7 @@ package count3210.count3210.ui;
 
 import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
+import count3210.count3210.ui.listeners.LahtolaskentaruudunPoistaNapinKuuntelija;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -94,6 +95,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      */
     public void luoPoistaNappi() {
         JButton poista = new JButton("poista");
+        poista.addActionListener(new LahtolaskentaruudunPoistaNapinKuuntelija());
         GridBagConstraints poistaNapille = new GridBagConstraints();
         poistaNapille.gridx = 0;
         poistaNapille.gridy = 2;
@@ -145,12 +147,9 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      * vuorokaudet, tunnit, minuutit ja sekunnit.
      */
     public void paivitaLahtolaskentaKentta(Period ajanjakso) {
-        // Periodia pitäisi muuttaa niin, ettei viikkoja oteta huomioon, vaan
-        // ne muutetaan vuorokausiksi. Nyt vähän yli 9 päivän päästä tuleva
-        // tapahtuma näyttäytyy vuorokausikentässä 2 vrk. Viikkoja en tässä ole
-        // tulostanut vaan ainoastaan debuggausmielessä.
         lahtolaskentaKentta.setText(ajanjakso.getYears() + " v "
                 + ajanjakso.getMonths() + " kk "
+                + ajanjakso.getWeeks() + " vkoa "
                 + ajanjakso.getDays() + " vrk "
                 + ajanjakso.getHours() + " t "
                 + ajanjakso.getMinutes() + " min "

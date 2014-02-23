@@ -1,7 +1,7 @@
 
 package count3210.count3210.utils;
 
-import count3210.count3210.ui.AloitaNapinKuuntelija;
+import count3210.count3210.ui.listeners.AloitaNapinKuuntelija;
 import count3210.count3210.ui.TapahtumapaneelinRuutu;
 import java.util.ArrayList;
 

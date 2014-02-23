@@ -1,6 +1,9 @@
-package count3210.count3210.ui;
+package count3210.count3210.ui.listeners;
 
 import count3210.count3210.domain.Tapahtuma;
+import count3210.count3210.ui.Lahtolaskentaruutu;
+import count3210.count3210.ui.MuokattavaTapahtumaruutu;
+import count3210.count3210.ui.UI;
 import count3210.count3210.utils.TapahtumaAikakentanLukija;
 import count3210.count3210.utils.Tiedostoontallentaja;
 import java.awt.event.ActionEvent;
@@ -52,7 +55,8 @@ public class AloitaNapinKuuntelija implements ActionListener {
 
         ruutu.setTapahtuma(tapahtuma);
 
-        Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja();
+        Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja(
+                "laskurit.data");
         tiedostoontallentaja.tallennaTiedostoon(tapahtuma);
 
         ui.poistaMuokattavaTapahtumaruutuTapahtumapaneelista(ruutu);

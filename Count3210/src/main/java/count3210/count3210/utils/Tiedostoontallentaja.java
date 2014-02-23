@@ -13,8 +13,8 @@ public class Tiedostoontallentaja {
 
     private File laskurit;
 
-    public Tiedostoontallentaja() {
-        laskurit = new File("laskurit.data");
+    public Tiedostoontallentaja(String tiedostonNimi) {
+        laskurit = new File(tiedostonNimi);
     }
 
     public void tallennaTiedostoon(Tapahtuma tapahtuma) {

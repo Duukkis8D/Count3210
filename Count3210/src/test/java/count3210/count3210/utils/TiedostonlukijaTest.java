@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package count3210.count3210.utils;
 
-import java.io.File;
+import count3210.count3210.domain.Tapahtuma;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,11 +12,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author duukkis
- */
+
 public class TiedostonlukijaTest {
+    private Tiedostonlukija lukija;
     
     public TiedostonlukijaTest() {
     }
@@ -33,6 +29,7 @@ public class TiedostonlukijaTest {
     
     @Before
     public void setUp() {
+        lukija = new Tiedostonlukija("testi.data");
     }
     
     @After
@@ -41,8 +38,18 @@ public class TiedostonlukijaTest {
 
     @Test
     public void onkoTiedostoaPalauttaaTrue() {
-        Tiedostonlukija lukija = new Tiedostonlukija();
-        
         assertEquals(lukija.onkoTiedostoa(), true);
+    }
+    
+    // Testi heittää NullPointerException. Mistä johtuu?
+    @Test
+    public void onkoTiedostossaTapahtumia() throws IOException {
+        FileWriter kirjoittaja = new FileWriter("testi.data", true);
+        kirjoittaja.append("Tapahtuma;2055;4;12;20;50;30;toistuvuus?\n");
+        kirjoittaja.append("Tapahtuma 2;2056;3;11;12;45;50;toistuvuus?\n");
+        kirjoittaja.close();
+        
+        ArrayList<Tapahtuma> tapahtumat = lukija.tuoLahtolaskentalaskurit();
+        assertEquals(tapahtumat.size(), 2);
     }
 }
