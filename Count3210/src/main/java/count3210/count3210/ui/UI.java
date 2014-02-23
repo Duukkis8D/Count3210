@@ -131,6 +131,8 @@ public class UI implements Runnable {
 
     public void poistaLahtolaskentaruutuTapahtumapaneelista(Lahtolaskentaruutu lahtolaskentaruutu) {
         tapahtumapaneeli.remove(lahtolaskentaruutu);
+        // Täytä tyhjä kohta jäljellä olevalla lähtölaskentaruudulla.
+        
         tapahtumapaneeli.updateUI();
     }
 

@@ -9,3 +9,8 @@ sekunteina (kaikki jonossa).
 Kun laskuri näyttää nollaa, se hälyttää tapahtuman alkamisesta. Ohjelma pitää
 muistissa luotuja laskureita. Kun ohjelman käynnistää, tallennetut laskurit näkyvät
 ja niiden aika kulkee.
+
+Ehdotus:
+Optiona laskurin voi asettaa aloittamaan laskennan uudestaan nollautumisen jälkeen.
+Microsoftin kalenterista voi tuoda tapahtuman nimen ja ajan laskuriin, joka näyttää
+jäljellä olevan ajan tapahtuman alkuun.

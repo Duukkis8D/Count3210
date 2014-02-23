@@ -21,6 +21,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     private JTextArea lahtolaskentaKentta;
     private int aikayksikkoja;
     private Lahtolaskenta lahtolaskenta;
+    private UI ui;
     
     /** Konstruktori asettaa aikayksikkoja-muuttujan arvoksi 99, joka on
      satunnaisesti valittu luku. Luvun tulee olla yli nolla, jotta UI-luokan
@@ -90,12 +91,12 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     }
     
     /** Metodi luo poista-napin, jolla voi poistaa koko
-     * Lahtolaskentaruutu-luokan ilmentymän ohjelman muistista. Tällä
-     * hetkellä nappi ei kuitenkaan tee mitään.
+     * Lahtolaskentaruutu-luokan ilmentymän ohjelman muistista.
      */
     public void luoPoistaNappi() {
         JButton poista = new JButton("poista");
-        poista.addActionListener(new LahtolaskentaruudunPoistaNapinKuuntelija());
+        poista.addActionListener(new LahtolaskentaruudunPoistaNapinKuuntelija(
+                ui, this));
         GridBagConstraints poistaNapille = new GridBagConstraints();
         poistaNapille.gridx = 0;
         poistaNapille.gridy = 2;

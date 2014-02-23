@@ -40,6 +40,10 @@ public class Tiedostoontallentaja {
         laskurit.delete();
     }
     
+    public void poistaTapahtumaTiedostosta(Tapahtuma tapahtuma) {
+        
+    }
+    
     public File getTiedosto() {
         return laskurit;
     }

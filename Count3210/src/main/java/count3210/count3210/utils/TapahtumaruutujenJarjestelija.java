@@ -1,6 +1,7 @@
 
 package count3210.count3210.utils;
 
+import count3210.count3210.ui.Lahtolaskentaruutu;
 import count3210.count3210.ui.listeners.AloitaNapinKuuntelija;
 import count3210.count3210.ui.TapahtumapaneelinRuutu;
 import java.util.ArrayList;
@@ -34,6 +35,10 @@ public class TapahtumaruutujenJarjestelija {
     
     public void poistaKaikkiTapahtumat() {
         tapahtumaruudut.clear();
+    }
+    
+    public void poistaTapahtuma(Lahtolaskentaruutu lahtolaskentaruutu) {
+        tapahtumaruudut.remove(lahtolaskentaruutu);
     }
     
     public ArrayList<TapahtumapaneelinRuutu> getTapahtumaruudut() {

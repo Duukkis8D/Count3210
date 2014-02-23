@@ -18,7 +18,15 @@ public class PoistaKaikkiKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         ui.poistaKaikkiTapahtumapaneelinRuudut();
-
+        pysaytaKaikkiAjastimet();
+        
+        ui.getTapahtumaruutujenJarjestelija().poistaKaikkiTapahtumat();
+        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja(
+                "laskurit.data");
+        tallentaja.poistaTiedosto();
+    }
+    
+    public void pysaytaKaikkiAjastimet() {
         for (TapahtumapaneelinRuutu ruutu
                 : ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut()) {
             if (ruutu.getClass().getName().equals(
@@ -30,10 +38,5 @@ public class PoistaKaikkiKuuntelija implements ActionListener {
                 lahtolaskentaruutu.getLahtolaskenta().pysaytaAjastin();
             }
         }
-        ui.getTapahtumaruutujenJarjestelija().poistaKaikkiTapahtumat();
-        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja(
-                "laskurit.data");
-        tallentaja.poistaTiedosto();
     }
-
 }
