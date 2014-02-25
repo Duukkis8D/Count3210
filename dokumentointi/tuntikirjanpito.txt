@@ -122,8 +122,11 @@ Tapahtumankuuntelijoiden koodausta.
 GUI:n koodausta.
 Testien tekoa.
 
-23.2. x tuntia
-16:30-17:45
+23.2. 1 t 15 min
+Tiedoston lukemisen ja kirjoittamisen koodausta.
+
+24.2. 3 t
+Tiedoston lukemisen ja kirjoittamisen koodausta.
 
 Muista tehdä sekvenssikaavioita, päivittää luokkakaavio, uusia pit-raportti ja kirjoittaa javadocia metodeille!
 

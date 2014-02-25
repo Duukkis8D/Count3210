@@ -47,13 +47,7 @@ public class AloitaNapinKuuntelija implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-
-        DateTime tapahtumaAikaTallennettava = tapahtumaAikakentanLuku();
-
-        Tapahtuma tapahtuma = new Tapahtuma(nimi.getText());
-        tapahtuma.setTapahtumaAika(tapahtumaAikaTallennettava);
-
-        ruutu.setTapahtuma(tapahtuma);
+        Tapahtuma tapahtuma = lahtolaskentaruudunAjanAsettaminen();
 
         Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja(
                 "laskurit.data");
@@ -61,9 +55,8 @@ public class AloitaNapinKuuntelija implements ActionListener {
 
         ui.poistaMuokattavaTapahtumaruutuTapahtumapaneelista(ruutu);
         
-        Lahtolaskentaruutu lahtolaskentaruutu = new Lahtolaskentaruutu();
-        lahtolaskentaruutu.setTapahtuma(tapahtuma);
-        lahtolaskentaruutu.luoRuutu();
+        Lahtolaskentaruutu lahtolaskentaruutu = 
+                lahtolaskentaruudunLuonti(tapahtuma);
         ui.lisaaLahtolaskentaruutuTapahtumapaneeliin(lahtolaskentaruutu);
         
         ui.getTapahtumaruutujenJarjestelija().lisaaListaan(lahtolaskentaruutu);
@@ -72,6 +65,24 @@ public class AloitaNapinKuuntelija implements ActionListener {
         // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.
         
         ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
+    }
+    
+    public Tapahtuma lahtolaskentaruudunAjanAsettaminen() {
+        DateTime tapahtumaAikaTallennettava = tapahtumaAikakentanLuku();
+
+        Tapahtuma tapahtuma = new Tapahtuma(nimi.getText());
+        tapahtuma.setTapahtumaAika(tapahtumaAikaTallennettava);
+
+        ruutu.setTapahtuma(tapahtuma);
+        return tapahtuma;
+    }
+    
+    public Lahtolaskentaruutu lahtolaskentaruudunLuonti(Tapahtuma tapahtuma) {
+        Lahtolaskentaruutu lahtolaskentaruutu = new Lahtolaskentaruutu(ui);
+        lahtolaskentaruutu.setTapahtuma(tapahtuma);
+        lahtolaskentaruutu.luoRuutu();
+        
+        return lahtolaskentaruutu;
     }
     
     /** Metodi lukee käyttäjän syöttämän tekstin tapahtumaAikakentta-oliosta.

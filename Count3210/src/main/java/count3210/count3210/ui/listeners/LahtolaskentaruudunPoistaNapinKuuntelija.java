@@ -19,17 +19,13 @@ public class LahtolaskentaruudunPoistaNapinKuuntelija implements ActionListener 
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        // Poista tässä lähtölaskentaruutu näytöltä.
         ui.poistaLahtolaskentaruutuTapahtumapaneelista(lahtolaskentaruutu);
 
-        // Pysäytä sen lähtölaskenta.
         lahtolaskentaruutu.getLahtolaskenta().pysaytaAjastin();
-
-        // Poista lähtölaskentaruutu tapahtumaruutujen järjestelijän listalta.
+        
         ui.getTapahtumaruutujenJarjestelija().poistaTapahtuma(
                 lahtolaskentaruutu);
-
-        // Poista lähtölaskentaruudun tapahtuman tiedot tiedostosta.
+        
         Tiedostoontallentaja tallentaja = new Tiedostoontallentaja(
                 "laskurit.data");
         tallentaja.poistaTapahtumaTiedostosta(lahtolaskentaruutu.getTapahtuma());

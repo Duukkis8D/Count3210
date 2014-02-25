@@ -99,7 +99,7 @@ public class UI implements Runnable {
             ArrayList<Tapahtuma> tapahtumatiedot = lukija.tuoLahtolaskentalaskurit();
         
             for (Tapahtuma tapahtuma : tapahtumatiedot) {
-                Lahtolaskentaruutu ruutu = new Lahtolaskentaruutu();
+                Lahtolaskentaruutu ruutu = new Lahtolaskentaruutu(this);
                 ruutu.setTapahtuma(tapahtuma);
                 ruutu.luoRuutu();
 

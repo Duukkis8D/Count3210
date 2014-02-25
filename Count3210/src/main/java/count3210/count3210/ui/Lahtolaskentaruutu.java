@@ -27,7 +27,8 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      satunnaisesti valittu luku. Luvun tulee olla yli nolla, jotta UI-luokan
      (Timer) ajastin toimii.
      */
-    public Lahtolaskentaruutu() {
+    public Lahtolaskentaruutu(UI ui) {
+        this.ui = ui;
         this.aikayksikkoja = 99;
     }
     
