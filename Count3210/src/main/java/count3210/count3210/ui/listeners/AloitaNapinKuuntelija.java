@@ -2,7 +2,7 @@ package count3210.count3210.ui.listeners;
 
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.ui.Lahtolaskentaruutu;
-import count3210.count3210.ui.MuokattavaTapahtumaruutu;
+import count3210.count3210.ui.TapahtumaruudunRunko;
 import count3210.count3210.ui.UI;
 import count3210.count3210.utils.TapahtumaAikakentanLukija;
 import count3210.count3210.utils.Tiedostoontallentaja;
@@ -12,33 +12,32 @@ import javax.swing.JTextField;
 import org.joda.time.DateTime;
 
 /** Luokka huolehtii tapahtumista, jotka alkavat käyttäjän painaessa aloita-nappia.
- * MuokattavaTapahtumaruutu-luokan ilmentymä poistetaan tapahtumapaneelista, johon
+ * TapahtumaruudunRunko-luokan ilmentymä poistetaan tapahtumapaneelista, johon
  * lisätään sitten Lahtolaskentaruutu-luokan ilmentymä. Lahtolaskentaruutu-luokan
- * ilmentymällä on samat lähtölaskentaan liittyvät ominaisuudet kuin
- * MuokattavaTapahtumaruutu-luokan ilmentymällä.
+ * ilmentymlä on samat lähtölaskentaan liittyvät ominaisuudet kuin
+ * TapahtumaruudunRunko-luokan ilmentymällä.
  */
 public class AloitaNapinKuuntelija implements ActionListener {
 
     private JTextField nimi;
     private JTextField paivays;
-    private MuokattavaTapahtumaruutu ruutu;
+    private TapahtumaruudunRunko runko;
     private UI ui;
 
     /** Konstruktorissa annetaan parametrina UI-luokan ilmentymä,
-     * MuokattavaTapahtumaruutu-luokan ilmentymä ja sen ominaisuuksia, joita
-     * tässä luokassa tarvitaan.
-     * 
-     * @param nimi MuokattavaTapahtumaruutu-luokan ilmentymän tapahtuman nimi.
-     * @param paivays MuokattavaTapahtumaruutu-luokan ilmentymän
-     * päiväys-tekstikenttä.
-     * @param ruutu MuokattavaTapahtumaruutu-luokan ilmentymä.
+     * TapahtumaruudunRunko-luokan ilmentymä ja sen ominaisuuksia, joita tässä
+     * luokassa tarvitaan.
+  
+     * @param nimi TapahtumaruudunRunko-luokan ilmentymän tapahtuman nimi.
+     * @param paivays TapahtumaruudunRunko-luokan ilmentymän päiväystekstikenttä.
+     * @param runko TapahtumaruudunRunko-luokan ilmentymä.
      * @param ui UI-luokan ilmentymä, joka tuottaa graafisen käyttöliittymän.
      */
     public AloitaNapinKuuntelija(JTextField nimi, JTextField paivays, UI ui,
-            MuokattavaTapahtumaruutu ruutu) {
+            TapahtumaruudunRunko runko) {
         this.nimi = nimi;
         this.paivays = paivays;
-        this.ruutu = ruutu;
+        this.runko = runko;
         this.ui = ui;
     }
 
@@ -53,7 +52,7 @@ public class AloitaNapinKuuntelija implements ActionListener {
                 "laskurit.data");
         tiedostoontallentaja.tallennaTiedostoon(tapahtuma);
 
-        ui.poistaMuokattavaTapahtumaruutuTapahtumapaneelista(ruutu);
+        ui.poistaTapahtumaruudunRunkoTapahtumapaneelista(runko);
         
         Lahtolaskentaruutu lahtolaskentaruutu = 
                 lahtolaskentaruudunLuonti(tapahtuma);
@@ -73,7 +72,7 @@ public class AloitaNapinKuuntelija implements ActionListener {
         Tapahtuma tapahtuma = new Tapahtuma(nimi.getText());
         tapahtuma.setTapahtumaAika(tapahtumaAikaTallennettava);
 
-        ruutu.setTapahtuma(tapahtuma);
+        runko.setTapahtuma(tapahtuma);
         return tapahtuma;
     }
     

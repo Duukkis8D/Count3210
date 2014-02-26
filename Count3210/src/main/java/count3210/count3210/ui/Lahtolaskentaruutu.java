@@ -4,12 +4,14 @@ package count3210.count3210.ui;
 import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.ui.listeners.LahtolaskentaruudunPoistaNapinKuuntelija;
+import count3210.count3210.ui.listeners.MuokkaaNapinKuuntelija;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import org.joda.time.DateTime;
 import org.joda.time.Period;
 
 /** Luokan tehtävä on näyttää käyttäjälle hänen luomansa lähtölaskentatapahtuman
@@ -110,6 +112,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      */
     public void luoMuokkaaNappi() {
         JButton muokkaa = new JButton("muokkaa");
+        muokkaa.addActionListener(new MuokkaaNapinKuuntelija(ui, this));
         GridBagConstraints muokkaaNapille = new GridBagConstraints();
         muokkaaNapille.gridx = 1;
         muokkaaNapille.gridy = 2;
@@ -188,5 +191,28 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     
     public Lahtolaskenta getLahtolaskenta() {
         return lahtolaskenta;
+    }
+    
+    @Override
+    public boolean equals(Object olio) {
+        if (olio == null) return false;
+        if (getClass() != olio.getClass()) return false;
+        
+        Lahtolaskentaruutu verrattava = (Lahtolaskentaruutu) olio;
+        
+        if (this.getTapahtuma().getNimi().equals(verrattava.getTapahtuma().getNimi())) {
+            DateTime ruudunAika = this.getTapahtuma().getTapahtumaAika();
+            DateTime verrattavanRuudunAika = verrattava.getTapahtuma().getTapahtumaAika();
+            
+            if (ruudunAika.getYear() == verrattavanRuudunAika.getYear()
+                    && ruudunAika.getMonthOfYear() == verrattavanRuudunAika.getMonthOfYear()
+                    && ruudunAika.getDayOfMonth() == verrattavanRuudunAika.getDayOfMonth()
+                    && ruudunAika.getHourOfDay() == verrattavanRuudunAika.getHourOfDay()
+                    && ruudunAika.getMinuteOfHour() == verrattavanRuudunAika.getMinuteOfHour()
+                    && ruudunAika.getSecondOfMinute() == verrattavanRuudunAika.getSecondOfMinute()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

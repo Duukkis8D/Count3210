@@ -128,5 +128,9 @@ Tiedoston lukemisen ja kirjoittamisen koodausta.
 24.2. 3 t
 Tiedoston lukemisen ja kirjoittamisen koodausta.
 
+25.2. 3 t 45 min
+Tapahtumankuuntelijoiden koodausta.
+Javadocin kirjoittamista.
+
 Muista tehdä sekvenssikaavioita, päivittää luokkakaavio, uusia pit-raportti ja kirjoittaa javadocia metodeille!
 

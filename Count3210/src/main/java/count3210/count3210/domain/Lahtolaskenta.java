@@ -30,7 +30,8 @@ public class Lahtolaskenta implements ActionListener {
     }
 
     /** Metodi huolehtii tapahtumaketjusta, joka alkaa lähtölaskennan
-     käynnistyessä.
+     * käynnistyessä. Kun aikayksikkoja-muuttujan arvo on nolla,
+     * lähtölaskentaruudun ajastin pysäytetään.
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -58,11 +59,11 @@ public class Lahtolaskenta implements ActionListener {
     }
 
     /** Metodi päivittää lähtölaskentaruudun tapahtumaan jäljellä olevan ajan
-     * näyttävän tekstikentän.
-     * aikayksikkoja-muuttuja saa arvokseen ajanjakso-olion seuraavien
-     kenttien arvot: vuodet, kuukaudet, viikot, vuorokaudet, tunnit,
-     minuutit ja sekunnit.
-     @param aikayksikkoja
+     * näyttävän tekstikentän. aikayksikkoja-muuttuja saa arvokseen
+     * ajanjakso-olion seuraavien kenttien arvot: vuodet, kuukaudet, viikot,
+     * vuorokaudet, tunnit, minuutit ja sekunnit.
+     @param aikayksikkoja Muuttujan arvo määrää, milloin lähtölaskentaruudun
+     * aikaa ei enää päivitetä.
      */
     public void lahtolaskentaruudunPaivitys(int aikayksikkoja) {
         aikayksikkoja = ajanjakso.getValue(0) + ajanjakso.getValue(1)
@@ -75,6 +76,8 @@ public class Lahtolaskenta implements ActionListener {
         lahtolaskentaruutu.paivitaLahtolaskentaKentta(ajanjakso);
     }
 
+    /** Metodi pysäyttää lähtölaskentaruudun ajastimen.
+     */
     public void pysaytaAjastin() {
         ajastin.stop();
     }

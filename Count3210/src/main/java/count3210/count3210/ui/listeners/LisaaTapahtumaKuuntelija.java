@@ -1,6 +1,6 @@
 
 package count3210.count3210.ui.listeners;
-import count3210.count3210.ui.MuokattavaTapahtumaruutu;
+import count3210.count3210.ui.TapahtumaruudunRunko;
 import count3210.count3210.ui.UI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,17 +15,17 @@ public class LisaaTapahtumaKuuntelija implements ActionListener {
         this.ui = ui;
     }
     
-    /** Metodi luo MuokattavaTapahtumaruutu-luokan ilmentymän ja tekee muutkin
-     * toimeenpiteet, joilla tapahtumaruutu saadaan ruudulle näkyviin.
-     */
+    /** Metodi luo TapahtumaruudunRunko-luokan ilmentymän ja tekee muutkin
+    toimeenpiteet, joilla tapahtumaruutu saadaan ruudulle näkyviin.
+    */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        MuokattavaTapahtumaruutu ruutu = new MuokattavaTapahtumaruutu(ui);
-        ruutu.luoRuutu();
+        TapahtumaruudunRunko runko = new TapahtumaruudunRunko(ui);
+        runko.luoRuutu();
         
-        ui.getTapahtumaruutujenJarjestelija().lisaaListaan(ruutu);
+        ui.getTapahtumaruutujenJarjestelija().lisaaListaan(runko);
         
-        ui.lisaaMuokattavaTapahtumaruutuTapahtumapaneeliin(ruutu);
+        ui.lisaaTapahtumaruudunRunkoTapahtumapaneeliin(runko);
     }
     
 }
