@@ -1,28 +1,43 @@
 
+/*
 package count3210.count3210.ui;
 
 import count3210.count3210.domain.Tapahtuma;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import org.joda.time.DateTime;
 
-public class MuokattavaTapahtumaruutu extends TapahtumaruudunRunko
-        implements TapahtumapaneelinRuutu {
+public class MuokattavaTapahtumaruutu extends JPanel implements TapahtumapaneelinRuutu {
     private JTextField nimi;
     private JTextField paivays;
     private Tapahtuma tapahtuma;
+    private UI ui;
     
     public MuokattavaTapahtumaruutu(UI ui) {
-        super(ui);
+        this.ui = ui;
     }
     
-    // Luokan tarkoituksena on esittää muokattavaa tapahtumaruutua. Ainut ero on
-    // se, että aloita-nappi on korvattu tallenna-napilla.
+    @Override
+    public void luoRuutu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void luoRuudunUlkonako() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void luoRuudunSisalto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    // Aloita-nappi korvataan tallenna-napilla.
     
     // Jostain syystä tämän luokan metodit sekoittivat ohjelman.
     
-    @Override
     public JTextField luoMuokattavaTapahtumanNimiKentta() {
         nimi = new JTextField(tapahtuma.getNimi());
         GridBagConstraints nimelle = muokattavanTapahtumanNimiKentanUlkoasu(nimi);
@@ -41,7 +56,6 @@ public class MuokattavaTapahtumaruutu extends TapahtumaruudunRunko
         return nimelle;
     }
     
-    @Override
     public JTextField luoAjankohtaKentta() {
         DateTime asetettavaTapahtumaAika = tapahtuma.getTapahtumaAika();
         String asetettavaPaivaysteksti = 
@@ -68,4 +82,10 @@ public class MuokattavaTapahtumaruutu extends TapahtumaruudunRunko
         
         return paivaykselle;
     }
+    
+    public void setTapahtuma(Tapahtuma tapahtuma) {
+        this.tapahtuma = tapahtuma;
+    }
+    
 }
+*/

@@ -2,7 +2,6 @@
 package count3210.count3210.ui;
 
 import count3210.count3210.ui.listeners.AloitaNapinKuuntelija;
-import count3210.count3210.domain.Tapahtuma;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,25 +12,26 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /** Luokan tehtävä on näyttää käyttäjälle graafiset komponentit, joiden avulla
- * hän voi luoda lähtölaskentapahtuman tai muokata jo olemassa olevaa
+ * hän voi luoda lähtölaskentatapahtuman tai muokata jo olemassa olevaa
  * lähtölaskentatapahtumaa.
  */
 public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuutu {
-    private Tapahtuma tapahtuma;
     private UI ui;
     
     public TapahtumaruudunRunko(UI ui) {
         this.ui = ui;
     }
     
+    @Override
     public void luoRuutu() {
-        // Tähän koodia muokattavasta tapahtumaRuudusta, joka näkyy käyttäjälle
+        // Tähänkö koodia muokattavasta tapahtumaRuudusta, joka näkyy käyttäjälle
         // heti lisää tapahtuma -nappulasta painamisen jälkeen ja myös
-        // tapahtuman muokkaa-nappulasta painaessa.
+        // tapahtuman muokkaa-nappulasta painaessa?
         luoRuudunUlkonako();
         luoRuudunSisalto();
     }
     
+    @Override
     public void luoRuudunUlkonako() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
@@ -39,6 +39,7 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         this.setForeground(Color.WHITE);
     }
     
+    @Override
     public void luoRuudunSisalto() {
         luoTapahtumanSelitekentta();
         JTextField nimi = luoMuokattavaTapahtumanNimiKentta();
@@ -123,14 +124,6 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         aloitaNappulalle.gridy = 3;
         aloitaNappulalle.gridwidth = 2;
         this.add(aloita, aloitaNappulalle);
-    }
-    
-    public void setTapahtuma(Tapahtuma tapahtuma) {
-        this.tapahtuma = tapahtuma;
-    }
-    
-    public Tapahtuma getTapahtuma() {
-        return tapahtuma;
     }
     
     @Override

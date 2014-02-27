@@ -3,6 +3,7 @@ package count3210.count3210.ui.listeners;
 import count3210.count3210.ui.TapahtumapaneelinRuutu;
 import count3210.count3210.ui.TapahtumaruudunRunko;
 import count3210.count3210.ui.UI;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -27,19 +28,15 @@ public class LisaaTapahtumaKuuntelija implements ActionListener {
         
         ui.getTapahtumaruutujenJarjestelija().lisaaListaan(runko);
         
+        ui.lisaaTapahtumaruudunRunkoTapahtumapaneeliin(runko);
+        
         // Testausta -->
-        ArrayList<TapahtumapaneelinRuutu> ruudut = 
-                ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut();
-        for (TapahtumapaneelinRuutu ruutu : ruudut) {
-            if (ruutu.toString().equals(runko)) {
-                System.out.println("Tämä on oikea listalla oleva TapahtumaruudunRunko-luokan ilmentymä.");
-                continue;
-            }
+        Component[] ruudut = ui.getTapahtumapaneeli().getComponents();
+        for (Component ruutu : ruudut) {
             System.out.println(ruutu.getClass().getName());
         }
+        System.out.println();
         // <--
-        
-        ui.lisaaTapahtumaruudunRunkoTapahtumapaneeliin(runko);
     }
     
 }

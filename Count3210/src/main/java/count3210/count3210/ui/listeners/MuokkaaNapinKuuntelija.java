@@ -1,3 +1,4 @@
+/*
 package count3210.count3210.ui.listeners;
 
 import count3210.count3210.ui.Lahtolaskentaruutu;
@@ -20,22 +21,6 @@ public class MuokkaaNapinKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-//        Lahtolaskentaruutu etsittavaRuutu;
-//        
-//        for (TapahtumapaneelinRuutu ruutu
-//                : ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut()) {
-//            if (ruutu.getClass().getName().equals(
-//                    "count3210.count3210.ui.Lahtolaskentaruutu")) {
-//                // Tyyppimuunnos HaluttuTyyppi muuttuja = 
-//                // (HaluttuTyyppi) vanhaMuuttuja;
-//                etsittavaRuutu = (Lahtolaskentaruutu) ruutu;
-//                if (etsittavaRuutu.equals(lahtolaskentaruutu)) {
-//                    break;
-//                }
-//            }
-//        }
-        
         // Etsi TapahtumaruutujenJarjestelijan listalta oikea Lahtolaskentaruutu
         // ja poista se.
         
@@ -72,3 +57,4 @@ public class MuokkaaNapinKuuntelija implements ActionListener {
         // kuuntelija.
     }
 }
+*/

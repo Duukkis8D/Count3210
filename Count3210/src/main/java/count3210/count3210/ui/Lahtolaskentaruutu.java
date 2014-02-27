@@ -4,7 +4,7 @@ package count3210.count3210.ui;
 import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.ui.listeners.LahtolaskentaruudunPoistaNapinKuuntelija;
-import count3210.count3210.ui.listeners.MuokkaaNapinKuuntelija;
+//import count3210.count3210.ui.listeners.MuokkaaNapinKuuntelija;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -112,7 +112,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      */
     public void luoMuokkaaNappi() {
         JButton muokkaa = new JButton("muokkaa");
-        muokkaa.addActionListener(new MuokkaaNapinKuuntelija(ui, this));
+//        muokkaa.addActionListener(new MuokkaaNapinKuuntelija(ui, this));
         GridBagConstraints muokkaaNapille = new GridBagConstraints();
         muokkaaNapille.gridx = 1;
         muokkaaNapille.gridy = 2;

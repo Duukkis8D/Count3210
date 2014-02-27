@@ -6,6 +6,7 @@ import count3210.count3210.ui.TapahtumaruudunRunko;
 import count3210.count3210.ui.UI;
 import count3210.count3210.utils.TapahtumaAikakentanLukija;
 import count3210.count3210.utils.Tiedostoontallentaja;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
@@ -53,10 +54,8 @@ public class AloitaNapinKuuntelija implements ActionListener {
                 "laskurit.data");
         tiedostoontallentaja.tallennaTiedostoon(tapahtuma);
         
-        // Jostain syystä tapahtumaruudun runko ei poistu tapahtumapaneelista.
-        
-        // Ainakaan tapahtumaruudun rungolle ei tarvitsisi asettaa tapahtumaa,
-        // vaan se tulisi asettaa vaan lähtölaskentaruudulle.
+        // Jostain syystä tapahtumaruudun runko ei poistu tapahtumapaneelista. 
+       
         ui.poistaTapahtumaruudunRunkoTapahtumapaneelista(runko);
         
         Lahtolaskentaruutu lahtolaskentaruutu = 
@@ -64,7 +63,18 @@ public class AloitaNapinKuuntelija implements ActionListener {
         
         ui.lisaaLahtolaskentaruutuTapahtumapaneeliin(lahtolaskentaruutu);
         
+        // Debuggausta -->
+        Component[] tapahtumapaneelinRuudut = ui.getTapahtumapaneeli().getComponents();
+        for (Component ruutu : tapahtumapaneelinRuudut) {
+            System.out.println(ruutu.getClass().getName());
+        }
+        System.out.println();
+        // <--
+        
         ui.getTapahtumaruutujenJarjestelija().lisaaListaan(lahtolaskentaruutu);
+        // Pitäisikö TapahtumaruudunRunko-luokan ilmentymä poistaa tässä
+        // järjestelijän listalta?
+        
         // Nyt kun lahtolaskentaruutu on lisätty listaan, voidaan lista järjestää
         // haluttuun järjestykseen, poistaa tapahtumapaneelista kaikki
         // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.

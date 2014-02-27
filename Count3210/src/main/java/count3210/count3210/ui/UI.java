@@ -7,6 +7,7 @@ import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
 import count3210.count3210.utils.Tiedostonlukija;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -123,6 +124,20 @@ public class UI implements Runnable {
 
     public void poistaTapahtumaruudunRunkoTapahtumapaneelista(TapahtumaruudunRunko runko) {
         tapahtumapaneeli.remove(runko);
+        
+        // Debuggausta -->
+//        for (Component komponentti : tapahtumapaneeli.getComponents()) {
+//            if (komponentti.getClass().getName().contains("TapahtumaruudunRunko")) {
+//                TapahtumaruudunRunko verrattavaRuutu = (TapahtumaruudunRunko) komponentti;
+//                if (verrattavaRuutu.equals(runko)) {    // Tee equals-metodi
+//                                                        // TapahtumaruudunRunko-luokalle tai
+//                                                        // jokin muu erottelutapa.
+//                    System.out.println("Ruudun poistaminen ei onnistunut.");
+//                }
+//            }
+//        }
+        // <--
+        
         tapahtumapaneeli.updateUI();
     }
 
@@ -188,5 +203,10 @@ public class UI implements Runnable {
 
     public void paivitaTapahtumapaneeli() {
         tapahtumapaneeli.updateUI();
+    }
+    
+    public JPanel getTapahtumapaneeli() {
+        // Tämä metodi on vain debuggausta varten.
+        return tapahtumapaneeli;
     }
 }

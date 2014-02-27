@@ -136,5 +136,10 @@ Javadocin kirjoittamista.
 Tapahtumankuuntelijoiden koodausta.
 Ohjelman ajoa yliopistolla.
 
+27.2. 6 t
+Tapahtumankuuntelijoiden koodausta.
+GUI:n koodausta.
+
+Lähetä sähköpostia koodausongelmasta.
 Muista tehdä sekvenssikaavioita, päivittää luokkakaavio, uusia pit-raportti ja kirjoittaa javadocia metodeille!
 
