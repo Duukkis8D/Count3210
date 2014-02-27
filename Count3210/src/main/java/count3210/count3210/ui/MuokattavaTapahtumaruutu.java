@@ -1,7 +1,8 @@
 
 package count3210.count3210.ui;
 
-public class MuokattavaTapahtumaruutu extends TapahtumaruudunRunko {
+public class MuokattavaTapahtumaruutu extends TapahtumaruudunRunko
+        implements TapahtumapaneelinRuutu {
 
     public MuokattavaTapahtumaruutu(UI ui) {
         super(ui);

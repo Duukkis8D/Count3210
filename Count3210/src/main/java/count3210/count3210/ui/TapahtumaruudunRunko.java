@@ -16,8 +16,7 @@ import javax.swing.JTextField;
  * hän voi luoda lähtölaskentapahtuman tai muokata jo olemassa olevaa
  * lähtölaskentatapahtumaa.
  */
-public class TapahtumaruudunRunko extends JPanel implements 
-        TapahtumapaneelinRuutu {
+public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuutu {
     private Tapahtuma tapahtuma;
     private UI ui;
     
@@ -132,5 +131,10 @@ public class TapahtumaruudunRunko extends JPanel implements
     
     public Tapahtuma getTapahtuma() {
         return tapahtuma;
+    }
+    
+    @Override
+    public boolean equals(Object olio) {
+        return false;
     }
 }

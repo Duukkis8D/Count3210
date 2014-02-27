@@ -1,10 +1,12 @@
 package count3210.count3210.ui.listeners;
 
 import count3210.count3210.ui.Lahtolaskentaruutu;
+import count3210.count3210.ui.MuokattavaTapahtumaruutu;
 import count3210.count3210.ui.TapahtumapaneelinRuutu;
 import count3210.count3210.ui.UI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 public class MuokkaaNapinKuuntelija implements ActionListener {
 
@@ -18,33 +20,54 @@ public class MuokkaaNapinKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        // Etsi TapahtumaruutujenJarjestelijan listalta oikea Lahtolaskentaruutu.
-        Lahtolaskentaruutu etsittavaRuutu;
         
-        for (TapahtumapaneelinRuutu ruutu
-                : ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut()) {
-            if (ruutu.getClass().getName().equals(
-                    "count3210.count3210.ui.Lahtolaskentaruutu")) {
-                // Tyyppimuunnos HaluttuTyyppi muuttuja = 
-                // (HaluttuTyyppi) vanhaMuuttuja;
-                etsittavaRuutu = (Lahtolaskentaruutu) ruutu;
-                if (etsittavaRuutu.equals(lahtolaskentaruutu)) {
-                    break;
-                }
+//        Lahtolaskentaruutu etsittavaRuutu;
+//        
+//        for (TapahtumapaneelinRuutu ruutu
+//                : ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut()) {
+//            if (ruutu.getClass().getName().equals(
+//                    "count3210.count3210.ui.Lahtolaskentaruutu")) {
+//                // Tyyppimuunnos HaluttuTyyppi muuttuja = 
+//                // (HaluttuTyyppi) vanhaMuuttuja;
+//                etsittavaRuutu = (Lahtolaskentaruutu) ruutu;
+//                if (etsittavaRuutu.equals(lahtolaskentaruutu)) {
+//                    break;
+//                }
+//            }
+//        }
+        
+        // Etsi TapahtumaruutujenJarjestelijan listalta oikea Lahtolaskentaruutu
+        // ja poista se.
+        
+        Iterator<TapahtumapaneelinRuutu> iteraattori 
+                = ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut().iterator();
+        
+        int lahtolaskentaruudunIndeksi = 0;
+        
+        while (iteraattori.hasNext()) {
+            TapahtumapaneelinRuutu ruutu = iteraattori.next();
+            
+            if (ruutu.equals(lahtolaskentaruutu)) {
+                lahtolaskentaruudunIndeksi = ui.getLahtolaskentaruudunIndeksi(lahtolaskentaruutu);
+                // Kun tapahtumapaneelista poistetaan jotain ja lisätään jotain tilalle,
+                // säilyvätkö paneelin sisältämien komponenttien indeksinumerot samoina?
+                ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut().remove(ruutu);
             }
         }
         
-        // Sitten pitäisi poistaa oikea lähtölaskentaruutu listalta ja luoda
-        // tilalle listan järjestystä muuttamatta uusi lähtölaskentaruutu.
-        
-//        TapahtumapaneelinRuutu poistettavaRuutu = (TapahtumapaneelinRuutu) etsittavaRuutu;
-//        ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut().remove(poistettavaRuutu);
-        
-        // Kopioi lähtölaskentaruudun tiedot muokattavalle ruudulle.
-        
-        // Luo TapahtumaruudunRunko Lahtolaskentaruudun tilalle tapahtumapaneeliin.
-
+        // Luodaan tapahtumapaneeliin uusi MuokattavaTapahtumaruutu
+        // lähtölaskentaruudun tilalle.
+        // Käytetään hyväksi tiedostoa, jossa on tapahtumat lisäysjärjestyksessä.
         
         ui.poistaLahtolaskentaruutuTapahtumapaneelista(lahtolaskentaruutu);
+        
+        MuokattavaTapahtumaruutu muokattavaTapahtumaruutu = new MuokattavaTapahtumaruutu(ui);
+        muokattavaTapahtumaruutu.luoRuutu();
+        // Kopioi lähtölaskentaruudun tiedot muokattavalle ruudulle.
+        ui.lisaaMuokattavaTapahtumaruutuTapahtumapaneeliin(
+                muokattavaTapahtumaruutu, lahtolaskentaruudunIndeksi);
+        
+        // Muokattavan tapahtumaruudun tallenna-napille täytyy tehdä tapahtuman-
+        // kuuntelija.
     }
 }

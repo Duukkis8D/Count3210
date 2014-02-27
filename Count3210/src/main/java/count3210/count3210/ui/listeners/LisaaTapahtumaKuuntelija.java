@@ -23,8 +23,6 @@ public class LisaaTapahtumaKuuntelija implements ActionListener {
         TapahtumaruudunRunko runko = new TapahtumaruudunRunko(ui);
         runko.luoRuutu();
         
-        ui.getTapahtumaruutujenJarjestelija().lisaaListaan(runko);
-        
         ui.lisaaTapahtumaruudunRunkoTapahtumapaneeliin(runko);
     }
     

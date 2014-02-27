@@ -133,6 +133,21 @@ public class UI implements Runnable {
         tapahtumapaneeli.remove(lahtolaskentaruutu);
         tapahtumapaneeli.updateUI();
     }
+    
+    public void lisaaMuokattavaTapahtumaruutuTapahtumapaneeliin(
+            MuokattavaTapahtumaruutu ruutu, int indeksi) {
+        tapahtumapaneeli.add(ruutu, indeksi);
+        
+        // setComponentZOrder(Component comp, int index)
+        //Moves the specified component to the specified z-order index in the container.
+    }
+    
+    public int getLahtolaskentaruudunIndeksi(Lahtolaskentaruutu ruutu) {
+//        getComponentZOrder(Component comp)
+//Returns the z-order index of the component inside the container.
+
+        return tapahtumapaneeli.getComponentZOrder(ruutu);
+    }
 
     public JFrame getFrame() {
         return frame;
