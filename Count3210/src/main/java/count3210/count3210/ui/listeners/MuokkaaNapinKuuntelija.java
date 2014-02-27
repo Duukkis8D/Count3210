@@ -62,8 +62,9 @@ public class MuokkaaNapinKuuntelija implements ActionListener {
         ui.poistaLahtolaskentaruutuTapahtumapaneelista(lahtolaskentaruutu);
         
         MuokattavaTapahtumaruutu muokattavaTapahtumaruutu = new MuokattavaTapahtumaruutu(ui);
+        muokattavaTapahtumaruutu.setTapahtuma(lahtolaskentaruutu.getTapahtuma());
         muokattavaTapahtumaruutu.luoRuutu();
-        // Kopioi lähtölaskentaruudun tiedot muokattavalle ruudulle.
+        
         ui.lisaaMuokattavaTapahtumaruutuTapahtumapaneeliin(
                 muokattavaTapahtumaruutu, lahtolaskentaruudunIndeksi);
         
