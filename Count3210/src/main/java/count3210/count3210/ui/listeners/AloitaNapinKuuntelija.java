@@ -46,16 +46,22 @@ public class AloitaNapinKuuntelija implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Tapahtuma tapahtuma = lahtolaskentaruudunAjanAsettaminen();
+        Tapahtuma tapahtuma = luoLahtolaskentaruudunTapahtuma();
 
+        // Tämän voisi refaktoroida metodiin tallennaTapahtumaTiedostoon(tapahtuma).
         Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja(
                 "laskurit.data");
         tiedostoontallentaja.tallennaTiedostoon(tapahtuma);
-
+        
+        // Jostain syystä tapahtumaruudun runko ei poistu tapahtumapaneelista.
+        
+        // Ainakaan tapahtumaruudun rungolle ei tarvitsisi asettaa tapahtumaa,
+        // vaan se tulisi asettaa vaan lähtölaskentaruudulle.
         ui.poistaTapahtumaruudunRunkoTapahtumapaneelista(runko);
         
         Lahtolaskentaruutu lahtolaskentaruutu = 
-                lahtolaskentaruudunLuonti(tapahtuma);
+                lahtolaskentaruudunTapahtumanAsettaminen(tapahtuma);
+        
         ui.lisaaLahtolaskentaruutuTapahtumapaneeliin(lahtolaskentaruutu);
         
         ui.getTapahtumaruutujenJarjestelija().lisaaListaan(lahtolaskentaruutu);
@@ -66,17 +72,16 @@ public class AloitaNapinKuuntelija implements ActionListener {
         ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
     }
     
-    public Tapahtuma lahtolaskentaruudunAjanAsettaminen() {
+    public Tapahtuma luoLahtolaskentaruudunTapahtuma() {
         DateTime tapahtumaAikaTallennettava = tapahtumaAikakentanLuku();
-
+        
         Tapahtuma tapahtuma = new Tapahtuma(nimi.getText());
         tapahtuma.setTapahtumaAika(tapahtumaAikaTallennettava);
-
-        runko.setTapahtuma(tapahtuma);
+        
         return tapahtuma;
     }
     
-    public Lahtolaskentaruutu lahtolaskentaruudunLuonti(Tapahtuma tapahtuma) {
+    public Lahtolaskentaruutu lahtolaskentaruudunTapahtumanAsettaminen(Tapahtuma tapahtuma) {
         Lahtolaskentaruutu lahtolaskentaruutu = new Lahtolaskentaruutu(ui);
         lahtolaskentaruutu.setTapahtuma(tapahtuma);
         lahtolaskentaruutu.luoRuutu();

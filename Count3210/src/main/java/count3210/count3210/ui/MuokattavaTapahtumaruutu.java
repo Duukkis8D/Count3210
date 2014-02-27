@@ -12,7 +12,6 @@ public class MuokattavaTapahtumaruutu extends TapahtumaruudunRunko
     private JTextField nimi;
     private JTextField paivays;
     private Tapahtuma tapahtuma;
-    private UI ui;
     
     public MuokattavaTapahtumaruutu(UI ui) {
         super(ui);

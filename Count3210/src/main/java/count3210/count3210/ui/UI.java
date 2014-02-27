@@ -49,6 +49,8 @@ public class UI implements Runnable {
     private void luoKomponentit(Container container) {
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
 
+        // Refaktoroi koodi kahdeksi uudeksi metodiksi:
+        // luoTapahtumaosio ja luoToimintoOsio.
         JTextArea otsikko1 = new JTextArea("Tapahtumat");
         tapahtumapaneeli = luoTapahtumapaneeli();
         tapahtumapaneeli.add(otsikko1);
@@ -112,8 +114,8 @@ public class UI implements Runnable {
     }
 
     // Miten tämä ja poista-metodi voisi hyödyntää TapahtumapaneelinRuutu-interfacea? Olisi
-    // kätevää, jos samaa metodia voisi käyttää sekä TapahtumaruudunRunko- että Lahtolaskenta-
-    // ruutu-tyyppisten komponenttien lisäämiseen tai poistamiseen.
+    // kätevää, jos samaa metodia voisi käyttää kaikkien interfacen toteuttavien
+    // luokkien (komponenttien) lisäämiseen tai poistamiseen.
     public void lisaaTapahtumaruudunRunkoTapahtumapaneeliin(TapahtumaruudunRunko runko) {
         tapahtumapaneeli.add(runko);
         tapahtumapaneeli.updateUI();
@@ -174,8 +176,7 @@ public class UI implements Runnable {
     // Tälle metodille voisi tehdä testit.
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu 
             lahtolaskentaruutu) {
-        Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, 
-                this);
+        Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);
         lahtolaskentaruutu.setLahtolaskenta(lahtolaskenta);
 
         int viive = 1000;
