@@ -193,6 +193,9 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
         return lahtolaskenta;
     }
     
+    /** Metodi vertailee kahden eri Lahtolaskentaruutu-luokan ilmentymää ja
+     kertoo, ovatko ne identtisiä.
+     */
     @Override
     public boolean equals(Object olio) {
         if (olio == null) return false;
