@@ -8,7 +8,13 @@ import java.awt.GridBagConstraints;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import org.joda.time.DateTime;
+*/
 
+/** Luokan tehtävänä on esittää käyttäjälle graafiset komponentit, joiden
+ * avulla hän voi muokata aikaisemmin luomaansa tapahtumaa.
+*/
+
+/*
 public class MuokattavaTapahtumaruutu extends JPanel implements TapahtumapaneelinRuutu {
     private JTextField nimi;
     private JTextField paivays;

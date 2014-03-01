@@ -12,8 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /** Luokan tehtävä on näyttää käyttäjälle graafiset komponentit, joiden avulla
- * hän voi luoda lähtölaskentatapahtuman tai muokata jo olemassa olevaa
- * lähtölaskentatapahtumaa.
+ * hän voi luoda lähtölaskentatapahtuman.
  */
 public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuutu {
     private UI ui;
@@ -22,15 +21,16 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         this.ui = ui;
     }
     
+    /** Metodi luo tämän luokan ilmentymän kaiken sisällön.
+     */
     @Override
     public void luoRuutu() {
-        // Tähänkö koodia muokattavasta tapahtumaRuudusta, joka näkyy käyttäjälle
-        // heti lisää tapahtuma -nappulasta painamisen jälkeen ja myös
-        // tapahtuman muokkaa-nappulasta painaessa?
         luoRuudunUlkonako();
         luoRuudunSisalto();
     }
     
+    /** Metodi luo ruudulle ulkonäön.
+     */
     @Override
     public void luoRuudunUlkonako() {
         GridBagLayout layout = new GridBagLayout();
@@ -39,6 +39,9 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         this.setForeground(Color.WHITE);
     }
     
+    /** Metodi luo ruudulle sisällön. Sisältöön kuuluu useita eri komponentteja,
+     * joiden luomiseen on omat metodinsa.
+     */
     @Override
     public void luoRuudunSisalto() {
         luoTapahtumanSelitekentta();
@@ -50,6 +53,8 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         luoAloitaNappula(nimi, paivays);
     }
     
+    /** Metodi luo tapahtuman selitekentän.
+     */
     public void luoTapahtumanSelitekentta() {
         JLabel tapahtumanNimi = new JLabel("tapahtuman nimi");
         tapahtumanNimi.setBackground(Color.DARK_GRAY);
@@ -60,6 +65,11 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         this.add(tapahtumanNimi, tapahtumanNimelle);
     }
     
+    /** Metodi luo nimikentän, johon käyttäjä voi syöttää tapahtuman
+     nimen.
+     * 
+     * @return Tapahtuman nimi.
+     */
     public JTextField luoMuokattavaTapahtumanNimiKentta() {
         JTextField nimi = new JTextField("tapahtuman nimi");
         nimi.setBackground(Color.DARK_GRAY);
@@ -72,6 +82,8 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         return nimi;
     }
     
+    /** Metodi luo ajankohdan selitekentän.
+     */
     public void luoAjankohtaSelitekentta() {
         JLabel ajankohta = new JLabel("ajankohta");
         ajankohta.setBackground(Color.DARK_GRAY);
@@ -82,6 +94,11 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         this.add(ajankohta, ajankohdalle);
     }
     
+    /** Metodi luo ajankohtakentän, johon käyttäjä voi syöttää tapahtuman
+     * ajankohdan.
+     * 
+     * @return paivays Tapahtuman ajankohta.
+     */
     public JTextField luoAjankohtaKentta() {
         JTextField paivays = new JTextField("pp:kk:vvvv,tt:mm:ss");
         paivays.setBackground(Color.DARK_GRAY);
@@ -94,6 +111,8 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         return paivays;
     }
     
+    /** Metodi luo tapahtuman toistuvuusvalintaa osoittavan selitekentän.
+     */
     public void luoToistuvuusSeliteKentta() {
         JLabel toistuvuus = new JLabel("toistuvuus");
         toistuvuus.setBackground(Color.DARK_GRAY);
@@ -104,6 +123,8 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         this.add(toistuvuus, toistuvuudelle);
     }
     
+    /** Metodi luo tapahtuman toistuvuuden asettamista varten valintalaatikon.
+     */
     public void luoToistuvuusValintalaatikko() {
         String[] valinnat = {"kerran", "kerran sek", "kerran min"};
         JComboBox toistuvuusValinta = new JComboBox(valinnat);
@@ -115,6 +136,11 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         this.add(toistuvuusValinta, toistuvuusValinnalle);
     }
     
+    /** Metodi luo aloita-napin, jolla tapahtuman lähtölaskenta aloitetaan.
+     *
+     * @param nimi Tapahtuman nimi.
+     * @param paivays Tapahtuman ajankohta.
+     */
     public void luoAloitaNappula(JTextField nimi, JTextField paivays) {
         JButton aloita = new JButton("aloita");
         aloita.addActionListener(new AloitaNapinKuuntelija(nimi, paivays, ui, 
@@ -126,6 +152,9 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         this.add(aloita, aloitaNappulalle);
     }
     
+    /** Metodi palauttaa aina false. Sille ei ole käyttöä, mutta se pitää olla
+     * olemassa luokan toteuttaman TapahtumapaneelinRuutu-rajapinnan vuoksi.
+     */
     @Override
     public boolean equals(Object olio) {
         return false;

@@ -6,6 +6,9 @@ import count3210.count3210.utils.Tiedostoontallentaja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/** Luokka tekee lähtölaskentaruudun lopulliseen poistamiseen liittyvät
+ * toimenpiteet poista-nappia painettaessa.
+ */
 public class LahtolaskentaruudunPoistaNapinKuuntelija implements ActionListener {
 
     private UI ui;
@@ -17,6 +20,9 @@ public class LahtolaskentaruudunPoistaNapinKuuntelija implements ActionListener 
         this.lahtolaskentaruutu = lahtolaskentaruutu;
     }
 
+    /** Metodi poistaa lähtölaskentaruudun graafisesta käyttöliittymästä ja
+     * muista ohjelman osista sekä pysäyttää sen lähtölaskennan.
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         ui.poistaLahtolaskentaruutuTapahtumapaneelista(lahtolaskentaruutu);

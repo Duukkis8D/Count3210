@@ -7,6 +7,9 @@ import count3210.count3210.ui.UI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/** Luokka huolehtii tyhjennä tapahtumalista -napin painalluksen jälkeisistä
+ * toimenpiteistä.
+ */
 public class TyhjennaTapahtumalistaKuuntelija implements ActionListener {
     private UI ui;
 
@@ -14,6 +17,10 @@ public class TyhjennaTapahtumalistaKuuntelija implements ActionListener {
         this.ui = ui;
     }
 
+    /** Metodi poistaa kaikki tapahtumapaneelin ruudut graafisesta
+     * käyttöliittymästä, pysäyttää niiden ajastimet ja poistaa niiden tiedot
+     * ohjelman väliaikaismuistista.
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
          ui.poistaKaikkiTapahtumapaneelinRuudut();

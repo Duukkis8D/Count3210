@@ -4,8 +4,6 @@ import javax.swing.JTextField;
 import javax.swing.text.BadLocationException;
 
 /** Luokan tehtävänä on lukea käyttäjän syöte tapahtuma-aikatekstikentästä.
- * Se muuntaa String-tyyppisen merkkijonon int-lukuarvoksi, jota DateTime-luokka
- * ymmärtää.
  */
 public class TapahtumaAikakentanLukija {
 
@@ -16,6 +14,12 @@ public class TapahtumaAikakentanLukija {
     }
     
     // Tästä metodista voisi tehdä testejä.
+    /** Metodi muuntaa String-tyyppisen merkkijonon int-lukuarvoksi, jota
+     * ohjelman tapahtuma-ajoista huolehtiva DateTime-luokka ymmärtää.
+     * 
+     * @return DateTime-luokkaa varten muodostettu tapahtuma-ajan aikayksiköt
+     * sisältävä taulukko.
+     */
     public int[] lueGUI() {
         // pp:kk:vvvv,tt:mm:ss
         int vrk = 0;

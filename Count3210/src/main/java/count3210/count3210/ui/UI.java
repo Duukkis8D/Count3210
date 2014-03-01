@@ -22,7 +22,7 @@ import javax.swing.WindowConstants;
 
 /**
  * Luokan tehtävänä on luoda peruskomponentit käyttäjän näkemälle graafiselle
- * käyttöliittymälle.
+ * käyttöliittymälle ja poistaa niitä tarvittaessa.
  */
 public class UI implements Runnable {
 
@@ -34,6 +34,9 @@ public class UI implements Runnable {
         jarjestelija = new TapahtumaruutujenJarjestelija();
     }
 
+    /** Ohjelman suoritus alkaa tästä metodista ja haarautuu muihin metodeihin
+     ja luokkiin.
+     */
     @Override
     public void run() {
         frame = new JFrame("Count 3210");
@@ -47,6 +50,9 @@ public class UI implements Runnable {
         frame.setVisible(true);
     }
 
+    /** Metodi luo käyttöliittymäkomponentit, joita tarvitaan heti ohjelman
+     käynnistyttyä.
+     */
     private void luoKomponentit(Container container) {
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
 
@@ -65,18 +71,25 @@ public class UI implements Runnable {
         luoToimintonappulat(toimintoPaneeli);
     }
 
+    /** Metodi luo tyhjän tapahtumapaneelin.
+     */
     private JPanel luoTapahtumapaneeli() {
         JPanel paneeli = new JPanel(new GridLayout(8, 1));
 
         return paneeli;
     }
 
+    /** Metodi luo tyhjän toimintopaneelin.
+     */
     private JPanel luoToimintopaneeli() {
         JPanel paneeli = new JPanel(new GridLayout(6, 1));
 
         return paneeli;
     }
 
+    /** Metodi luo toimintopaneeli-oliolle ohjelman käyttöä varten tarpeelliset
+     toimintonapit ja niiden tapahtumankuuntelijat.
+     */
     private void luoToimintonappulat(JPanel toimintopaneeli) {
         JButton lisaaTapahtuma = new JButton("lisää tapahtuma");
         lisaaTapahtuma.addActionListener(new LisaaTapahtumaKuuntelija(this));
@@ -95,6 +108,9 @@ public class UI implements Runnable {
         toimintopaneeli.add(tuoTapahtumia);
     }
 
+    /** Metodi luo näytölle lähtölaskentalaskurit, jotka ovat tallennettu
+     tiedostoon.
+     */
     private void luoMuistissaOlevatLaskurit() {
         Tiedostonlukija lukija = new Tiedostonlukija("laskurit.data");
 
@@ -114,14 +130,26 @@ public class UI implements Runnable {
         }
     }
 
-    // Miten tämä ja poista-metodi voisi hyödyntää TapahtumapaneelinRuutu-interfacea? Olisi
-    // kätevää, jos samaa metodia voisi käyttää kaikkien interfacen toteuttavien
-    // luokkien (komponenttien) lisäämiseen tai poistamiseen.
+    // Miten seuraavat lisää ja poista-metodit voisivat hyödyntää
+    // TapahtumapaneelinRuutu-interfacea? Olisi kätevää, jos samaa metodia voisi
+    // käyttää kaikkien interfacen toteuttavien luokkien (komponenttien)
+    // lisäämiseen tai poistamiseen.
+    
+    /** Metodi lisää TapahtumaruudunRunko-luokan ilmentymän tapahtumapaneeliin
+     ja päivittää näkymän.
+     * 
+     * @param runko Lisättävä TapahtumaruudunRunko-luokan ilmentymä.
+     */
     public void lisaaTapahtumaruudunRunkoTapahtumapaneeliin(TapahtumaruudunRunko runko) {
         tapahtumapaneeli.add(runko);
         tapahtumapaneeli.updateUI();
     }
 
+    /** Metodi poistaa TapahtumaruudunRunko-luokan ilmentymän tapahtumapaneelista
+     ja päivittää näkymän.
+     * 
+     * @param runko Poistettava TapahtumaruudunRunko-luokan ilmentymä.
+     */
     public void poistaTapahtumaruudunRunkoTapahtumapaneelista(TapahtumaruudunRunko runko) {
         tapahtumapaneeli.remove(runko);
         
@@ -141,11 +169,21 @@ public class UI implements Runnable {
         tapahtumapaneeli.updateUI();
     }
 
+    /** Metodi lisää Lahtolaskentaruutu-luokan ilmentymän tapahtumapaneeliin
+     ja päivittää näkymän.
+     * 
+     * @param lahtolaskentaruutu Lisättävä Lahtolaskentaruutu-luokan ilmentymä.
+     */
     public void lisaaLahtolaskentaruutuTapahtumapaneeliin(Lahtolaskentaruutu lahtolaskentaruutu) {
         tapahtumapaneeli.add(lahtolaskentaruutu);
         tapahtumapaneeli.updateUI();
     }
 
+    /** Metodi poistaa Lahtolaskentaruutu-luokan ilmentymän tapahtumapaneelista
+     ja päivittää näkymän.
+     * 
+     * @param lahtolaskentaruutu Poistettava Lahtolaskentaruutu-luokan ilmentymä.
+     */
     public void poistaLahtolaskentaruutuTapahtumapaneelista(Lahtolaskentaruutu lahtolaskentaruutu) {
         tapahtumapaneeli.remove(lahtolaskentaruutu);
         tapahtumapaneeli.updateUI();
@@ -171,6 +209,8 @@ public class UI implements Runnable {
     }
 
     // Tälle metodille voisi tehdä testit.
+    /** Metodi poistaa kaikki ruudut tapahtumapaneelista.
+     */
     public void poistaKaikkiTapahtumapaneelinRuudut() {
         ArrayList<TapahtumapaneelinRuutu> ruudut = 
                 jarjestelija.getTapahtumaruudut();
@@ -189,6 +229,11 @@ public class UI implements Runnable {
     }
 
     // Tälle metodille voisi tehdä testit.
+    /** Metodi päivittää lähtölaskentaruudun lähtölaskennan joka sekunti,
+     kunnes tapahtuma alkaa.
+     * 
+     * @param lahtolaskentaruutu Päivitettävä lähtölaskentaruutu.
+     */
     public void paivitaLahtolaskentaruudunLahtolaskentaKentta(Lahtolaskentaruutu 
             lahtolaskentaruutu) {
         Lahtolaskenta lahtolaskenta = new Lahtolaskenta(lahtolaskentaruutu, this);
@@ -200,7 +245,7 @@ public class UI implements Runnable {
         lahtolaskenta.setAjastin(ajastin);
         ajastin.start();
     }
-
+    
     public void paivitaTapahtumapaneeli() {
         tapahtumapaneeli.updateUI();
     }

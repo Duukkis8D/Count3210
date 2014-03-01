@@ -7,11 +7,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import org.joda.time.DateTime;
 
+/** Luokka lukee tapahtumatiedot ohjelman pitkäaikaisesta muistista.
+ */
 public class Tiedostonlukija {
 
     private File laskurit;
     private Scanner lukija;
 
+    /** Konstruktori avaa tiedoston lukijan käyttöön.
+     * 
+     * @param tiedostonNimi Avattavan tiedoston nimi tiedostojärjestelmässä.
+     */
     public Tiedostonlukija(String tiedostonNimi) {
         laskurit = new File(tiedostonNimi);
 
@@ -22,6 +28,10 @@ public class Tiedostonlukija {
         }
     }
 
+    /** Metodi tarkistaa, onko pyydettyä tiedostoa olemassa.
+     * 
+     * @return true: Tiedosto on olemassa. false: Tiedostoa ei ole olemassa.
+     */
     public boolean onkoTiedostoa() {
         if (laskurit.exists()) {
             return true;
@@ -30,7 +40,11 @@ public class Tiedostonlukija {
         }
     }
 
-    // Tämä tuo laskurit luokkaan UI, joka näyttää ne ruudulla.
+    /** Metodi tuo tapahtumatiedot ohjelman väliaikaismuistiin, josta ne
+     * myöhemmin luetaan graafisen käyttöliittymän kautta käyttäjän nähtäville.
+     * 
+     * @return Lista ohjelmaan tallennetuista tapahtumista.
+     */
     public ArrayList<Tapahtuma> tuoLahtolaskentalaskurit() {
         ArrayList<Tapahtuma> tapahtumatiedot = new ArrayList<>();
 

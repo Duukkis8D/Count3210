@@ -82,6 +82,8 @@ public class AloitaNapinKuuntelija implements ActionListener {
         ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
     }
     
+    /** Metodi luo tapahtuman lähtölaskentaruutua varten.
+     */
     public Tapahtuma luoLahtolaskentaruudunTapahtuma() {
         DateTime tapahtumaAikaTallennettava = tapahtumaAikakentanLuku();
         
@@ -91,6 +93,8 @@ public class AloitaNapinKuuntelija implements ActionListener {
         return tapahtuma;
     }
     
+    /** Metodi luo lähtölaskentaruudun ja asettaa sille tapahtuman.
+     */
     public Lahtolaskentaruutu lahtolaskentaruudunTapahtumanAsettaminen(Tapahtuma tapahtuma) {
         Lahtolaskentaruutu lahtolaskentaruutu = new Lahtolaskentaruutu(ui);
         lahtolaskentaruutu.setTapahtuma(tapahtuma);
@@ -100,6 +104,7 @@ public class AloitaNapinKuuntelija implements ActionListener {
     }
     
     /** Metodi lukee käyttäjän syöttämän tekstin tapahtumaAikakentta-oliosta.
+     * 
      @return Tiedostoon tallennettava tapahtuma-aika.
      */
     public DateTime tapahtumaAikakentanLuku() {

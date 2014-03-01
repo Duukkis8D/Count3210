@@ -7,6 +7,8 @@ import count3210.count3210.utils.Tiedostoontallentaja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/** Luokka suorittaa poista kaikki -napin painalluksen jälkeiset toimenpiteet.
+ */
 public class PoistaKaikkiKuuntelija implements ActionListener {
 
     private UI ui;
@@ -15,6 +17,10 @@ public class PoistaKaikkiKuuntelija implements ActionListener {
         this.ui = ui;
     }
 
+    /** Metodi poistaa graafisesta käyttöliittymästä kaikki tapahtumaruudut,
+     * pysäyttää niiden ajastimet ja poistaa niiden tiedot ohjelman
+     * muistipaikoista.
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         ui.poistaKaikkiTapahtumapaneelinRuudut();
@@ -26,6 +32,8 @@ public class PoistaKaikkiKuuntelija implements ActionListener {
         tallentaja.poistaTiedosto();
     }
     
+    /** Metodi pysäyttää kaikkien lähtölaskentaruutujen ajastimet.
+     */
     public void pysaytaKaikkiAjastimet() {
         for (TapahtumapaneelinRuutu ruutu
                 : ui.getTapahtumaruutujenJarjestelija().getTapahtumaruudut()) {
