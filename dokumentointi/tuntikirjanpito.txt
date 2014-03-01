@@ -140,6 +140,9 @@ Ohjelman ajoa yliopistolla.
 Tapahtumankuuntelijoiden koodausta.
 GUI:n koodausta.
 
-Lähetä sähköpostia koodausongelmasta.
+28.2. 4 t 45 min
+Tapahtumankuuntelijoiden koodausta.
+Javadocin kirjoittamista.
+
 Muista tehdä sekvenssikaavioita, päivittää luokkakaavio, uusia pit-raportti ja kirjoittaa javadocia metodeille!
 
