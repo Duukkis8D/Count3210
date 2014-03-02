@@ -14,7 +14,8 @@ public class Tiedostonlukija {
     private File laskurit;
     private Scanner lukija;
 
-    /** Konstruktori avaa tiedoston lukijan käyttöön.
+    /** Konstruktori avaa lähtölaskentatapahtumat sisältävän tiedoston lukijan
+     * käyttöön.
      * 
      * @param tiedostonNimi Avattavan tiedoston nimi tiedostojärjestelmässä.
      */
@@ -60,6 +61,13 @@ public class Tiedostonlukija {
         return tapahtumatiedot;
     }
 
+    /** Metodi erottelee luetun tapahtumatietorivin tapahtumatiedot ja tallentaa
+     * ne tapahtuman tietokenttiin.
+     * 
+     * @param tapahtumaTekstina Tapahtuman nimi, ajankohta ja toistuvuus
+     * merkkijonomuodossa.
+     * @param tapahtumatiedot Lista tapahtumista.
+     */
     public void teeTapahtumatoimenpiteet(String[] tapahtumaTekstina,
             ArrayList<Tapahtuma> tapahtumatiedot) {
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumaTekstina[0]);

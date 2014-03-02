@@ -7,8 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-/**
- * Luokan tehtävänä on tallentaa tiedostoon talteen käyttäjän luoman
+/** Luokan tehtävänä on tallentaa tiedostoon käyttäjän luoman
  * lähtölaskentatapahtuman ominaisuudet.
  */
 public class Tiedostoontallentaja {
@@ -16,6 +15,11 @@ public class Tiedostoontallentaja {
     private Scanner lukija;
     private File laskurit;
 
+    /** Konstruktori avaa lähtölaskentatapahtumat sisältävän tiedoston lukijan
+     * käyttöön.
+     * 
+     * @param tiedostonNimi Avattavan tiedoston nimi tiedostojärjestelmässä.
+     */
     public Tiedostoontallentaja(String tiedostonNimi) {
         laskurit = new File(tiedostonNimi);
 
@@ -26,6 +30,10 @@ public class Tiedostoontallentaja {
         }
     }
 
+    /** Metodi tallentaa tapahtuman tiedot tiedostoon.
+     * 
+     * @param tapahtuma Tallennettava tapahtuma.
+     */
     public void tallennaTiedostoon(Tapahtuma tapahtuma) {
         // Testaa että tiedostoon tallentuu oikeat arvot.
         try {
@@ -45,10 +53,18 @@ public class Tiedostoontallentaja {
         }
     }
 
+    /** Metodi poistaa kaikki lähtölaskentatapahtumat sisältävän tiedoston.
+     */
     public void poistaTiedosto() {
         laskurit.delete();
     }
 
+    /** Metodi poistaa tietyn tapahtuman tiedot ohjelman pitkäaikaismuistista
+     * kirjoittamalla kokonaan uudestaan lähtölaskentatapahtumat sisältävän
+     * tiedoston.
+     * 
+     * @param tapahtuma Poistettava tapahtuma.
+     */
     public void poistaTapahtumaTiedostosta(Tapahtuma tapahtuma) {
         File valiaikainen = new File("valiaikainen.data");
         String tapahtumaTekstina = tapahtuma.getNimi() + ";"

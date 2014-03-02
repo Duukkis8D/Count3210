@@ -43,6 +43,8 @@ public class TapahtumaruutujenJarjestelija {
     }
     
     /** Metodi poistaa lähtölaskentaruudun ohjelman väliaikaismuistista.
+     * 
+     * @param lahtolaskentaruutu Poistettava lähtölaskentaruutu.
      */
     public void poistaTapahtuma(Lahtolaskentaruutu lahtolaskentaruutu) {
         tapahtumaruudut.remove(lahtolaskentaruutu);
