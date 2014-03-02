@@ -24,9 +24,12 @@ public class Tiedostoontallentaja {
         laskurit = new File(tiedostonNimi);
 
         try {
+            if (!laskurit.exists()) laskurit.createNewFile();
             lukija = new Scanner(laskurit);
-        } catch (FileNotFoundException e) {
-            System.out.println("Tiedostoa ei löytynyt! \n" + e.getMessage());
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("Tiedostoa ei löytynyt! \n" + fnfe.getMessage());
+        } catch (IOException ioe) {
+            System.out.println("Tiedostoa ei voitu luoda! \n" + ioe.getMessage());
         }
     }
 

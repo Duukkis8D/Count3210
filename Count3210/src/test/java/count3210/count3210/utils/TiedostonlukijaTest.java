@@ -2,6 +2,7 @@
 package count3210.count3210.utils;
 
 import count3210.count3210.domain.Tapahtuma;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,11 +38,14 @@ public class TiedostonlukijaTest {
     }
 
     @Test
-    public void onkoTiedostoaPalauttaaTrue() {
+    public void onkoTiedostoaPalauttaaTrueJosTiedostoOnLuotu() throws IOException {
+        File tiedosto = new File("testi.data");
+        tiedosto.createNewFile();
+        
         assertEquals(lukija.onkoTiedostoa(), true);
+        tiedosto.delete();
     }
     
-    // Testi heittää NullPointerException. Mistä johtuu?
     @Test
     public void onkoTiedostossaTapahtumia() throws IOException {
         FileWriter kirjoittaja = new FileWriter("testi.data", true);
@@ -51,5 +55,6 @@ public class TiedostonlukijaTest {
         
         ArrayList<Tapahtuma> tapahtumat = lukija.tuoLahtolaskentalaskurit();
         assertEquals(tapahtumat.size(), 2);
+        lukija.getTiedosto().delete();
     }
 }

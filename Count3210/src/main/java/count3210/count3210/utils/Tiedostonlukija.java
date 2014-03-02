@@ -3,6 +3,7 @@ package count3210.count3210.utils;
 import count3210.count3210.domain.Tapahtuma;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.joda.time.DateTime;
@@ -23,9 +24,12 @@ public class Tiedostonlukija {
         laskurit = new File(tiedostonNimi);
 
         try {
+            if (!onkoTiedostoa()) laskurit.createNewFile();
             lukija = new Scanner(laskurit);
-        } catch (FileNotFoundException e) {
-            System.out.println("Tiedostoa ei löytynyt! \n" + e.getMessage());
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("Tiedostoa ei löytynyt! \n" + fnfe.getMessage());
+        } catch (IOException ioe) {
+            System.out.println("Tiedostoa ei voitu luoda! \n" + ioe.getMessage());
         }
     }
 

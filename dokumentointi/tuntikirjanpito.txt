@@ -144,5 +144,11 @@ GUI:n koodausta.
 Tapahtumankuuntelijoiden koodausta.
 Javadocin kirjoittamista.
 
-Muista tehdä sekvenssikaavioita, päivittää luokkakaavio, uusia pit-raportti ja kirjoittaa javadocia metodeille!
+2.2. 4 t 15 min
+Javadocin kirjoittamista.
+Testien tekoa.
+Tiedostonkäsittelyn koodausta.
+
+Muista kokeilla jar-tiedoston luontia hyvissä ajoin!
+Tee sekvenssikaavioita, päivitä luokkakaavio ja uusi pit-raportti!
 

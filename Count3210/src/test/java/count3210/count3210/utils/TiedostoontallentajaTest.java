@@ -39,14 +39,14 @@ public class TiedostoontallentajaTest {
 
     @Test
     public void tallennuksenJalkeenTiedostoOnOlemassa() {
-        // Tallentaa tiedostoon nykyisen ajan.
         DateTime aika = DateTime.now();
-        String tapahtumanNimi = "Tapahtuma";
+        aika.plusYears(1);
+        String tapahtumanNimi = "Vuoden päästä";
+        
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
         tapahtuma.setTapahtumaAika(aika);
     
-        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja(
-                "testi.data");
+        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja("testi.data");
         tallentaja.tallennaTiedostoon(tapahtuma);
     
         tiedosto = tallentaja.getTiedosto();
@@ -58,12 +58,13 @@ public class TiedostoontallentajaTest {
     @Test
     public void tallennuksenJalkeenTiedostoSisaltaaJotain() throws FileNotFoundException {
         DateTime aika = DateTime.now();
-        String tapahtumanNimi = "Tapahtuma";
+        aika.plusYears(1);
+        String tapahtumanNimi = "Vuoden päästä";
+        
         Tapahtuma tapahtuma = new Tapahtuma(tapahtumanNimi);
         tapahtuma.setTapahtumaAika(aika);
     
-        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja(
-                "testi.data");
+        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja("testi.data");
         tallentaja.tallennaTiedostoon(tapahtuma);
     
         tiedosto = tallentaja.getTiedosto();
@@ -78,4 +79,52 @@ public class TiedostoontallentajaTest {
         assertTrue(tekstiaToivonMukaan.length() > 0);
         tiedosto.delete();
     }
+    
+    @Test
+    public void tallenuksenJalkeenTiedostonSisaltoOikea() throws FileNotFoundException {
+        DateTime aika1 = DateTime.now();
+        aika1.plusYears(1);
+        Tapahtuma vuodenPaasta = new Tapahtuma("Vuoden päästä");
+        vuodenPaasta.setTapahtumaAika(aika1);
+        
+        DateTime aika2 = DateTime.now();
+        aika2.plusYears(2);
+        Tapahtuma kahdenVuodenPaasta = new Tapahtuma("Kahden vuoden päästä");
+        kahdenVuodenPaasta.setTapahtumaAika(aika2);
+    
+        Tiedostoontallentaja tallentaja = new Tiedostoontallentaja("testi.data");
+        tallentaja.tallennaTiedostoon(vuodenPaasta);
+        tallentaja.tallennaTiedostoon(kahdenVuodenPaasta);
+        
+        tiedosto = tallentaja.getTiedosto();
+        
+        Scanner lukija = new Scanner(tiedosto);
+        
+        StringBuilder tapahtumat = new StringBuilder();
+        while (lukija.hasNextLine()) {
+            tapahtumat.append(lukija.nextLine() + "\n");
+        }
+        
+        String ensimmaisenTapahtumanTulostus = "Vuoden päästä;"
+                + aika1.getYear() + ";"
+                + aika1.getMonthOfYear() + ";"
+                + aika1.getDayOfMonth() + ";"
+                + aika1.getHourOfDay() + ";"
+                + aika1.getMinuteOfHour() + ";"
+                + aika1.getSecondOfMinute() + ";toistuvuus?\n";
+                
+        String toisenTapahtumanTulostus = "Kahden vuoden päästä;"
+                + aika2.getYear() + ";"
+                + aika2.getMonthOfYear() + ";"
+                + aika2.getDayOfMonth() + ";"
+                + aika2.getHourOfDay() + ";"
+                + aika2.getMinuteOfHour() + ";"
+                + aika2.getSecondOfMinute() + ";toistuvuus?\n";
+        
+        assertEquals(tapahtumat.toString(), ensimmaisenTapahtumanTulostus
+                + toisenTapahtumanTulostus);
+        tiedosto.delete();
+    }
+    
+    // Testaa vielä Tiedostoontallentajan konstruktoria ja poistaTapahtumaTiedostosta-metodia!
 }
