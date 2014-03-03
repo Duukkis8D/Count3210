@@ -91,4 +91,8 @@ public class Tiedostonlukija {
     public File getTiedosto() {
         return laskurit;
     }
+    
+    public Scanner getLukija() {
+        return lukija;
+    }
 }

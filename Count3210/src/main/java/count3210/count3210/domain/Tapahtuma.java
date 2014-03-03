@@ -38,7 +38,6 @@ public class Tapahtuma {
     }
     
     public String getToistuvuus() {
-        toistuvuus = "toistuvuus?";
         return toistuvuus;
     }
 

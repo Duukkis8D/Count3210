@@ -81,16 +81,18 @@ public class TiedostoontallentajaTest {
     }
     
     @Test
-    public void tallenuksenJalkeenTiedostonSisaltoOikea() throws FileNotFoundException {
+    public void tallennuksenJalkeenTiedostonSisaltoOikea() throws FileNotFoundException {
         DateTime aika1 = DateTime.now();
         aika1.plusYears(1);
         Tapahtuma vuodenPaasta = new Tapahtuma("Vuoden päästä");
         vuodenPaasta.setTapahtumaAika(aika1);
+        vuodenPaasta.setToistuvuus("toistuvuus?");
         
         DateTime aika2 = DateTime.now();
         aika2.plusYears(2);
         Tapahtuma kahdenVuodenPaasta = new Tapahtuma("Kahden vuoden päästä");
         kahdenVuodenPaasta.setTapahtumaAika(aika2);
+        kahdenVuodenPaasta.setToistuvuus("toistuvuus?");
     
         Tiedostoontallentaja tallentaja = new Tiedostoontallentaja("testi.data");
         tallentaja.tallennaTiedostoon(vuodenPaasta);
@@ -105,21 +107,23 @@ public class TiedostoontallentajaTest {
             tapahtumat.append(lukija.nextLine() + "\n");
         }
         
-        String ensimmaisenTapahtumanTulostus = "Vuoden päästä;"
+        String ensimmaisenTapahtumanTulostus = vuodenPaasta.getNimi() + ";"
                 + aika1.getYear() + ";"
                 + aika1.getMonthOfYear() + ";"
                 + aika1.getDayOfMonth() + ";"
                 + aika1.getHourOfDay() + ";"
                 + aika1.getMinuteOfHour() + ";"
-                + aika1.getSecondOfMinute() + ";toistuvuus?\n";
+                + aika1.getSecondOfMinute() + ";"
+                + vuodenPaasta.getToistuvuus() + "\n";
                 
-        String toisenTapahtumanTulostus = "Kahden vuoden päästä;"
+        String toisenTapahtumanTulostus = kahdenVuodenPaasta.getNimi() + ";"
                 + aika2.getYear() + ";"
                 + aika2.getMonthOfYear() + ";"
                 + aika2.getDayOfMonth() + ";"
                 + aika2.getHourOfDay() + ";"
                 + aika2.getMinuteOfHour() + ";"
-                + aika2.getSecondOfMinute() + ";toistuvuus?\n";
+                + aika2.getSecondOfMinute() + ";"
+                + kahdenVuodenPaasta.getToistuvuus() + "\n";
         
         assertEquals(tapahtumat.toString(), ensimmaisenTapahtumanTulostus
                 + toisenTapahtumanTulostus);

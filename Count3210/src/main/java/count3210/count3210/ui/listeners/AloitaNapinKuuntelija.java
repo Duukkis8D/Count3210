@@ -89,6 +89,7 @@ public class AloitaNapinKuuntelija implements ActionListener {
         
         Tapahtuma tapahtuma = new Tapahtuma(nimi.getText());
         tapahtuma.setTapahtumaAika(tapahtumaAikaTallennettava);
+        tapahtuma.setToistuvuus("toistuvuus?");
         
         return tapahtuma;
     }
