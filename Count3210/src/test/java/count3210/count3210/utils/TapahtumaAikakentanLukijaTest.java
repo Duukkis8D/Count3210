@@ -41,14 +41,6 @@ public class TapahtumaAikakentanLukijaTest {
     public void vuorokaudetLuetaanOikein() {
         // Taulukon ensimmäinen arvo esittää vuorokausien lukumäärää.
         assertEquals(tapahtumaAika[0], 11);
-        
-        /* int vrk = 0;
-        int kk = 0;
-        int v = 0;
-        int t = 0;
-        int min = 0;
-        int sek = 0;
-                */
     }
     
     @Test

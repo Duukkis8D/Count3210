@@ -11,7 +11,4 @@ public interface TapahtumapaneelinRuutu {
     void luoRuudunUlkonako();
     
     void luoRuudunSisalto();
-    
-    @Override
-    boolean equals(Object olio);
 }

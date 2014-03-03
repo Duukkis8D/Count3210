@@ -151,12 +151,4 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
         aloitaNappulalle.gridwidth = 2;
         this.add(aloita, aloitaNappulalle);
     }
-    
-    /** Metodi palauttaa aina false. Sille ei ole käyttöä, mutta se pitää olla
-     * olemassa luokan toteuttaman TapahtumapaneelinRuutu-rajapinnan vuoksi.
-     */
-    @Override
-    public boolean equals(Object olio) {
-        return false;
-    }
 }

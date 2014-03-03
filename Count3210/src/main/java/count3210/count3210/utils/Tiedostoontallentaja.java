@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /** Luokan tehtävänä on tallentaa tiedostoon käyttäjän luoman
  * lähtölaskentatapahtuman ominaisuudet.
@@ -27,9 +28,11 @@ public class Tiedostoontallentaja {
             if (!laskurit.exists()) laskurit.createNewFile();
             lukija = new Scanner(laskurit);
         } catch (FileNotFoundException fnfe) {
-            System.out.println("Tiedostoa ei löytynyt! \n" + fnfe.getMessage());
+            JOptionPane.showMessageDialog(null, "Tiedostonkäsittelyssä tapahtui virhe!" 
+                    + "\n\n" + fnfe.getMessage(), "Virhe", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ioe) {
-            System.out.println("Tiedostoa ei voitu luoda! \n" + ioe.getMessage());
+            JOptionPane.showMessageDialog(null, "Tiedostonkäsittelyssä tapahtui virhe!" 
+                    + "\n\n" + ioe.getMessage(), "Virhe", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -50,9 +53,9 @@ public class Tiedostoontallentaja {
                     + tapahtuma.getTapahtumaAika().getSecondOfMinute() + ";");
             tallentaja.append(tapahtuma.getToistuvuus() + "\n");
             tallentaja.close();
-        } catch (IOException e) {
-            System.out.println("Tallennus ei onnistunut." + "\n"
-                    + e.getMessage());
+        } catch (IOException ioe) {
+            JOptionPane.showMessageDialog(null, "Tapahtumaa ei voitu tallentaa ohjelman muistiin." 
+                    + "\n\n" + ioe.getMessage(), "Virhe", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -92,9 +95,9 @@ public class Tiedostoontallentaja {
             }
             valiaikaistallentaja.close();
 
-        } catch (IOException e) {
-            System.out.println("Tallennus ei onnistunut." + "\n"
-                    + e.getMessage());
+        } catch (IOException ioe) {
+            JOptionPane.showMessageDialog(null, "Tapahtuman poistaminen ei onnistunut." 
+                    + "\n\n" + ioe.getMessage(), "Virhe", JOptionPane.ERROR_MESSAGE);
         }
         lukija.close();
 

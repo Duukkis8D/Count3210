@@ -1,5 +1,6 @@
 package count3210.count3210.utils;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.BadLocationException;
 
@@ -36,8 +37,11 @@ public class TapahtumaAikakentanLukija {
             t = Integer.parseInt(paivays.getText(11, 2));
             min = Integer.parseInt(paivays.getText(14, 2));
             sek = Integer.parseInt(paivays.getText(17, 2));
-        } catch (BadLocationException e) {
-            System.out.println("Tekstikentän päiväys ei ollut oikeassa muodossa.");
+        } catch (BadLocationException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Tekstikentän päiväys ei ollut oikeassa muodossa. Syötä "
+                    + "päiväys muodossa\npäivät:kuukaudet:vuodet,tunnit:minuutit:sekunnit", 
+                    "Virhe", JOptionPane.ERROR_MESSAGE);
         }
         
         int[] tapahtumaAika = {vrk, kk, v, t, min, sek};

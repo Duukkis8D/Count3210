@@ -111,21 +111,22 @@ public class TiedostonlukijaTest {
         lukija.getTiedosto().delete();
     }
     
-    @Test
-    public void onkoLukijaSuljettuLukemisenJalkeen() throws IOException {
-        FileWriter kirjoittaja = new FileWriter("testi.data", true);
-        kirjoittaja.append("Tapahtuma;2055;4;12;20;50;30;toistuvuus?\n");
-        kirjoittaja.append("Tapahtuma 2;2056;3;11;12;45;50;toistuvuus?\n");
-        kirjoittaja.close();
-        
-        lukija.tuoLahtolaskentalaskurit();
-        
-        StringBuilder luetutTapahtumatiedot = new StringBuilder();
-        while (lukija.getLukija().hasNext()) {
-            String merkki = lukija.getLukija().next();
-            luetutTapahtumatiedot.append(merkki);
-        }
-        
-        assertEquals(luetutTapahtumatiedot.toString(), null);
-    }
+    // Miten Scannerin tilan voisi testata?
+//    @Test
+//    public void onkoLukijaSuljettuLukemisenJalkeen() throws IOException {
+//        FileWriter kirjoittaja = new FileWriter("testi.data", true);
+//        kirjoittaja.append("Tapahtuma;2055;4;12;20;50;30;toistuvuus?\n");
+//        kirjoittaja.append("Tapahtuma 2;2056;3;11;12;45;50;toistuvuus?\n");
+//        kirjoittaja.close();
+//        
+//        lukija.tuoLahtolaskentalaskurit();
+//        
+//        StringBuilder luetutTapahtumatiedot = new StringBuilder();
+//        while (lukija.getLukija().hasNext()) {
+//            String merkki = lukija.getLukija().next();
+//            luetutTapahtumatiedot.append(merkki);
+//        }
+//        
+//        assertEquals(luetutTapahtumatiedot.toString(), System.out.);
+//    }
 }

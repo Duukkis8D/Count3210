@@ -9,6 +9,7 @@ import count3210.count3210.utils.Tiedostoontallentaja;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import org.joda.time.DateTime;
 
@@ -63,14 +64,6 @@ public class AloitaNapinKuuntelija implements ActionListener {
         
         ui.lisaaLahtolaskentaruutuTapahtumapaneeliin(lahtolaskentaruutu);
         
-        // Debuggausta -->
-        Component[] tapahtumapaneelinRuudut = ui.getTapahtumapaneeli().getComponents();
-        for (Component ruutu : tapahtumapaneelinRuudut) {
-            System.out.println(ruutu.getClass().getName());
-        }
-        System.out.println();
-        // <--
-        
         ui.getTapahtumaruutujenJarjestelija().lisaaListaan(lahtolaskentaruutu);
         // Pitäisikö TapahtumaruudunRunko-luokan ilmentymä poistaa tässä
         // järjestelijän listalta?
@@ -121,9 +114,17 @@ public class AloitaNapinKuuntelija implements ActionListener {
         int t = tapahtumaAika[3];
         int min = tapahtumaAika[4];
         int sek = tapahtumaAika[5];
-
-        DateTime tapahtumaAikaTallennettava = 
-                new DateTime(v, kk, vrk, t, min, sek);
-        return tapahtumaAikaTallennettava;
+        
+        DateTime tapahtumaAikaTallennettava = new DateTime(v, kk, vrk, t, min, sek);
+        
+        if (tapahtumaAikaTallennettava.isAfterNow()) {
+            return tapahtumaAikaTallennettava;
+        } else {
+            JOptionPane.showMessageDialog(null, "Antamasi tapahtuman ajankohta on "
+                    + "menneisyydessä tai samaan aikaan kuin nykyinen kellon aika."
+                    + "\nSyötä tulevaisuudessa oleva ajankohta.", "Virhe", 
+                    JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 }
