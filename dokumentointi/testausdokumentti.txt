@@ -1,0 +1,2 @@
+Bugit
+Jos tapahtuman aika on nollaantunut ja käyttäjä on sulkenut tapahtuman alkamisesta kertovan ilmoitusikkunan, tapahtuma jää ohjelman muistiin. Tämä on tarkoituksellista, mutta käynnistettäessä ohjelma uudestaan, tapahtuman aika juoksee negatiiviseksi. Jo alkanut tapahtuma pitäisi ehkä asettaa poistumaan käyttäjän sulkiessa ohjelman.

@@ -2,8 +2,13 @@ package count3210.count3210.domain;
 
 import count3210.count3210.ui.Lahtolaskentaruutu;
 import count3210.count3210.ui.UI;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.Timer;
 import org.joda.time.*;
 
@@ -39,6 +44,16 @@ public class Lahtolaskenta implements ActionListener {
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
         if (aikayksikkoja == 0) {
             ajastin.stop();
+            
+            JPanel ilmoitus = new JPanel();
+            ilmoitus.add(new JTextArea("Tapahtuma " + lahtolaskentaruutu.getTapahtuma().getNimi() 
+                    + " alkaa!"));
+            // Miksi ilmoituksen maksimikoko ei toimi? Pitkä tapahtuman nimi ei mahdu ikkunaan.
+            ilmoitus.setPreferredSize(new Dimension(300, 100));
+            ilmoitus.setMaximumSize(new Dimension(800, 100));
+            
+            JOptionPane.showMessageDialog(null, ilmoitus, "Ilmoitus tapahtuman alkamisesta", 
+                    JOptionPane.PLAIN_MESSAGE);
         }
 
         ajanjaksonLuonti();

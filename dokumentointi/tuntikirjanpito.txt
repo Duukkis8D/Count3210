@@ -154,5 +154,6 @@ Testien tekoa.
 Virhetilanteiden käsittely.
 
 Muista kokeilla jar-tiedoston luontia hyvissä ajoin!
+Muista tapahtuman alkamisesta muistuttava ikkuna!
 Tee sekvenssikaavioita, päivitä luokkakaavio ja uusi pit-raportti!
 
