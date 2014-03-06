@@ -3,6 +3,7 @@ package count3210.count3210.ui;
 
 import count3210.count3210.ui.listeners.AloitaNapinKuuntelija;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -35,6 +36,8 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
     public void luoRuudunUlkonako() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
+        
+        this.setPreferredSize(new Dimension(250, 300));
         this.setBackground(Color.DARK_GRAY);
         this.setForeground(Color.WHITE);
     }

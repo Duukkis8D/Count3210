@@ -1,0 +1,2 @@
+Ohjelma käynnistetään tuplaklikkaamalla .jar-päätteistä tiedostoa.
+Ohjelma luo tapahtumista asetustiedoston laskurit.data, jota ei saa poistaa itse.

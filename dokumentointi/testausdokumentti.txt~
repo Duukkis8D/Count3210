@@ -2,4 +2,8 @@ Bugit
 
 Jos tapahtuman aika on nollaantunut ja käyttäjä on sulkenut tapahtuman alkamisesta kertovan ilmoitusikkunan, tapahtuma jää ohjelman muistiin. Tämä on tarkoituksellista, mutta käynnistettäessä ohjelma uudestaan, tapahtuman aika juoksee negatiiviseksi. Jo alkanut tapahtuma pitäisi ehkä asettaa poistumaan käyttäjän sulkiessa ohjelman.
 
-Tapahtumien toistuvuus-ominaisuutta ei ole ajanpuutteen vuoksi toteutettu.
+Toteutumattomat haaveet
+
+Perusohjelmalogiikan koodaamisessa kesti kymmeniä tunteja, joten se vei aikaa monien lisäominaisuuksien toteuttamiselta. Hankalaa oli Joda-Time-kirjaston luokkien käyttäminen lähtölaskentalaskurissa. Javan Calendar-luokalla en edes saanut lähtölaskentaa kunnolla toimimaan.
+
+Tapahtumien toistuvuus-ominaisuutta ei ole ajanpuutteen vuoksi toteutettu. Myöskään tapahtumien järjestämistä tapahtumapaneelissa eikä Hotmail-kalenterista tapahtumien tuomista ole toteutettu. Testit eivät ole täydelliset. Tosin ohjelmassa keskeisessä asemassa ovat käyttöliittymän pienet osaset, joiden testaamista ei ole vielä opetettu.

@@ -107,10 +107,6 @@ public class AloitaNapinKuuntelija implements ActionListener {
         // Pitäisikö TapahtumaruudunRunko-luokan ilmentymä poistaa tässä
         // järjestelijän listalta?
         
-        // Nyt kun lahtolaskentaruutu on lisätty listaan, voidaan lista järjestää
-        // haluttuun järjestykseen, poistaa tapahtumapaneelista kaikki
-        // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.
-        
         ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
     }
     

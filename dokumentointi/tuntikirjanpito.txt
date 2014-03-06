@@ -163,18 +163,10 @@ Sekvenssikaavioiden tekoa.
 Koodin refaktorointia.
 Javadocin kirjoittamista.
 
-6.3. x tuntia
-15:30-16:45
-17:30-18:00
-18:30-19:30 yliopistollako
-
-Miten ohjelmani luomat tiedostot voi asettaa tallentumaan JAR-tiedoston kanssa samaan paikkaan?
+6.3. 6 t
 Sekvenssikaavioiden tekoa.
 Koodin refaktorointia.
 Javadocin kirjoittamista.
 Luokkakaavion teko.
-
-Kokeile JAR-tiedostoa myös yliopistolla!
-Tee 3-5 sekvenssikaaviota, päivitä luokkakaavio ja uusi pit-raportti!
-Generoi lopuksi javadoc ja LAITA SE ERILLISEEN HAKEMISTOON GITIIN!
-
+jar-tiedoston kokeilua yliopistolla.
+Kaikkea!

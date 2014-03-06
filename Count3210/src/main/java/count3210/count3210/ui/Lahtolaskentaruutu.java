@@ -4,8 +4,9 @@ package count3210.count3210.ui;
 import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.ui.listeners.LahtolaskentaruudunPoistaNapinKuuntelija;
-//import count3210.count3210.ui.listeners.MuokkaaNapinKuuntelija;
+import count3210.count3210.ui.listeners.MuokkaaNapinKuuntelija;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -51,9 +52,8 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     public void luoRuudunUlkonako() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
-        // Kokoa ei pysty asettamaan ehkä siksi, koska tapahtumaPaneeli käyttää
-        // GridLayoutia, jossa on ennalta määrätyn verran ruutuja.
-//        tapahtumaRuutu.setSize(100, 100);
+        
+        this.setPreferredSize(new Dimension(250, 300));
         this.setBackground(Color.BLUE);
         this.setForeground(Color.WHITE);
     }
@@ -117,7 +117,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      */
     public void luoMuokkaaNappi() {
         JButton muokkaa = new JButton("muokkaa");
-//        muokkaa.addActionListener(new MuokkaaNapinKuuntelija(ui, this));
+        muokkaa.addActionListener(new MuokkaaNapinKuuntelija(ui, this));
         GridBagConstraints muokkaaNapille = new GridBagConstraints();
         muokkaaNapille.gridx = 1;
         muokkaaNapille.gridy = 2;

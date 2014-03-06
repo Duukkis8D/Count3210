@@ -166,15 +166,16 @@ Javadocin kirjoittamista.
 6.3. x tuntia
 15:30-16:45
 17:30-18:00
-18:30-19:30 yliopistollako
+18:55-19:30 yliopistolla
+20:15-00:00
 
 Miten ohjelmani luomat tiedostot voi asettaa tallentumaan JAR-tiedoston kanssa samaan paikkaan?
 Sekvenssikaavioiden tekoa.
 Koodin refaktorointia.
 Javadocin kirjoittamista.
 Luokkakaavion teko.
+jar-tiedoston kokeilua yliopistolla.
 
-Kokeile JAR-tiedostoa myös yliopistolla!
 Tee 3-5 sekvenssikaaviota, päivitä luokkakaavio ja uusi pit-raportti!
-Generoi lopuksi javadoc!
+Generoi lopuksi javadoc ja LAITA SE ERILLISEEN HAKEMISTOON GITIIN!
 
