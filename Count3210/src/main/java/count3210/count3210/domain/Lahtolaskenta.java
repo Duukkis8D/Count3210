@@ -5,7 +5,6 @@ import count3210.count3210.ui.UI;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -46,8 +45,8 @@ public class Lahtolaskenta implements ActionListener {
             ajastin.stop();
             
             JPanel ilmoitus = new JPanel();
-            ilmoitus.add(new JTextArea("Tapahtuma " + lahtolaskentaruutu.getTapahtuma().getNimi() 
-                    + " alkaa!"));
+            ilmoitus.add(new JTextArea("Tapahtuma nimeltään " 
+                    + lahtolaskentaruutu.getTapahtuma().getNimi() + " alkaa!"));
             // Miksi ilmoituksen maksimikoko ei toimi? Pitkä tapahtuman nimi ei mahdu ikkunaan.
             ilmoitus.setPreferredSize(new Dimension(300, 100));
             ilmoitus.setMaximumSize(new Dimension(800, 100));

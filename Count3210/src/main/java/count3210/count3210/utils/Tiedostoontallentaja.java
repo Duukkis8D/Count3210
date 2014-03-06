@@ -17,7 +17,8 @@ public class Tiedostoontallentaja {
     private File laskurit;
 
     /** Konstruktori avaa lähtölaskentatapahtumat sisältävän tiedoston lukijan
-     * käyttöön.
+     * käyttöön. Jos avaaminen ei onnistu, näytetään tapauskohtaiset
+     * virheilmoitukset.
      * 
      * @param tiedostonNimi Avattavan tiedoston nimi tiedostojärjestelmässä.
      */

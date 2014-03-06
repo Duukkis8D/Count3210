@@ -7,7 +7,6 @@ import count3210.count3210.domain.Lahtolaskenta;
 import count3210.count3210.domain.Tapahtuma;
 import count3210.count3210.utils.TapahtumaruutujenJarjestelija;
 import count3210.count3210.utils.Tiedostonlukija;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -55,20 +54,32 @@ public class UI implements Runnable {
      */
     private void luoKomponentit(Container container) {
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
-
-        // Refaktoroi koodi kahdeksi uudeksi metodiksi:
-        // luoTapahtumaosio ja luoToimintoOsio.
+        
+        luoTapahtumaosio(container);
+        luoToimintoOsio(container);
+    }
+    
+    /** Metodi luo ohjelman tapahtumaosion, johon tulee otsikko ja käyttäjän
+     * lisäämät lähtölaskentalaskurit.
+     */
+    private void luoTapahtumaosio(Container container) {
         JTextArea otsikko1 = new JTextArea("Tapahtumat");
         tapahtumapaneeli = luoTapahtumapaneeli();
         tapahtumapaneeli.add(otsikko1);
         luoMuistissaOlevatLaskurit();
+        
         container.add(tapahtumapaneeli);
-
+    }
+    
+    /** Metodi luo ohjelman toiminto-osion, joka sisältää toimintonapit.
+     */
+    private void luoToimintoOsio(Container container) {
         JTextArea otsikko2 = new JTextArea("Toiminnot");
         JPanel toimintoPaneeli = luoToimintopaneeli();
         toimintoPaneeli.add(otsikko2);
+        luoToimintoNapit(toimintoPaneeli);
+        
         container.add(toimintoPaneeli);
-        luoToimintonappulat(toimintoPaneeli);
     }
 
     /** Metodi luo tyhjän tapahtumapaneelin.
@@ -87,10 +98,10 @@ public class UI implements Runnable {
         return paneeli;
     }
 
-    /** Metodi luo toimintopaneeli-oliolle ohjelman käyttöä varten tarpeelliset
-     toimintonapit ja niiden tapahtumankuuntelijat.
+    /** Metodi luo ohjelman käyttöä varten tarpeelliset toimintonapit ja niiden
+     * tapahtumankuuntelijat.
      */
-    private void luoToimintonappulat(JPanel toimintopaneeli) {
+    private void luoToimintoNapit(JPanel toimintopaneeli) {
         JButton lisaaTapahtuma = new JButton("lisää tapahtuma");
         lisaaTapahtuma.addActionListener(new LisaaTapahtumaKuuntelija(this));
         JButton jarjesta = new JButton("järjestä tapahtumat");
@@ -101,6 +112,15 @@ public class UI implements Runnable {
         JButton tuoTapahtumia = new JButton(
                 "tuo tapahtumia Hotmail-kalenterista");
 
+        lisaaToimintonapitToimintopaneeliin(toimintopaneeli, lisaaTapahtuma, jarjesta, tyhjenna,
+                poistaKaikki, tuoTapahtumia);
+    }
+    
+    /** Metodi lisää toimintonapit toimintopaneeliin.
+     */
+    private void lisaaToimintonapitToimintopaneeliin(JPanel toimintopaneeli, 
+            JButton lisaaTapahtuma, JButton jarjesta, JButton tyhjenna, JButton poistaKaikki, 
+            JButton tuoTapahtumia) {
         toimintopaneeli.add(lisaaTapahtuma);
         toimintopaneeli.add(jarjesta);
         toimintopaneeli.add(tyhjenna);
@@ -152,20 +172,6 @@ public class UI implements Runnable {
      */
     public void poistaTapahtumaruudunRunkoTapahtumapaneelista(TapahtumaruudunRunko runko) {
         tapahtumapaneeli.remove(runko);
-        
-        // Debuggausta -->
-//        for (Component komponentti : tapahtumapaneeli.getComponents()) {
-//            if (komponentti.getClass().getName().contains("TapahtumaruudunRunko")) {
-//                TapahtumaruudunRunko verrattavaRuutu = (TapahtumaruudunRunko) komponentti;
-//                if (verrattavaRuutu.equals(runko)) {    // Tee equals-metodi
-//                                                        // TapahtumaruudunRunko-luokalle tai
-//                                                        // jokin muu erottelutapa.
-//                    System.out.println("Ruudun poistaminen ei onnistunut.");
-//                }
-//            }
-//        }
-        // <--
-        
         tapahtumapaneeli.updateUI();
     }
 

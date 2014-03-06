@@ -153,6 +153,19 @@ Tiedostonkäsittelyn koodausta.
 Testien tekoa.
 Virhetilanteiden käsittely.
 
-Muista kokeilla jar-tiedoston luontia hyvissä ajoin!
-Tee sekvenssikaavioita, päivitä luokkakaavio ja uusi pit-raportti!
+4.3. 3 t 15 min
+GUI:n koodausta.
+Testausdokumentaation aloitus.
+
+5.3. x tuntia
+JAR-tiedoston luonti.
+Miten ohjelmani luomat tiedostot voi asettaa tallentumaan JAR-tiedoston kanssa samaan paikkaan?
+Sekvenssikaavioiden tekoa.
+Tapahtumankuuntelijoiden koodausta.
+Javadocin kirjoittamista.
+
+Kokeile JAR-tiedostoa myös yliopistolla!
+Muista tapahtuman alkamisesta muistuttava ikkuna!
+Tee 3-5 sekvenssikaaviota, päivitä luokkakaavio ja uusi pit-raportti!
+Generoi lopuksi javadoc!
 

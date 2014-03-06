@@ -36,6 +36,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     
     /** Metodi luo tämän olion ulkoiset puitteet ja sisällön.
      */
+    @Override
     public void luoRuutu() {
         luoRuudunUlkonako();
         luoRuudunSisalto();
@@ -44,6 +45,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     
     /** Metodi luo tämän olion ulkoiset puitteet.
      */
+    @Override
     public void luoRuudunUlkonako() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
@@ -56,6 +58,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     
     /** Metodi luo tämän olion sisällön.
      */
+    @Override
     public void luoRuudunSisalto() {
         luoTapahtumaKentta();
         luoLahtolaskentaKentta();
@@ -83,7 +86,7 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
      aika käyttäjän luomaan tapahtumaan.
      */
     public void luoLahtolaskentaKentta() {
-        lahtolaskentaKentta = new JTextArea("tähän lähtölaskenta");
+        lahtolaskentaKentta = new JTextArea();
         lahtolaskentaKentta.setBackground(Color.BLUE);
         lahtolaskentaKentta.setForeground(Color.WHITE);
         GridBagConstraints lahtolaskennalle = new GridBagConstraints();

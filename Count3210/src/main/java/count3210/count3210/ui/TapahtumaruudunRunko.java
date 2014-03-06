@@ -143,8 +143,7 @@ public class TapahtumaruudunRunko extends JPanel implements TapahtumapaneelinRuu
      */
     public void luoAloitaNappula(JTextField nimi, JTextField paivays) {
         JButton aloita = new JButton("aloita");
-        aloita.addActionListener(new AloitaNapinKuuntelija(nimi, paivays, ui, 
-                this));
+        aloita.addActionListener(new AloitaNapinKuuntelija(nimi, paivays, ui, this));
         GridBagConstraints aloitaNappulalle = new GridBagConstraints();
         aloitaNappulalle.gridx = 0;
         aloitaNappulalle.gridy = 3;

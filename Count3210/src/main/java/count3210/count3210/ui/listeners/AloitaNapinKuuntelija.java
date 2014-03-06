@@ -6,7 +6,6 @@ import count3210.count3210.ui.TapahtumaruudunRunko;
 import count3210.count3210.ui.UI;
 import count3210.count3210.utils.TapahtumaAikakentanLukija;
 import count3210.count3210.utils.Tiedostoontallentaja;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -49,33 +48,19 @@ public class AloitaNapinKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         Tapahtuma tapahtuma = luoLahtolaskentaruudunTapahtuma();
-
-        // Tämän voisi refaktoroida metodiin tallennaTapahtumaTiedostoon(tapahtuma).
-        Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja(
-                "laskurit.data");
-        tiedostoontallentaja.tallennaTiedostoon(tapahtuma);
+        tallennaTapahtumaTiedostoon(tapahtuma);
         
-        // Jostain syystä tapahtumaruudun runko ei poistu tapahtumapaneelista. 
-       
         ui.poistaTapahtumaruudunRunkoTapahtumapaneelista(runko);
         
         Lahtolaskentaruutu lahtolaskentaruutu = 
                 lahtolaskentaruudunTapahtumanAsettaminen(tapahtuma);
         
-        ui.lisaaLahtolaskentaruutuTapahtumapaneeliin(lahtolaskentaruutu);
-        
-        ui.getTapahtumaruutujenJarjestelija().lisaaListaan(lahtolaskentaruutu);
-        // Pitäisikö TapahtumaruudunRunko-luokan ilmentymä poistaa tässä
-        // järjestelijän listalta?
-        
-        // Nyt kun lahtolaskentaruutu on lisätty listaan, voidaan lista järjestää
-        // haluttuun järjestykseen, poistaa tapahtumapaneelista kaikki
-        // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.
-        
-        ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
+        lahtolaskentaruudunVisualisointi(lahtolaskentaruutu);
     }
     
     /** Metodi luo tapahtuman lähtölaskentaruutua varten.
+     * 
+     * @return Luotu tapahtuma.
      */
     public Tapahtuma luoLahtolaskentaruudunTapahtuma() {
         DateTime tapahtumaAikaTallennettava = tapahtumaAikakentanLuku();
@@ -87,7 +72,20 @@ public class AloitaNapinKuuntelija implements ActionListener {
         return tapahtuma;
     }
     
+    /** Metodi tallentaa tapahtuman tiedostoon pitkäaikaiseen säilytykseen.
+     * 
+     * @param tapahtuma Tallennettava tapahtuma.
+     */
+    public void tallennaTapahtumaTiedostoon(Tapahtuma tapahtuma) {
+        Tiedostoontallentaja tiedostoontallentaja = new Tiedostoontallentaja(
+                "laskurit.data");
+        tiedostoontallentaja.tallennaTiedostoon(tapahtuma);
+    }
+    
     /** Metodi luo lähtölaskentaruudun ja asettaa sille tapahtuman.
+     * 
+     * @param tapahtuma Lähtölaskentaruudulle asetettava tapahtuma.
+     * @return Valmis lähtölaskentaruutu.
      */
     public Lahtolaskentaruutu lahtolaskentaruudunTapahtumanAsettaminen(Tapahtuma tapahtuma) {
         Lahtolaskentaruutu lahtolaskentaruutu = new Lahtolaskentaruutu(ui);
@@ -95,6 +93,25 @@ public class AloitaNapinKuuntelija implements ActionListener {
         lahtolaskentaruutu.luoRuutu();
         
         return lahtolaskentaruutu;
+    }
+    
+    /** Metodi lisää lähtölaskentaruudun näytölle ja aktivoi sen toiminnan.
+     * 
+     * @param lahtolaskentaruutu Tietyn tapahtuman lähtölaskentaa esittävä
+     * lähtölaskentaruutu.
+     */
+    public void lahtolaskentaruudunVisualisointi(Lahtolaskentaruutu lahtolaskentaruutu) {
+        ui.lisaaLahtolaskentaruutuTapahtumapaneeliin(lahtolaskentaruutu);
+        
+        ui.getTapahtumaruutujenJarjestelija().lisaaListaan(lahtolaskentaruutu);
+        // Pitäisikö TapahtumaruudunRunko-luokan ilmentymä poistaa tässä
+        // järjestelijän listalta?
+        
+        // Nyt kun lahtolaskentaruutu on lisätty listaan, voidaan lista järjestää
+        // haluttuun järjestykseen, poistaa tapahtumapaneelista kaikki
+        // Lahtolaskentaruudut ja lisätä listasta ne siihen uudelleen.
+        
+        ui.paivitaLahtolaskentaruudunLahtolaskentaKentta(lahtolaskentaruutu);
     }
     
     /** Metodi lukee käyttäjän syöttämän tekstin tapahtumaAikakentta-oliosta.
@@ -117,8 +134,19 @@ public class AloitaNapinKuuntelija implements ActionListener {
         
         DateTime tapahtumaAikaTallennettava = new DateTime(v, kk, vrk, t, min, sek);
         
-        if (tapahtumaAikaTallennettava.isAfterNow()) {
-            return tapahtumaAikaTallennettava;
+        return onkoSyotettyTapahtumaAikaTulevaisuudessa(tapahtumaAikaTallennettava);
+    }
+
+    /** Metodi näyttää käyttäjälle ilmoituksen, jos hänen syöttämänsä tapahtuman
+     * ajankohta on menneisyydessä tai samaan aikaan kuin nykyinen kellon aika.
+     * 
+     * @param syotettyTapahtumaAika Analysoitava tapahtuma-aika.
+     * @return Jos syötetty tapahtuma-aika on nykyisen kellon ajan jälkeen,
+     * metodi palauttaa sen. Muussa tapauksessa palautetaan null.
+     */
+    public DateTime onkoSyotettyTapahtumaAikaTulevaisuudessa(DateTime syotettyTapahtumaAika) {
+        if (syotettyTapahtumaAika.isAfterNow()) {
+            return syotettyTapahtumaAika;
         } else {
             JOptionPane.showMessageDialog(null, "Antamasi tapahtuman ajankohta on "
                     + "menneisyydessä tai samaan aikaan kuin nykyinen kellon aika."

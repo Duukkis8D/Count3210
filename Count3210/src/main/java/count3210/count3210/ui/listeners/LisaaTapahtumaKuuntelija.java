@@ -27,14 +27,6 @@ public class LisaaTapahtumaKuuntelija implements ActionListener {
         ui.getTapahtumaruutujenJarjestelija().lisaaListaan(runko);
         
         ui.lisaaTapahtumaruudunRunkoTapahtumapaneeliin(runko);
-        
-        // Testausta -->
-        Component[] ruudut = ui.getTapahtumapaneeli().getComponents();
-        for (Component ruutu : ruudut) {
-            System.out.println(ruutu.getClass().getName());
-        }
-        System.out.println();
-        // <--
     }
     
 }
