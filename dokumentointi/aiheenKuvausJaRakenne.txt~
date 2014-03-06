@@ -10,7 +10,11 @@ Kun laskuri näyttää nollaa, se hälyttää tapahtuman alkamisesta. Ohjelma pi
 muistissa luotuja laskureita. Kun ohjelman käynnistää, tallennetut laskurit näkyvät
 ja niiden aika kulkee.
 
-Ehdotus:
-Optiona laskurin voi asettaa aloittamaan laskennan uudestaan nollautumisen jälkeen.
-Microsoftin kalenterista voi tuoda tapahtuman nimen ja ajan laskuriin, joka näyttää
-jäljellä olevan ajan tapahtuman alkuun.
+
+Rakenne
+
+Ohjelman aluksi käynnistyvä osa on UI-käyttöliittymäluokka, joka hoitaa
+käyttöliittymän perustoiminnallisuuden. Se lisää ohjelman erilaiset ruudut
+tapahtumapaneeliin. Lähtölaskentaruudulla on oma lähtölaskenta ja tapahtuma.
+Tiedostonlukija ja tiedostoontallentaja hoitavat tiedostoon kirjoittamiset ja
+lukemiset. Erilaiset tapahtumankuuntelijat tuovat ohjelmaan lukuisat toiminnallisuudet.

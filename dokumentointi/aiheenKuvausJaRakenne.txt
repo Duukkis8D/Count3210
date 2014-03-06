@@ -9,3 +9,12 @@ ja sekunteina (kaikki aikayksiköt peräkkäin).
 Kun laskuri näyttää nollaa, se hälyttää tapahtuman alkamisesta. Ohjelma pitää
 muistissa luotuja laskureita. Kun ohjelman käynnistää, tallennetut laskurit näkyvät
 ja niiden aika kulkee.
+
+
+Rakenne
+
+Ohjelman aluksi käynnistyvä osa on UI-käyttöliittymäluokka, joka hoitaa
+käyttöliittymän perustoiminnallisuuden. Se lisää ohjelman erilaiset ruudut
+tapahtumapaneeliin. Lähtölaskentaruudulla on oma lähtölaskenta ja tapahtuma.
+Tiedostonlukija ja tiedostoontallentaja hoitavat tiedostoon kirjoittamiset ja
+lukemiset. Erilaiset tapahtumankuuntelijat tuovat ohjelmaan lukuisat toiminnallisuudet.
