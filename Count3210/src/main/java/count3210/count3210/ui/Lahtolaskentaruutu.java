@@ -28,6 +28,8 @@ public class Lahtolaskentaruutu extends JPanel implements TapahtumapaneelinRuutu
     /** Konstruktori asettaa aikayksikkoja-muuttujan arvoksi 99, joka on
      satunnaisesti valittu luku. Luvun tulee olla yli nolla, jotta UI-luokan
      (Timer) ajastin toimii.
+     * 
+     * @param ui Käyttöliittymäluokka.
      */
     public Lahtolaskentaruutu(UI ui) {
         this.ui = ui;

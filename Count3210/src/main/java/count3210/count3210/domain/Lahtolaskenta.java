@@ -43,22 +43,27 @@ public class Lahtolaskenta implements ActionListener {
         int aikayksikkoja = lahtolaskentaruutu.getAikayksikkoja();
         if (aikayksikkoja == 0) {
             ajastin.stop();
-            
-            JPanel ilmoitus = new JPanel();
-            ilmoitus.add(new JTextArea("Tapahtuma nimeltään " 
-                    + lahtolaskentaruutu.getTapahtuma().getNimi() + " alkaa!"));
-            // Miksi ilmoituksen maksimikoko ei toimi? Pitkä tapahtuman nimi ei mahdu ikkunaan.
-            ilmoitus.setPreferredSize(new Dimension(300, 100));
-            ilmoitus.setMaximumSize(new Dimension(800, 100));
-            
-            JOptionPane.showMessageDialog(null, ilmoitus, "Ilmoitus tapahtuman alkamisesta", 
-                    JOptionPane.PLAIN_MESSAGE);
+            ilmoitusTapahtumanAlkamisesta();
         }
 
         ajanjaksonLuonti();
         lahtolaskentaruudunPaivitys(aikayksikkoja);
         
         ui.paivitaTapahtumapaneeli();
+    }
+    
+    /** Metodi näyttää käyttäjälle ilmoituksen tapahtuman alkamisesta.
+     */
+    private void ilmoitusTapahtumanAlkamisesta() {
+        JPanel ilmoitus = new JPanel();
+            ilmoitus.add(new JTextArea("Tapahtuma nimeltään\n" 
+                    + lahtolaskentaruutu.getTapahtuma().getNimi() + "\nalkaa!"));
+            // Miksi ilmoituksen maksimikoko ei toimi? Pitkä tapahtuman nimi ei mahdu ikkunaan.
+            ilmoitus.setPreferredSize(new Dimension(300, 100));
+            ilmoitus.setMaximumSize(new Dimension(800, 100));
+            
+            JOptionPane.showMessageDialog(null, ilmoitus, "Ilmoitus tapahtuman alkamisesta", 
+                    JOptionPane.PLAIN_MESSAGE);
     }
 
     /** Metodi luo käyttäjän luoman tapahtuman ja nykyisen kalenteriajan välisen

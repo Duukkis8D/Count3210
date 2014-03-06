@@ -15,7 +15,7 @@ import org.joda.time.DateTime;
 /** Luokka huolehtii tapahtumista, jotka alkavat käyttäjän painaessa aloita-nappia.
  * TapahtumaruudunRunko-luokan ilmentymä poistetaan tapahtumapaneelista, johon
  * lisätään sitten Lahtolaskentaruutu-luokan ilmentymä. Lahtolaskentaruutu-luokan
- * ilmentymlä on samat lähtölaskentaan liittyvät ominaisuudet kuin
+ * ilmentymällä on samat lähtölaskentaan liittyvät ominaisuudet kuin
  * TapahtumaruudunRunko-luokan ilmentymällä.
  */
 public class AloitaNapinKuuntelija implements ActionListener {

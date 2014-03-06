@@ -157,15 +157,22 @@ Virhetilanteiden käsittely.
 GUI:n koodausta.
 Testausdokumentaation aloitus.
 
-5.3. x tuntia
+5.3. 5 t
 JAR-tiedoston luonti.
+Sekvenssikaavioiden tekoa.
+Koodin refaktorointia.
+Javadocin kirjoittamista.
+
+6.3. x tuntia
+15:30-16:45
+18:00-19:30 yliopistollako
+
 Miten ohjelmani luomat tiedostot voi asettaa tallentumaan JAR-tiedoston kanssa samaan paikkaan?
 Sekvenssikaavioiden tekoa.
-Tapahtumankuuntelijoiden koodausta.
+Koodin refaktorointia.
 Javadocin kirjoittamista.
 
 Kokeile JAR-tiedostoa myös yliopistolla!
-Muista tapahtuman alkamisesta muistuttava ikkuna!
 Tee 3-5 sekvenssikaaviota, päivitä luokkakaavio ja uusi pit-raportti!
 Generoi lopuksi javadoc!
 
